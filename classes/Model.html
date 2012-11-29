@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>CoffeeScript API Documentation</title>
+  <link rel='stylesheet' href='..&#47;assets/codo.css' type='text/css'>
+  <script src='..&#47;assets/codo.js'></script>
+</head>
+  <body>
+    <div id='header'>
+  <div id='menu'>
+    <a href='..&#47;class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>Model</span>
+    <nav>
+      <ul>
+        <li class='frames'>
+          (<a class='frames' href='..&#47;frames.html'>frames</a>)
+        </li>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='..&#47;class_list.html'>Class List</a>
+      <a id='method_list_link' href='..&#47;method_list.html'>Method List</a>
+      <a id='file_list_link' href='..&#47;file_list.html'>File List</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+</div>
+    <div id='content'>
+      <h1>
+        Class:
+        Model
+      </h1>
+      <dl class='box'>
+        <dt>Defined in:</dt>
+        <dd>src&#47;model.coffee</dd>
+      </dl>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>A representation of the metadata for an InterMine. This class
+allows the user to inspect what kinds of data a mine is configured
+with, allowing us to verify existing queries, as well as constructing
+queries automatically by walking the data-model.
+</p>
+
+</div>
+<div class='tags'>
+</div>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#constructor-instance'>
+        - (void) <strong>constructor</strong>()
+      </a>
+    </span>
+    <span class='constructor note title'>Constructor</span>
+    <span class='desc'>
+      Constructor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getPathInfo-instance'>
+        - (PathInfo) <strong>getPathInfo</strong>(path, subcls)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Construct a PathInfo object representing the given path, given the specified subclass constraints.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getSubclassesOf-instance'>
+        - (Array&lt;String&gt;) <strong>getSubclassesOf</strong>(cls)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Get a list that contains all the names of the subclasses of this class, as well as itself.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getAncestorsOf-instance'>
+        - (Array&lt;String&gt;) <strong>getAncestorsOf</strong>(cls)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Get the list of classes that the given class descends from.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#findSharedAncestor-instance'>
+        - (String) <strong>findSharedAncestor</strong>(classA, classB)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Get the closest shared ancestor of these two classes.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#findCommonType-instance'>
+        - (String) <strong>findCommonType</strong>(xs = [])
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Find the common type of a list of classes or class names, or null if there is no one common type.
+    </span>
+  </li>
+</ul>
+      <h2>Constructor Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='constructor-instance'>
+      - (void) <strong>constructor</strong>()
+    </p>
+    <div class='docstring'>
+  <p>Constructor.
+
+</p>
+<p>@param options The data used to construct this model.
+</p>
+
+</div>
+<div class='tags'>
+  <h3>
+    Options Hash:
+    (option):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name of this model.</span>
+    </li>
+    <li>
+      <span class='name'>classes</span>
+      <span class='type'>
+        (<tt>Object<String, Object></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A description of the classes.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='getPathInfo-instance'>
+      - (PathInfo) <strong>getPathInfo</strong>(path, subcls)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Construct a PathInfo object representing the given path, given the
+specified subclass constraints.
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>path</span>
+      <span class='type'>
+        (<tt>#toString</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The path to represent.</span>
+    </li>
+    <li>
+      <span class='name'>subcls</span>
+      <span class='type'>
+        (<tt>Object<String, String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The subclass constraints. (optional)</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt><a href='../classes/PathInfo.html'>PathInfo</a></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A representation of the path.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getSubclassesOf-instance'>
+      - (Array&lt;String&gt;) <strong>getSubclassesOf</strong>(cls)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Get a list that contains all the names of the
+subclasses of this class, as well as itself.
+For an inheritance pattern such as:
+
+</p>
+<pre><code>   A        B   C
+   |         \ /
+   D   E  F   G
+    \ /    \ / \
+     |      |   \
+     H      I    J
+       \  /  \   |
+        K     L  M</code></pre>
+<p>The subclasses of B will be [B, G, I, K, L, J, M] or [B, G, J, M, I, K, L],
+depending on the order in which the classes are iterated over.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>cls</span>
+      <span class='type'>
+        (<tt>String|Table</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The class to get subclasses of.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Array<String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The names of this class and all its subclasses.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getAncestorsOf-instance'>
+      - (Array&lt;String&gt;) <strong>getAncestorsOf</strong>(cls)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Get the list of classes that the given class descends from.
+The list does not include the class itself. For an inheritance pattern such as:
+
+</p>
+<pre><code>   A        B   C
+   |         \ /
+   D   E  F   G
+    \ /    \ / \
+     |      |   \
+     H      I    J
+       \  /  \   |
+        K     L  M</code></pre>
+<p>The list of ancestors of J will be [H, I, D, E, A, F, G, B, C]
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>cls</span>
+      <span class='type'>
+        (<tt>String|Table</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The class whose ancestry is to be retrieved.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Array<String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A list of names of classes this class inherits from.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='findSharedAncestor-instance'>
+      - (String) <strong>findSharedAncestor</strong>(classA, classB)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Get the closest shared ancestor of these two classes.
+For an inheritance pattern such as:
+
+</p>
+<pre><code>   A        B   C
+   |         \ /
+   D   E  F   G
+    \ /    \ / \
+     |      |   \
+     H      I    J
+       \  /  \   |
+        K     L  M</code></pre>
+<p>The closest shared ancestor of K and M is G, while the closest shared
+ancestor of K and L is I. The closest shared ancestor of H and I is null.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>classA</span>
+      <span class='type'>
+        (<tt>String|Table</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The first class</span>
+    </li>
+    <li>
+      <span class='name'>classB</span>
+      <span class='type'>
+        (<tt>String|Table</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The second class</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name of the closest shared ancestor</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='findCommonType-instance'>
+      - (String) <strong>findCommonType</strong>(xs = [])
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Find the common type of a list of classes or class names, or null if there is no
+one common type.
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>xs</span>
+      <span class='type'>
+        (<tt>Array<String|Table></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>the classes.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name of the common superclass, or null.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Thu Nov 29 2012 00:47:12 GMT+0100 (CET)
+  by
+  <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>codo</a>
+  v0.3.0
+  (Node.js v0.6.19).
+  &#10034;
+  <a href='http://twitter.com/#!/netzpirat'>@netzpirat</a>
+  &#10034;
+  <a href='https://mksoft.ch'>mksoft.ch</a>
+</div>
+  </body>
+</html>

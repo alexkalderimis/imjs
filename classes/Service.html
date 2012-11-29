@@ -1,0 +1,2341 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>CoffeeScript API Documentation</title>
+  <link rel='stylesheet' href='..&#47;assets/codo.css' type='text/css'>
+  <script src='..&#47;assets/codo.js'></script>
+</head>
+  <body>
+    <div id='header'>
+  <div id='menu'>
+    <a href='..&#47;class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>Service</span>
+    <nav>
+      <ul>
+        <li class='frames'>
+          (<a class='frames' href='..&#47;frames.html'>frames</a>)
+        </li>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='..&#47;class_list.html'>Class List</a>
+      <a id='method_list_link' href='..&#47;method_list.html'>Method List</a>
+      <a id='file_list_link' href='..&#47;file_list.html'>File List</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+</div>
+    <div id='content'>
+      <h1>
+        Class:
+        Service
+      </h1>
+      <dl class='box'>
+        <dt>Defined in:</dt>
+        <dd>src&#47;service.coffee</dd>
+      </dl>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>The representation of a connection to an InterMine web-service.
+
+</p>
+<p>The Service class is the entry-point into the imjs library,
+and the focal point for communication with the server. Connections
+to specific services are instantiated with reference to their
+base url and optional authentication information for accessing
+private user data. If data is required from more than one user at
+the same service, multiple connection objects should be instantiated,
+each authenticated to the appropriate user (requests that return
+data that can be cached between users will be made as most once, unless
+the service is connected with the &#39;noCache&#39; option.
+
+</p>
+
+</div>
+<div class='tags'>
+</div>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#constructor-instance'>
+        - (void) <strong>constructor</strong>()
+      </a>
+    </span>
+    <span class='constructor note title'>Constructor</span>
+    <span class='desc'>
+      Construct a new connection to a service.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#post-instance'>
+        - (Promise&lt;Object&gt;) <strong>post</strong>(path, data = {})
+      </a>
+    </span>
+    <span class='desc'>
+      Convenience method for making basic POST requests.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#get-instance'>
+        - (Promise&lt;Object&gt;) <strong>get</strong>(path, data)
+      </a>
+    </span>
+    <span class='desc'>
+      Convenience method for making basic GET requests.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#makeRequest-instance'>
+        - (Promise&lt;Object&gt;) <strong>makeRequest</strong>(method = 'GET', path = '', data = {}, cb = (function() {}), indiv = false)
+      </a>
+    </span>
+    <span class='desc'>
+      The generalised method through which ALL requests pass when using this class.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#enrichment-instance'>
+        - (Promise&lt;Array&lt;Object&gt;&gt;) <strong>enrichment</strong>(opts, cb)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Get the results of using a list enrichment widget to calculate statistics for a set of objects.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#search-instance'>
+        - (Promise&lt;Array, Object, Object&gt;) <strong>search</strong>(options = {}, cb = (function() {}))
+      </a>
+    </span>
+    <span class='desc'>
+      Search for items in the database by any term or facet.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#count-instance'>
+        - (Deferred&lt;Number&gt;) <strong>count</strong>(q, cb)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Find out how many rows a given query would return when run.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#findById-instance'>
+        - (Promise&lt;Object&gt;) <strong>findById</strong>(type, id, cb)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Retrieve a representation of a specific object.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#find-instance'>
+        - (Promise&lt;Array&lt;Object&gt;&gt;) <strong>find</strong>(type, term, cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Find all the objects in the database that match the search term.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#whoami-instance'>
+        - (Promise&lt;User&gt;) <strong>whoami</strong>(cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Retrieve information about the currently authenticated user.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#doPagedRequest-instance'>
+        - (Promise&lt;Array&lt;?&gt;&gt;) <strong>doPagedRequest</strong>(q, path, page = {}, format, cb)
+      </a>
+    </span>
+    <span class='note private title'>Private</span>
+    <span class='desc'>
+      Perform a request for results that accepts a parameter specifying the page to fetch.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#table-instance'>
+        - (Promise&lt;Array&lt;?&gt;&gt;) <strong>table</strong>(q, page, cb)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Get a page of results in jsontable format.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#records-instance'>
+        - (Promise&lt;Array&lt;Object&gt;&gt;) <strong>records</strong>(q, page, cb)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Get a page of results in jsonobject format.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#rows-instance'>
+        - (Promise&lt;Array&lt;Array&lt;Object&gt;&gt;) <strong>rows</strong>(q, page, cb)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Get a page of results in json format.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#tableRows-instance'>
+        - (Promise&lt;Array&lt;Array&lt;Object&gt;&gt;) <strong>tableRows</strong>(q, page, cb)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Get a page of results suitable for building the cells in a table.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#fetchTemplates-instance'>
+        - (Promise&lt;Array&lt;Object&gt;&gt;) <strong>fetchTemplates</strong>(cb)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Get the templates this user currently has access to.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#fetchLists-instance'>
+        - (Promise&lt;Array&lt;List&gt;&gt;) <strong>fetchLists</strong>(cb)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Get the lists this user currently has access to.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#findLists-instance'>
+        - (Promise&lt;Array&lt;List&gt;&gt;) <strong>findLists</strong>(name = '', cb = (function() {}))
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Get the lists this user currently has access to which match the given name.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#fetchList-instance'>
+        - (Promise&lt;List&gt;) <strong>fetchList</strong>(name, cb)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Get a list by name.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#fetchListsContaining-instance'>
+        - (Promise&lt;Array&lt;List&gt;&gt;) <strong>fetchListsContaining</strong>(opts, cb)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Get the lists that contain the given object.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#combineLists-instance'>
+        - (Promise&lt;List&gt;) <strong>combineLists</strong>(operation, options, cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Combine two or more lists using the given operation.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#merge-instance'>
+        - (Promise&lt;List&gt;) <strong>merge</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Combine two or more lists through a union operation.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#intersect-instance'>
+        - (Promise&lt;List&gt;) <strong>intersect</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Combine two or more lists through an intersection operation.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#diff-instance'>
+        - (Promise&lt;List&gt;) <strong>diff</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Combine two more lists through a symmetric difference opertation.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#fetchWidgets-instance'>
+        - (Promise&lt;Array&lt;Object&gt;&gt;) <strong>fetchWidgets</strong>(cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Fetch the list widgets that are available from this service.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#fetchWidgetMap-instance'>
+        - (void) <strong>fetchWidgetMap</strong>(cb)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#fetchModel-instance'>
+        - (Promise&lt;Model&gt;) <strong>fetchModel</strong>(cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Fetch the description of the data model for this service.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#fetchSummaryFields-instance'>
+        - (Promise&lt;Object&lt;String, Array&lt;String&gt;&gt;&gt;) <strong>fetchSummaryFields</strong>(cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Fetch the configured summary-fields.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#fetchVersion-instance'>
+        - (Promise&lt;Number&gt;) <strong>fetchVersion</strong>(cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Fetch the number that describes the web-service capabilities.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#query-instance'>
+        - (Promise&lt;Query&gt;) <strong>query</strong>(options, cb)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Promise to make a new Query.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#manageUserPreferences-instance'>
+        - (Promise&lt;Object&gt;) <strong>manageUserPreferences</strong>(method, data)
+      </a>
+    </span>
+    <span class='note private title'>Private</span>
+    <span class='desc'>
+      Perform operations on a user's preferences.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#resolveIds-instance'>
+        - (Promise&lt;IDResolutionJob&gt;) <strong>resolveIds</strong>(opts, cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Submit an ID resolution job.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#createList-instance'>
+        - (Promise&lt;List&gt;) <strong>createList</strong>(opts, ids, cb = function() {})
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Create a new list through the identifier upload service.
+    </span>
+  </li>
+</ul>
+      <h2>Constructor Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='constructor-instance'>
+      - (void) <strong>constructor</strong>()
+    </p>
+    <div class='docstring'>
+  <p>Construct a new connection to a service.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>options</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The configuration information used by the service</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (option):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>root</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The base URL of the webservice (required). This is typically of the form &quot;http:&#47;&#47;HOST&#47;PATH&quot;, eg: &quot;http:&#47;&#47;www.flymine.org&#47;query&quot;</span>
+    </li>
+    <li>
+      <span class='name'>token</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An authentication token (optional)</span>
+    </li>
+    <li>
+      <span class='name'>A</span>
+      <span class='type'>
+        (<tt>(err) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>function that handles errors. (optional) If any errors occur when making HTTP calls to the server, the errors will be logged by this global error handler, which by default logs to the console. This can be changed by passing an alternative error handler, such as (-&gt;) to suppress error logging.</span>
+    </li>
+    <li>
+      <span class='name'>DEBUG</span>
+      <span class='type'>
+        (<tt>boolean</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>Whether to log extra debug information (optional).</span>
+    </li>
+    <li>
+      <span class='name'>help</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An email address to show to the user if help is needed (optional).</span>
+    </li>
+    <li>
+      <span class='name'>noCache</span>
+      <span class='type'>
+        (<tt>boolean</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>Set this flag to true to prevent the use of the global results caches for non-volatile data (models, versions, etc). Each service instance will still continue to use its own private cache.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='post-instance'>
+      - (Promise&lt;Object&gt;) <strong>post</strong>(path, data = {})
+    </p>
+    <div class='docstring'>
+  <p>Convenience method for making basic POST requests.
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>path</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The endpoint to post to.</span>
+    </li>
+    <li>
+      <span class='name'>data</span>
+      <span class='type'>
+        (<tt>Object<String, String>|Array<[String, String]></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>parameters to send (optional)</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Object></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a response object.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='get-instance'>
+      - (Promise&lt;Object&gt;) <strong>get</strong>(path, data)
+    </p>
+    <div class='docstring'>
+  <p>Convenience method for making basic GET requests.
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>path</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The endpoint to get from.</span>
+    </li>
+    <li>
+      <span class='name'>data</span>
+      <span class='type'>
+        (<tt>Object<String, String>|Array<[String, String]></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>parameters to send (optional)</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Object></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a response object.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='makeRequest-instance'>
+      - (Promise&lt;Object&gt;) <strong>makeRequest</strong>(method = 'GET', path = '', data = {}, cb = (function() {}), indiv = false)
+    </p>
+    <div class='docstring'>
+  <p>The generalised method through which ALL requests pass when using
+this class. You should not use this method; instead use one of the
+specific methods on this class (such as Service#fetchModel, or Service#fetchVersion)
+or one of the methods on the Query object.
+
+</p>
+<p>TL/DR: Don&#39;t. Finger weg.
+
+
+</p>
+<p>All parameters are optional.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>method</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The HTTP method to use (one of GET, POST, PUT, DELETE).</span>
+    </li>
+    <li>
+      <span class='name'>path</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The path fragment of the endpoint to use. The service&#39;s root will be prepended to obtain the full URI.</span>
+    </li>
+    <li>
+      <span class='name'>data</span>
+      <span class='type'>
+        (<tt>Object|Array</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The parameters to send to the service.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(data) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A function that will be called on the results when received.</span>
+    </li>
+    <li>
+      <span class='name'>indiv</span>
+      <span class='type'>
+        (<tt>boolean</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A flag determinig whether to treat the results as a single block, or whether to yield individual results to the cb item by item. This only makes sense in the node.js context. Don&#39;t use this.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Object></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a response object.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='enrichment-instance'>
+      - (Promise&lt;Array&lt;Object&gt;&gt;) <strong>enrichment</strong>(opts, cb)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Get the results of using a list enrichment widget to calculate
+statistics for a set of objects. An enrichment calculation
+attempts to find related items that are particularly characteristic
+of the items in this list.
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>opts</span>
+      <span class='type'>
+        (<tt>Object<String, String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The parameters to pass to the calculation.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>-></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A function to call with the results when they have been received (optional).</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (opt):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>list</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name of the list to analyse.</span>
+    </li>
+    <li>
+      <span class='name'>widget</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name of the enrichment calculation to use.</span>
+    </li>
+    <li>
+      <span class='name'>maxp</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The maximum permissible p-value (optional, default = 0.05).</span>
+    </li>
+    <li>
+      <span class='name'>correction</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The correction algorithm to use (default = Holm-Bonferroni).</span>
+    </li>
+    <li>
+      <span class='name'>population</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name of a list to use as a background population (optional).</span>
+    </li>
+    <li>
+      <span class='name'>filter</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An extra value that some widget calculations accept.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<Object>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to get results.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='search-instance'>
+      - (Promise&lt;Array, Object, Object&gt;) <strong>search</strong>(options = {}, cb = (function() {}))
+    </p>
+    <div class='docstring'>
+  <p>Search for items in the database by any term or facet.
+
+</p>
+<p>This method performs a wide-ranging free-text search (powered
+by Lucene) for items in the database matching a given term. The data
+returned is limited to a precalculated document of key-fields for
+each object. To further explore the dataset, the user will
+want to construct more sophisticated queries. See {Query}.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>options</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A collection of parameters.</span>
+    </li>
+    <li>
+      <span class='name'>An</span>
+      <span class='type'>
+        (<tt>(Array.<Object>, Object, Object) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>optional call-back function.</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (option):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>q</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The term to search by.</span>
+    </li>
+    <li>
+      <span class='name'>facets</span>
+      <span class='type'>
+        (<tt>Object<String, String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A set of facet constraints.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array, Object, Object></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to search the database.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='count-instance'>
+      - (Deferred&lt;Number&gt;) <strong>count</strong>(q, cb)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Find out how many rows a given query would return when run.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>The</span>
+      <span class='type'>
+        (<tt>Query|Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>query to run. If it is not already instantiated as a Query object, it will be, so the JSON definition of a query can be used here.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(Number) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A callback that receives a number. Optional.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Deferred<Number></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a count.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='findById-instance'>
+      - (Promise&lt;Object&gt;) <strong>findById</strong>(type, id, cb)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Retrieve a representation of a specific object.
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>type</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The type of the object to find (eg: Gene)</span>
+    </li>
+    <li>
+      <span class='name'>id</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The internal DB id of the object.</span>
+    </li>
+    <li>
+      <span class='name'>A</span>
+      <span class='type'>
+        (<tt>(obj) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>callback that receives an object. (optional).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Object></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield an object.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='find-instance'>
+      - (Promise&lt;Array&lt;Object&gt;&gt;) <strong>find</strong>(type, term, cb)
+    </p>
+    <div class='docstring'>
+  <p>Find all the objects in the database that match the search term.
+TODO: add support for extra-values
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>type</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The type of the object to find (eg: Gene)</span>
+    </li>
+    <li>
+      <span class='name'>term</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A search term to use. This may use wild-cards and comma separated sub-terms. eg: &quot;eve, zen, bib, r, H&quot;</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(Array<Object>) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A callback that receives an Array of objects. (optional).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<Object>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield an array of objects.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='whoami-instance'>
+      - (Promise&lt;User&gt;) <strong>whoami</strong>(cb)
+    </p>
+    <div class='docstring'>
+  <p>Retrieve information about the currently authenticated user.
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>A</span>
+      <span class='type'>
+        (<tt>(User) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>callback the receives a User object.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<<a href='../classes/User.html'>User</a>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a user.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='doPagedRequest-instance'>
+      - (Promise&lt;Array&lt;?&gt;&gt;) <strong>doPagedRequest</strong>(q, path, page = {}, format, cb)
+      (private)
+    </p>
+    <div class='docstring'>
+  <p>Perform a request for results that accepts a parameter specifying the
+page to fetch. Not intended for public consumption.
+
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>q</span>
+      <span class='type'>
+        (<tt>Query|Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The query to request results for. If not a {Query}, the object will be lifted to one via {Service#query}</span>
+    </li>
+    <li>
+      <span class='name'>The</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>path to make this request to.</span>
+    </li>
+    <li>
+      <span class='name'>page</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An object specifying the page (optional).</span>
+    </li>
+    <li>
+      <span class='name'>format</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The format to request results in (eg. &#39;json&#39;).</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>-></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A call-back to which results will be yielded. (optional).</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (page):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>start</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The index of the first result to retrieve (default = 0).</span>
+    </li>
+    <li>
+      <span class='name'>size</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The maximum number of results to retrieve (default = null, ie. &#39;all&#39;).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<?>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield results.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='table-instance'>
+      - (Promise&lt;Array&lt;?&gt;&gt;) <strong>table</strong>(q, page, cb)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Get a page of results in jsontable format.
+
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>q</span>
+      <span class='type'>
+        (<tt>Query|Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The query to request results for. If not a {Query}, the object will be lifted to one via {Service#query}</span>
+    </li>
+    <li>
+      <span class='name'>page</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An object specifying the page (optional).</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>-></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A call-back to which results will be yielded. (optional).</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (page):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>start</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The index of the first result to retrieve (default = 0).</span>
+    </li>
+    <li>
+      <span class='name'>size</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The maximum number of results to retrieve (default = null, ie. &#39;all&#39;).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<?>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield results.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='records-instance'>
+      - (Promise&lt;Array&lt;Object&gt;&gt;) <strong>records</strong>(q, page, cb)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Get a page of results in jsonobject format.
+
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>q</span>
+      <span class='type'>
+        (<tt>Query|Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The query to request results for. If not a {Query}, the object will be lifted to one via {Service#query}</span>
+    </li>
+    <li>
+      <span class='name'>page</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An object specifying the page (optional).</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>-></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A call-back to which results will be yielded. (optional).</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (page):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>start</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The index of the first result to retrieve (default = 0).</span>
+    </li>
+    <li>
+      <span class='name'>size</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The maximum number of results to retrieve (default = null, ie. &#39;all&#39;).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<Object>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield results.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='rows-instance'>
+      - (Promise&lt;Array&lt;Array&lt;Object&gt;&gt;) <strong>rows</strong>(q, page, cb)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Get a page of results in json format.
+
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>q</span>
+      <span class='type'>
+        (<tt>Query|Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The query to request results for. If not a {Query}, the object will be lifted to one via {Service#query}</span>
+    </li>
+    <li>
+      <span class='name'>page</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An object specifying the page (optional).</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>-></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A call-back to which results will be yielded. (optional).</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (page):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>start</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The index of the first result to retrieve (default = 0).</span>
+    </li>
+    <li>
+      <span class='name'>size</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The maximum number of results to retrieve (default = null, ie. &#39;all&#39;).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<Array<Object>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield results.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='tableRows-instance'>
+      - (Promise&lt;Array&lt;Array&lt;Object&gt;&gt;) <strong>tableRows</strong>(q, page, cb)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Get a page of results suitable for building the cells in a table.
+
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>q</span>
+      <span class='type'>
+        (<tt>Query|Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The query to request results for. If not a {Query}, the object will be lifted to one via {Service#query}</span>
+    </li>
+    <li>
+      <span class='name'>page</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An object specifying the page (optional).</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>-></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A call-back to which results will be yielded. (optional).</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (page):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>start</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The index of the first result to retrieve (default = 0).</span>
+    </li>
+    <li>
+      <span class='name'>size</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The maximum number of results to retrieve (default = null, ie. &#39;all&#39;).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<Array<Object>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield results.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='fetchTemplates-instance'>
+      - (Promise&lt;Array&lt;Object&gt;&gt;) <strong>fetchTemplates</strong>(cb)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Get the templates this user currently has access to.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(Array<Object>) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A callback (optional).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<Object>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield an array of templates.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='fetchLists-instance'>
+      - (Promise&lt;Array&lt;List&gt;&gt;) <strong>fetchLists</strong>(cb)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Get the lists this user currently has access to.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(Array<<a href='../classes/List.html'>List</a>>) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A callback (optional).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<<a href='../classes/List.html'>List</a>>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield an array of {List} objects.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='findLists-instance'>
+      - (Promise&lt;Array&lt;List&gt;&gt;) <strong>findLists</strong>(name = '', cb = (function() {}))
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Get the lists this user currently has access to which match the given name.
+
+</p>
+<p>  (Optional - default = &#39;&#39;, ie. all lists).
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name the lists we want to find must have (may include wildcards).</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(Array<<a href='../classes/List.html'>List</a>>) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A callback (optional).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<<a href='../classes/List.html'>List</a>>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield an array of {List} objects.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='fetchList-instance'>
+      - (Promise&lt;List&gt;) <strong>fetchList</strong>(name, cb)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Get a list by name.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The exact name of the list.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>-></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A callback function (optional).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<<a href='../classes/List.html'>List</a>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a {List}.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='fetchListsContaining-instance'>
+      - (Promise&lt;Array&lt;List&gt;&gt;) <strong>fetchListsContaining</strong>(opts, cb)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Get the lists that contain the given object.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>opts</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The options that specify which object.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>-></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A callback function (Optional).</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (opt):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>publicId</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The stable identifier of the object (eg. for a Gene, the symbol).</span>
+    </li>
+    <li>
+      <span class='name'>extraValue</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A disambiguating value (eg. for a Gene, the name of the Organism it belongs to).</span>
+    </li>
+    <li>
+      <span class='name'>id</span>
+      <span class='type'>
+        (<tt>#toString</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>If known, an object may be referenced by its internal DB id instead. These are NOT stable between releases of the webapp, so should never be stored.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<<a href='../classes/List.html'>List</a>>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield an array of {List} objects.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='combineLists-instance'>
+      - (Promise&lt;List&gt;) <strong>combineLists</strong>(operation, options, cb)
+    </p>
+    <div class='docstring'>
+  <p>Combine two or more lists using the given operation.
+
+</p>
+<p>  (optional - defaults to &quot;operation of listA, listB&quot;)
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>operation</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>One of [&#39;merge&#39;, &#39;intersect&#39;, &#39;diff&#39;].</span>
+    </li>
+    <li>
+      <span class='name'>options</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The options that describe what to combine.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(List) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A callback function. (optional).</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (option):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name of the new list.</span>
+    </li>
+    <li>
+      <span class='name'>description</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The description of the new list.</span>
+    </li>
+    <li>
+      <span class='name'>lists</span>
+      <span class='type'>
+        (<tt>Array<String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The lists to combine.</span>
+    </li>
+    <li>
+      <span class='name'>tags</span>
+      <span class='type'>
+        (<tt>Array<String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A set of tags to apply to the new list (optional).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<<a href='../classes/List.html'>List</a>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a {List} object.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='merge-instance'>
+      - (Promise&lt;List&gt;) <strong>merge</strong>()
+    </p>
+    <div class='docstring'>
+  <p>Combine two or more lists through a union operation.
+
+</p>
+<p>also available as {Service#union}.
+
+</p>
+<p>  (optional - defaults to &quot;operation of listA, listB&quot;)
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>options</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The options that describe what to combine.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(List) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A callback function. (optional).</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (option):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name of the new list.</span>
+    </li>
+    <li>
+      <span class='name'>description</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The description of the new list.</span>
+    </li>
+    <li>
+      <span class='name'>lists</span>
+      <span class='type'>
+        (<tt>Array<String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The lists to combine.</span>
+    </li>
+    <li>
+      <span class='name'>tags</span>
+      <span class='type'>
+        (<tt>Array<String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A set of tags to apply to the new list (optional).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<<a href='../classes/List.html'>List</a>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a {List} object.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='intersect-instance'>
+      - (Promise&lt;List&gt;) <strong>intersect</strong>()
+    </p>
+    <div class='docstring'>
+  <p>Combine two or more lists through an intersection operation.
+
+</p>
+<p>  (optional - defaults to &quot;operation of listA, listB&quot;)
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>options</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The options that describe what to combine.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(List) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A callback function. (optional).</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (option):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name of the new list.</span>
+    </li>
+    <li>
+      <span class='name'>description</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The description of the new list.</span>
+    </li>
+    <li>
+      <span class='name'>lists</span>
+      <span class='type'>
+        (<tt>Array<String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The lists to combine.</span>
+    </li>
+    <li>
+      <span class='name'>tags</span>
+      <span class='type'>
+        (<tt>Array<String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A set of tags to apply to the new list (optional).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<<a href='../classes/List.html'>List</a>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a {List} object.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='diff-instance'>
+      - (Promise&lt;List&gt;) <strong>diff</strong>()
+    </p>
+    <div class='docstring'>
+  <p>Combine two more lists through a symmetric difference opertation.
+
+</p>
+<p>  (optional - defaults to &quot;operation of listA, listB&quot;)
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>options</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The options that describe what to combine.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(List) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A callback function. (optional).</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (option):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name of the new list.</span>
+    </li>
+    <li>
+      <span class='name'>description</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The description of the new list.</span>
+    </li>
+    <li>
+      <span class='name'>lists</span>
+      <span class='type'>
+        (<tt>Array<String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The lists to combine.</span>
+    </li>
+    <li>
+      <span class='name'>tags</span>
+      <span class='type'>
+        (<tt>Array<String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A set of tags to apply to the new list (optional).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<<a href='../classes/List.html'>List</a>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a {List} object.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='fetchWidgets-instance'>
+      - (Promise&lt;Array&lt;Object&gt;&gt;) <strong>fetchWidgets</strong>(cb)
+    </p>
+    <div class='docstring'>
+  <p>Fetch the list widgets that are available from this service.
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<Object>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a list of widgets.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='fetchWidgetMap-instance'>
+      - (void) <strong>fetchWidgetMap</strong>(cb)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='fetchModel-instance'>
+      - (Promise&lt;Model&gt;) <strong>fetchModel</strong>(cb)
+    </p>
+    <div class='docstring'>
+  <p>Fetch the description of the data model for this service.
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<<a href='../classes/Model.html'>Model</a>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield metadata about this service.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='fetchSummaryFields-instance'>
+      - (Promise&lt;Object&lt;String, Array&lt;String&gt;&gt;&gt;) <strong>fetchSummaryFields</strong>(cb)
+    </p>
+    <div class='docstring'>
+  <p>Fetch the configured summary-fields.
+The summary fields describe which fields should be used to summarise each class.
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Object<String, Array<String>>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a mapping from class-name to a list of paths.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='fetchVersion-instance'>
+      - (Promise&lt;Number&gt;) <strong>fetchVersion</strong>(cb)
+    </p>
+    <div class='docstring'>
+  <p>Fetch the number that describes the web-service capabilities.
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Number></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a version number.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='query-instance'>
+      - (Promise&lt;Query&gt;) <strong>query</strong>(options, cb)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Promise to make a new Query.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>options</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The JSON representation of the query. See {Query#constructor} for more information on the structure of these options.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(Query) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An optional callback to be called when the query is made.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<<a href='../classes/Query.html'>Query</a>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a new {Query}.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='manageUserPreferences-instance'>
+      - (Promise&lt;Object&gt;) <strong>manageUserPreferences</strong>(method, data)
+      (private)
+    </p>
+    <div class='docstring'>
+  <p>Perform operations on a user&#39;s preferences.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>method</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The HTTP method to call.</span>
+    </li>
+    <li>
+      <span class='name'>data</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The parameters for this request.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Object></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield the user&#39;s preferences following the update.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='resolveIds-instance'>
+      - (Promise&lt;IDResolutionJob&gt;) <strong>resolveIds</strong>(opts, cb)
+    </p>
+    <div class='docstring'>
+  <p>Submit an ID resolution job.
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>opts</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The parameters to the id resolution service.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>-></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An optional callback.</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (opt):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>identifiers</span>
+      <span class='type'>
+        (<tt>Array<String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The identifiers you want to resolve.</span>
+    </li>
+    <li>
+      <span class='name'>type</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The type of objects these identifiers refer to.</span>
+    </li>
+    <li>
+      <span class='name'>extra</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>Extra values that can be used to disambiguate values (optional).</span>
+    </li>
+    <li>
+      <span class='name'>caseSensitive</span>
+      <span class='type'>
+        (<tt>boolean</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>Whether these identifiers should be treated as case-sensitive. (optional).</span>
+    </li>
+    <li>
+      <span class='name'>wildCards</span>
+      <span class='type'>
+        (<tt>boolean</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>Whether wild-cards should be allowed in these identifiers. (optional).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<<a href='../classes/IDResolutionJob.html'>IDResolutionJob</a>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a job id.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='createList-instance'>
+      - (Promise&lt;List&gt;) <strong>createList</strong>(opts, ids, cb = function() {})
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Create a new list through the identifier upload service.
+
+</p>
+<p>This service takes a source of identifiers and attempts to resolve them automatically
+and create a new list for the results. If you require more fine-grained control
+over this functionality then see [Service#resolveIds].
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>opts</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The options for this list upload.</span>
+    </li>
+    <li>
+      <span class='name'>ids</span>
+      <span class='type'>
+        (<tt>Array<String>|String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The identifiers to resolve.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(List) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A function that receives a {List}.</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (opt):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name for this list (required).</span>
+    </li>
+    <li>
+      <span class='name'>type</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The type of objects (eg. Gene) these are identifiers of (required).</span>
+    </li>
+    <li>
+      <span class='name'>description</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A description for the new list (optional).</span>
+    </li>
+    <li>
+      <span class='name'>extraValue</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A disambiguating value (optional).</span>
+    </li>
+    <li>
+      <span class='name'>tags</span>
+      <span class='type'>
+        (<tt>Array<String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A list of tags to apply to the new list (optional).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<<a href='../classes/List.html'>List</a>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a {List}.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Thu Nov 29 2012 00:47:12 GMT+0100 (CET)
+  by
+  <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>codo</a>
+  v0.3.0
+  (Node.js v0.6.19).
+  &#10034;
+  <a href='http://twitter.com/#!/netzpirat'>@netzpirat</a>
+  &#10034;
+  <a href='https://mksoft.ch'>mksoft.ch</a>
+</div>
+  </body>
+</html>

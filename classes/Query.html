@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>CoffeeScript API Documentation</title>
+  <link rel='stylesheet' href='..&#47;assets/codo.css' type='text/css'>
+  <script src='..&#47;assets/codo.js'></script>
+</head>
+  <body>
+    <div id='header'>
+  <div id='menu'>
+    <a href='..&#47;class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>Query</span>
+    <nav>
+      <ul>
+        <li class='frames'>
+          (<a class='frames' href='..&#47;frames.html'>frames</a>)
+        </li>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='..&#47;class_list.html'>Class List</a>
+      <a id='method_list_link' href='..&#47;method_list.html'>Method List</a>
+      <a id='file_list_link' href='..&#47;file_list.html'>File List</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+</div>
+    <div id='content'>
+      <h1>
+        Class:
+        Query
+      </h1>
+      <dl class='box'>
+        <dt>Defined in:</dt>
+        <dd>src&#47;query.coffee</dd>
+      </dl>
+      <h2>Constant Summary</h2>
+      <dl class='constants'>
+        <dt id='JOIN_STYLES-constant'>
+          JOIN_STYLES
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>['INNER', 'OUTER']</code></pre>
+        </dd>
+        <dt id='BIO_FORMATS-constant'>
+          BIO_FORMATS
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>['gff3', 'fasta', 'bed']</code></pre>
+        </dd>
+        <dt id='NULL_OPS-constant'>
+          NULL_OPS
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>['IS NULL', 'IS NOT NULL']</code></pre>
+        </dd>
+        <dt id='ATTRIBUTE_VALUE_OPS-constant'>
+          ATTRIBUTE_VALUE_OPS
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>["=", "!=", ">", ">=", "<", "<=", "CONTAINS", "LIKE", "NOT LIKE"]</code></pre>
+        </dd>
+        <dt id='MULTIVALUE_OPS-constant'>
+          MULTIVALUE_OPS
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>['ONE OF', 'NONE OF']</code></pre>
+        </dd>
+        <dt id='TERNARY_OPS-constant'>
+          TERNARY_OPS
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>['LOOKUP']</code></pre>
+        </dd>
+        <dt id='LOOP_OPS-constant'>
+          LOOP_OPS
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>['=', '!=']</code></pre>
+        </dd>
+        <dt id='LIST_OPS-constant'>
+          LIST_OPS
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>['IN', 'NOT IN']</code></pre>
+        </dd>
+        <dt id='OP_DICT-constant'>
+          OP_DICT
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>{
+  "=": "=",
+  "==": "=",
+  "eq": "=",
+  "!=": "!=",
+  "ne": "!=",
+  ">": ">",
+  "gt": ">",
+  ">=": ">=",
+  "ge": ">=",
+  "<": "<",
+  "lt": "<",
+  "<=": "<=",
+  "le": "<=",
+  "contains": "CONTAINS",
+  "CONTAINS": "CONTAINS",
+  "like": "LIKE",
+  "LIKE": "LIKE",
+  "not like": "NOT LIKE",
+  "NOT LIKE": "NOT LIKE",
+  "lookup": "LOOKUP",
+  "IS NULL": "IS NULL",
+  "is null": "IS NULL",
+  "IS NOT NULL": "IS NOT NULL",
+  "is not null": "IS NOT NULL",
+  "ONE OF": "ONE OF",
+  "one of": "ONE OF",
+  "NONE OF": "NONE OF",
+  "none of": "NONE OF",
+  "in": "IN",
+  "not in": "NOT IN",
+  "IN": "IN",
+  "NOT IN": "NOT IN",
+  "WITHIN": "WITHIN",
+  "within": "WITHIN",
+  "OVERLAPS": "OVERLAPS",
+  "overlaps": "OVERLAPS",
+  "ISA": "ISA",
+  "isa": "ISA"
+}</code></pre>
+        </dd>
+        <dt id='_bed_req-constant'>
+          _bed_req
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>Query</code></pre>
+        </dd>
+      </dl>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#getPaths-instance'>
+        - (void) <strong>getPaths</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#on-instance'>
+        - (void) <strong>on</strong>(events, callback, context)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#bind-instance'>
+        - (void) <strong>bind</strong>(args...)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#trigger-instance'>
+        - (void) <strong>trigger</strong>(events, rest...)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#constructor-instance'>
+        - (void) <strong>constructor</strong>(properties, service)
+      </a>
+    </span>
+    <span class='constructor note title'>Constructor</span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#removeFromSelect-instance'>
+        - (void) <strong>removeFromSelect</strong>(unwanted)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#removeConstraint-instance'>
+        - (void) <strong>removeConstraint</strong>(con, silent = false)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addToSelect-instance'>
+        - (void) <strong>addToSelect</strong>(views)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#select-instance'>
+        - (void) <strong>select</strong>(views)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#adjustPath-instance'>
+        - (void) <strong>adjustPath</strong>(path)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getPossiblePaths-instance'>
+        - (void) <strong>getPossiblePaths</strong>(depth = 3)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getPathInfo-instance'>
+        - (void) <strong>getPathInfo</strong>(path)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getSubclasses-instance'>
+        - (void) <strong>getSubclasses</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getType-instance'>
+        - (void) <strong>getType</strong>(path)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getViewNodes-instance'>
+        - (void) <strong>getViewNodes</strong>(path)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#canHaveMultipleValues-instance'>
+        - (void) <strong>canHaveMultipleValues</strong>(path)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getQueryNodes-instance'>
+        - (void) <strong>getQueryNodes</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#expandStar-instance'>
+        - (void) <strong>expandStar</strong>(path)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isOuterJoin-instance'>
+        - (void) <strong>isOuterJoin</strong>(p)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#hasView-instance'>
+        - (void) <strong>hasView</strong>(v)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#count-instance'>
+        - (void) <strong>count</strong>(cont)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#appendToList-instance'>
+        - (void) <strong>appendToList</strong>(target, cb)
+      </a>
+    </span>
+    <span class='desc'>
+      TODO: unit tests
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#saveAsList-instance'>
+        - (void) <strong>saveAsList</strong>(options, cb)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#summarise-instance'>
+        - (void) <strong>summarise</strong>(path, limit, cont)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#summarize-instance'>
+        - (void) <strong>summarize</strong>(args...)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#filterSummary-instance'>
+        - (void) <strong>filterSummary</strong>(path, term, limit, cont = (function() {}))
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#clone-instance'>
+        - (void) <strong>clone</strong>(cloneEvents)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#next-instance'>
+        - (void) <strong>next</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#previous-instance'>
+        - (void) <strong>previous</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getSortDirection-instance'>
+        - (void) <strong>getSortDirection</strong>(path)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isOuterJoined-instance'>
+        - (void) <strong>isOuterJoined</strong>(path)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getOuterJoin-instance'>
+        - (void) <strong>getOuterJoin</strong>(path)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#_parse_sort_order-instance'>
+        - (void) <strong>_parse_sort_order</strong>(input)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addOrSetSortOrder-instance'>
+        - (void) <strong>addOrSetSortOrder</strong>(so)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addSortOrder-instance'>
+        - (void) <strong>addSortOrder</strong>(so)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#orderBy-instance'>
+        - (void) <strong>orderBy</strong>(oes)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addJoins-instance'>
+        - (void) <strong>addJoins</strong>(joins)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addJoin-instance'>
+        - (void) <strong>addJoin</strong>(join)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setJoinStyle-instance'>
+        - (void) <strong>setJoinStyle</strong>(path, style = 'OUTER')
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addConstraints-instance'>
+        - (void) <strong>addConstraints</strong>(constraints)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addConstraint-instance'>
+        - (void) <strong>addConstraint</strong>(constraint)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getSorting-instance'>
+        - (void) <strong>getSorting</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getConstraintXML-instance'>
+        - (void) <strong>getConstraintXML</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getJoinXML-instance'>
+        - (void) <strong>getJoinXML</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#toXML-instance'>
+        - (void) <strong>toXML</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isRelevant-instance'>
+        - (void) <strong>isRelevant</strong>(p)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#fetchCode-instance'>
+        - (void) <strong>fetchCode</strong>(lang, cb)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#save-instance'>
+        - (void) <strong>save</strong>(name, cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Save a query to the server, with the name given.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getCodeURI-instance'>
+        - (void) <strong>getCodeURI</strong>(lang)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getExportURI-instance'>
+        - (void) <strong>getExportURI</strong>(format = 'tab')
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#__bio_req-instance'>
+        - (void) <strong>__bio_req</strong>(types, n)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#_fasta_req-instance'>
+        - (void) <strong>_fasta_req</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#_gff3_req-instance'>
+        - (void) <strong>_gff3_req</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+</ul>
+      <h2>Constructor Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='constructor-instance'>
+      - (void) <strong>constructor</strong>(properties, service)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+</div>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='getPaths-instance'>
+      - (void) <strong>getPaths</strong>()
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='on-instance'>
+      - (void) <strong>on</strong>(events, callback, context)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='bind-instance'>
+      - (void) <strong>bind</strong>(args...)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='trigger-instance'>
+      - (void) <strong>trigger</strong>(events, rest...)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='removeFromSelect-instance'>
+      - (void) <strong>removeFromSelect</strong>(unwanted)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='removeConstraint-instance'>
+      - (void) <strong>removeConstraint</strong>(con, silent = false)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addToSelect-instance'>
+      - (void) <strong>addToSelect</strong>(views)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='select-instance'>
+      - (void) <strong>select</strong>(views)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='adjustPath-instance'>
+      - (void) <strong>adjustPath</strong>(path)
+      (bound)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getPossiblePaths-instance'>
+      - (void) <strong>getPossiblePaths</strong>(depth = 3)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getPathInfo-instance'>
+      - (void) <strong>getPathInfo</strong>(path)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getSubclasses-instance'>
+      - (void) <strong>getSubclasses</strong>()
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getType-instance'>
+      - (void) <strong>getType</strong>(path)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getViewNodes-instance'>
+      - (void) <strong>getViewNodes</strong>(path)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='canHaveMultipleValues-instance'>
+      - (void) <strong>canHaveMultipleValues</strong>(path)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getQueryNodes-instance'>
+      - (void) <strong>getQueryNodes</strong>()
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='expandStar-instance'>
+      - (void) <strong>expandStar</strong>(path)
+      (bound)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isOuterJoin-instance'>
+      - (void) <strong>isOuterJoin</strong>(p)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='hasView-instance'>
+      - (void) <strong>hasView</strong>(v)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='count-instance'>
+      - (void) <strong>count</strong>(cont)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='appendToList-instance'>
+      - (void) <strong>appendToList</strong>(target, cb)
+    </p>
+    <div class='docstring'>
+  <p>TODO: unit tests
+</p>
+
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='saveAsList-instance'>
+      - (void) <strong>saveAsList</strong>(options, cb)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='summarise-instance'>
+      - (void) <strong>summarise</strong>(path, limit, cont)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='summarize-instance'>
+      - (void) <strong>summarize</strong>(args...)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='filterSummary-instance'>
+      - (void) <strong>filterSummary</strong>(path, term, limit, cont = (function() {}))
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='clone-instance'>
+      - (void) <strong>clone</strong>(cloneEvents)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='next-instance'>
+      - (void) <strong>next</strong>()
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='previous-instance'>
+      - (void) <strong>previous</strong>()
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getSortDirection-instance'>
+      - (void) <strong>getSortDirection</strong>(path)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isOuterJoined-instance'>
+      - (void) <strong>isOuterJoined</strong>(path)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getOuterJoin-instance'>
+      - (void) <strong>getOuterJoin</strong>(path)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='_parse_sort_order-instance'>
+      - (void) <strong>_parse_sort_order</strong>(input)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addOrSetSortOrder-instance'>
+      - (void) <strong>addOrSetSortOrder</strong>(so)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addSortOrder-instance'>
+      - (void) <strong>addSortOrder</strong>(so)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='orderBy-instance'>
+      - (void) <strong>orderBy</strong>(oes)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addJoins-instance'>
+      - (void) <strong>addJoins</strong>(joins)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addJoin-instance'>
+      - (void) <strong>addJoin</strong>(join)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setJoinStyle-instance'>
+      - (void) <strong>setJoinStyle</strong>(path, style = 'OUTER')
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addConstraints-instance'>
+      - (void) <strong>addConstraints</strong>(constraints)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addConstraint-instance'>
+      - (void) <strong>addConstraint</strong>(constraint)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getSorting-instance'>
+      - (void) <strong>getSorting</strong>()
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getConstraintXML-instance'>
+      - (void) <strong>getConstraintXML</strong>()
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getJoinXML-instance'>
+      - (void) <strong>getJoinXML</strong>()
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='toXML-instance'>
+      - (void) <strong>toXML</strong>()
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isRelevant-instance'>
+      - (void) <strong>isRelevant</strong>(p)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='fetchCode-instance'>
+      - (void) <strong>fetchCode</strong>(lang, cb)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='save-instance'>
+      - (void) <strong>save</strong>(name, cb)
+    </p>
+    <div class='docstring'>
+  <p>Save a query to the server, with the name given.
+</p>
+
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getCodeURI-instance'>
+      - (void) <strong>getCodeURI</strong>(lang)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getExportURI-instance'>
+      - (void) <strong>getExportURI</strong>(format = 'tab')
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='__bio_req-instance'>
+      - (void) <strong>__bio_req</strong>(types, n)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='_fasta_req-instance'>
+      - (void) <strong>_fasta_req</strong>()
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='_gff3_req-instance'>
+      - (void) <strong>_gff3_req</strong>()
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Thu Nov 29 2012 00:47:12 GMT+0100 (CET)
+  by
+  <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>codo</a>
+  v0.3.0
+  (Node.js v0.6.19).
+  &#10034;
+  <a href='http://twitter.com/#!/netzpirat'>@netzpirat</a>
+  &#10034;
+  <a href='https://mksoft.ch'>mksoft.ch</a>
+</div>
+  </body>
+</html>

@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>CoffeeScript API Documentation</title>
+  <link rel='stylesheet' href='..&#47;assets/codo.css' type='text/css'>
+  <script src='..&#47;assets/codo.js'></script>
+</head>
+  <body>
+    <div id='header'>
+  <div id='menu'>
+    <a href='..&#47;class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>List</span>
+    <nav>
+      <ul>
+        <li class='frames'>
+          (<a class='frames' href='..&#47;frames.html'>frames</a>)
+        </li>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='..&#47;class_list.html'>Class List</a>
+      <a id='method_list_link' href='..&#47;method_list.html'>Method List</a>
+      <a id='file_list_link' href='..&#47;file_list.html'>File List</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+</div>
+    <div id='content'>
+      <h1>
+        Class:
+        List
+      </h1>
+      <dl class='box'>
+        <dt>Defined in:</dt>
+        <dd>src&#47;lists.coffee</dd>
+      </dl>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>A representation of collections of objects stored in a data-warehouse.
+
+</p>
+<p>Lists can be created through the list upload mechanism (Service#createList) and
+the query saving mechanism (Query#saveAsList).
+</p>
+
+</div>
+<div class='tags'>
+</div>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#constructor-instance'>
+        - (void) <strong>constructor</strong>(properties, service)
+      </a>
+    </span>
+    <span class='constructor note title'>Constructor</span>
+    <span class='desc'>
+      Construct a new list.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#hasTag-instance'>
+        - (boolean) <strong>hasTag</strong>(t)
+      </a>
+    </span>
+    <span class='desc'>
+      Whether or not this list has a certain tag.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#query-instance'>
+        - (Promise&lt;Query&gt;) <strong>query</strong>(view = ['*'])
+      </a>
+    </span>
+    <span class='desc'>
+      Construct a query for data contained in this list.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#del-instance'>
+        - (void) <strong>del</strong>(cb)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#contents-instance'>
+        - (Promise&lt;Array&lt;Object&gt;&gt;) <strong>contents</strong>(cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Get the contents of this list.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#rename-instance'>
+        - (Promise&lt;String&gt;) <strong>rename</strong>(newName, cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Rename this list.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#copy-instance'>
+        - (Promise&lt;List&gt;) <strong>copy</strong>(name, cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Copy this list to an exact duplicate with a different name.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#enrichment-instance'>
+        - (Promise&lt;Array&lt;Object&gt;&gt;) <strong>enrichment</strong>(opts, cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Fetch the results for a particular enrichment calculation against this list.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#shareWithUser-instance'>
+        - (Promise&lt;&gt;) <strong>shareWithUser</strong>(recipient, cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Share this list with a recipient.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#inviteUserToShare-instance'>
+        - (Promise&lt;&gt;) <strong>inviteUserToShare</strong>(recipient, notify = true, cb = (function() {}))
+      </a>
+    </span>
+    <span class='desc'>
+      Invite a user to share this list.
+    </span>
+  </li>
+</ul>
+      <h2>Constructor Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='constructor-instance'>
+      - (void) <strong>constructor</strong>(properties, service)
+    </p>
+    <div class='docstring'>
+  <p>Construct a new list.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>properties</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The properties of this list.</span>
+    </li>
+    <li>
+      <span class='name'>service</span>
+      <span class='type'>
+        (<tt><a href='../classes/Service.html'>Service</a></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The service this list belongs to.</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (propertie):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name of this list.</span>
+    </li>
+    <li>
+      <span class='name'>size</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The size of this list.</span>
+    </li>
+    <li>
+      <span class='name'>dateCreated</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The timestamp of the creation date for this list.</span>
+    </li>
+    <li>
+      <span class='name'>description</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The description of this list.</span>
+    </li>
+    <li>
+      <span class='name'>The</span>
+      <span class='type'>
+        (<tt>tags</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>tags for this list.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='hasTag-instance'>
+      - (boolean) <strong>hasTag</strong>(t)
+    </p>
+    <div class='docstring'>
+  <p>Whether or not this list has a certain tag.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>t</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The tag this list is meant to have.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>boolean</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>true if this list has the certain tag.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='query-instance'>
+      - (Promise&lt;Query&gt;) <strong>query</strong>(view = ['*'])
+    </p>
+    <div class='docstring'>
+  <p>Construct a query for data contained in this list.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>view</span>
+      <span class='type'>
+        (<tt>Array<String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An optional list of output columns. Defaults to the summary fields for objects of this type.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<<a href='../classes/Query.html'>Query</a>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a query.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='del-instance'>
+      - (void) <strong>del</strong>(cb)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='contents-instance'>
+      - (Promise&lt;Array&lt;Object&gt;&gt;) <strong>contents</strong>(cb)
+    </p>
+    <div class='docstring'>
+  <p>Get the contents of this list.
+
+</p>
+<p>The dejoin function is used to ensure that all objects in the list are returned, and
+we don&#39;t miss out on any due to the implicit constraints of inner joins.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(Array<Object>) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A function that receives a list of objects. Optional.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<Object>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a list of objects.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='rename-instance'>
+      - (Promise&lt;String&gt;) <strong>rename</strong>(newName, cb)
+    </p>
+    <div class='docstring'>
+  <p>Rename this list. Upon resolution of this actions promise, this object will have its
+name property set to the new value.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>newName</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name this list should have.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(String) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A function that receives a string. optional.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a name (the name this list now has).</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='copy-instance'>
+      - (Promise&lt;List&gt;) <strong>copy</strong>(name, cb)
+    </p>
+    <div class='docstring'>
+  <p>Copy this list to an exact duplicate with a different name.
+
+</p>
+<p>This function will check that any name given does not collide with any other
+list you have access to, adding a suffix to avoid name clashes. This means you should
+probably check the yielded value to see what name it ended up with.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name to copy this list as. Optional. Defaults to @name + _copy.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(List) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An optional function that receives a List.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<<a href='../classes/List.html'>List</a>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a list.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='enrichment-instance'>
+      - (Promise&lt;Array&lt;Object&gt;&gt;) <strong>enrichment</strong>(opts, cb)
+    </p>
+    <div class='docstring'>
+  <p>Fetch the results for a particular enrichment calculation
+against this list. See Service#enrichment.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>opts</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The parameters of this request.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>-></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A function to call with the results when they have been received (optional).</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (opt):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>widget</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The calculation to run.</span>
+    </li>
+    <li>
+      <span class='name'>maxp</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The maximum permissible p-value (optional, default = 0.05).</span>
+    </li>
+    <li>
+      <span class='name'>correction</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The correction algorithm to use (default = Holm-Bonferroni).</span>
+    </li>
+    <li>
+      <span class='name'>population</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name of a list to use as a background population (optional).</span>
+    </li>
+    <li>
+      <span class='name'>filter</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An extra value that some widget calculations accept.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<Object>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to get results.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='shareWithUser-instance'>
+      - (Promise&lt;&gt;) <strong>shareWithUser</strong>(recipient, cb)
+    </p>
+    <div class='docstring'>
+  <p>Share this list with a recipient.
+
+</p>
+<p>The recipient should exist as a user in the target InterMine instance.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>recipient</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The identifier of a user.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>-></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A function to call on successful completion (optional).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to share a List.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='inviteUserToShare-instance'>
+      - (Promise&lt;&gt;) <strong>inviteUserToShare</strong>(recipient, notify = true, cb = (function() {}))
+    </p>
+    <div class='docstring'>
+  <p>Invite a user to share this list.
+
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>recipient</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The email address of someone to invite to share this list.</span>
+    </li>
+    <li>
+      <span class='name'>notify</span>
+      <span class='type'>
+        (<tt>boolean</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>Whether or not to notify the recipient by email.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>-></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A function to call upon successful completion.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to invite a user to share a list.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Thu Nov 29 2012 00:47:12 GMT+0100 (CET)
+  by
+  <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>codo</a>
+  v0.3.0
+  (Node.js v0.6.19).
+  &#10034;
+  <a href='http://twitter.com/#!/netzpirat'>@netzpirat</a>
+  &#10034;
+  <a href='https://mksoft.ch'>mksoft.ch</a>
+</div>
+  </body>
+</html>

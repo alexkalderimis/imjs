@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>CoffeeScript API Documentation</title>
+  <link rel='stylesheet' href='..&#47;assets/codo.css' type='text/css'>
+  <script src='..&#47;assets/codo.js'></script>
+</head>
+  <body>
+    <div id='header'>
+  <div id='menu'>
+    <a href='..&#47;class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>User</span>
+    <nav>
+      <ul>
+        <li class='frames'>
+          (<a class='frames' href='..&#47;frames.html'>frames</a>)
+        </li>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='..&#47;class_list.html'>Class List</a>
+      <a id='method_list_link' href='..&#47;method_list.html'>Method List</a>
+      <a id='file_list_link' href='..&#47;file_list.html'>File List</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+</div>
+    <div id='content'>
+      <h1>
+        Class:
+        User
+      </h1>
+      <dl class='box'>
+        <dt>Defined in:</dt>
+        <dd>src&#47;user.coffee</dd>
+      </dl>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>A representation of the user we are logged in as.
+</p>
+
+</div>
+<div class='tags'>
+</div>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#constructor-instance'>
+        - (void) <strong>constructor</strong>(service, )
+      </a>
+    </span>
+    <span class='constructor note title'>Constructor</span>
+    <span class='desc'>
+      Save references to the service, as well as extracting the user's preferences from the options.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setPreference-instance'>
+        - (Deferred) <strong>setPreference</strong>(key, value)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Set a given preference.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setPreferences-instance'>
+        - (void) <strong>setPreferences</strong>(prefs)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Set one or more preferences, provided as an object.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#clearPreference-instance'>
+        - (void) <strong>clearPreference</strong>(key)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Clear a preference.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#clearPreferences-instance'>
+        - (void) <strong>clearPreferences</strong>()
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Clear all preferences.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#refresh-instance'>
+        - (void) <strong>refresh</strong>()
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+</ul>
+      <h2>Constructor Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='constructor-instance'>
+      - (void) <strong>constructor</strong>(service, )
+    </p>
+    <div class='docstring'>
+  <p>Save references to the service, as well as
+extracting the user&#39;s preferences from the options.
+
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>service</span>
+      <span class='type'>
+        (<tt>intermine.Service</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>the connection to the webservice</span>
+    </li>
+    <li>
+      <span class='name'>options</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The data used to instantiate this object</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (option):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>username</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The user&#39;s log-in name</span>
+    </li>
+    <li>
+      <span class='name'>preferences</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A key-value mapping of the preferences this user has set.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='setPreference-instance'>
+      - (Deferred) <strong>setPreference</strong>(key, value)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Set a given preference.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>key</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The key to set.</span>
+    </li>
+    <li>
+      <span class='name'>value</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The value to set.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Deferred</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>a promise to set a preference.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setPreferences-instance'>
+      - (void) <strong>setPreferences</strong>(prefs)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Set one or more preferences, provided as an object.
+</p>
+
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='clearPreference-instance'>
+      - (void) <strong>clearPreference</strong>(key)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Clear a preference.
+</p>
+
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='clearPreferences-instance'>
+      - (void) <strong>clearPreferences</strong>()
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Clear all preferences.
+</p>
+
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='refresh-instance'>
+      - (void) <strong>refresh</strong>()
+      (bound)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Thu Nov 29 2012 00:47:12 GMT+0100 (CET)
+  by
+  <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>codo</a>
+  v0.3.0
+  (Node.js v0.6.19).
+  &#10034;
+  <a href='http://twitter.com/#!/netzpirat'>@netzpirat</a>
+  &#10034;
+  <a href='https://mksoft.ch'>mksoft.ch</a>
+</div>
+  </body>
+</html>
