@@ -120,45 +120,72 @@
         </dt>
         <dd>
           <pre><code class='coffee'>{
-  "=": "=",
-  "==": "=",
-  "eq": "=",
-  "!=": "!=",
-  "ne": "!=",
-  ">": ">",
-  "gt": ">",
-  ">=": ">=",
-  "ge": ">=",
-  "<": "<",
-  "lt": "<",
-  "<=": "<=",
-  "le": "<=",
-  "contains": "CONTAINS",
-  "CONTAINS": "CONTAINS",
-  "like": "LIKE",
-  "LIKE": "LIKE",
-  "not like": "NOT LIKE",
-  "NOT LIKE": "NOT LIKE",
-  "lookup": "LOOKUP",
-  "IS NULL": "IS NULL",
-  "is null": "IS NULL",
-  "IS NOT NULL": "IS NOT NULL",
-  "is not null": "IS NOT NULL",
-  "ONE OF": "ONE OF",
-  "one of": "ONE OF",
-  "NONE OF": "NONE OF",
-  "none of": "NONE OF",
-  "in": "IN",
-  "not in": "NOT IN",
-  "IN": "IN",
-  "NOT IN": "NOT IN",
-  "WITHIN": "WITHIN",
-  "within": "WITHIN",
-  "OVERLAPS": "OVERLAPS",
-  "overlaps": "OVERLAPS",
-  "ISA": "ISA",
-  "isa": "ISA"
+  '=': '=',
+  '==': '=',
+  'eq': '=',
+  '!=': '!=',
+  'ne': '!=',
+  '>': '>',
+  'gt': '>',
+  '>=': '>=',
+  'ge': '>=',
+  '<': '<',
+  'lt': '<',
+  '<=': '<=',
+  'le': '<=',
+  'contains': 'CONTAINS',
+  'CONTAINS': 'CONTAINS',
+  'like': 'LIKE',
+  'LIKE': 'LIKE',
+  'not like': 'NOT LIKE',
+  'NOT LIKE': 'NOT LIKE',
+  'lookup': 'LOOKUP',
+  'IS NULL': 'IS NULL',
+  'is null': 'IS NULL',
+  'IS NOT NULL': 'IS NOT NULL',
+  'is not null': 'IS NOT NULL',
+  'ONE OF': 'ONE OF',
+  'one of': 'ONE OF',
+  'NONE OF': 'NONE OF',
+  'none of': 'NONE OF',
+  'in': 'IN',
+  'not in': 'NOT IN',
+  'IN': 'IN',
+  'NOT IN': 'NOT IN',
+  'WITHIN': 'WITHIN',
+  'within': 'WITHIN',
+  'OVERLAPS': 'OVERLAPS',
+  'overlaps': 'OVERLAPS',
+  'ISA': 'ISA',
+  'isa': 'ISA'
 }</code></pre>
+        </dd>
+        <dt id='qAttrs-constant'>
+          qAttrs
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>['name', 'view', 'sortOrder', 'constraintLogic', 'title', 'description', 'comment']</code></pre>
+        </dd>
+        <dt id='cAttrs-constant'>
+          cAttrs
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>['path', 'type', 'op', 'code', 'value', 'ids']</code></pre>
+        </dd>
+        <dt id='makePath-constant'>
+          makePath
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>Query</code></pre>
         </dd>
         <dt id='_bed_req-constant'>
           _bed_req
@@ -170,6 +197,19 @@
           <pre><code class='coffee'>Query</code></pre>
         </dd>
       </dl>
+      <h2>Class Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#fromXML-class'>
+        + (void) <strong>fromXML</strong>(xml)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+</ul>
       <h2>Instance Method Summary</h2>
       <ul class='summary'>
   <li>
@@ -214,6 +254,36 @@
   </li>
   <li>
     <span class='signature'>
+      <a href='#toAttrPairs-instance'>
+        - (void) <strong>toAttrPairs</strong>(el, attrs)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#kids-instance'>
+        - (void) <strong>kids</strong>(el, name)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#xmlAttr-instance'>
+        - (void) <strong>xmlAttr</strong>(name)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
       <a href='#constructor-instance'>
         - (void) <strong>constructor</strong>(properties, service)
       </a>
@@ -250,7 +320,7 @@
       </a>
     </span>
     <span class='desc'>
-      
+      Add an element to the select list.
     </span>
   </li>
   <li>
@@ -259,8 +329,9 @@
         - (void) <strong>select</strong>(views)
       </a>
     </span>
+    <span class='bound note title'>Bound</span>
     <span class='desc'>
-      
+      Replace the existing select list with the one passed as an argument.
     </span>
   </li>
   <li>
@@ -271,7 +342,7 @@
     </span>
     <span class='bound note title'>Bound</span>
     <span class='desc'>
-      
+      Interpret an argument as resolve the canonical path it refers to.
     </span>
   </li>
   <li>
@@ -311,17 +382,37 @@
       </a>
     </span>
     <span class='desc'>
-      
+      Get the type of a path.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#getViewNodes-instance'>
-        - (void) <strong>getViewNodes</strong>(path)
+        - (void) <strong>getViewNodes</strong>()
       </a>
     </span>
     <span class='desc'>
-      
+      Get all the nodes present in the view.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isInView-instance'>
+        - (void) <strong>isInView</strong>(path)
+      </a>
+    </span>
+    <span class='desc'>
+      Check to see whether a path is in the view.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isConstrained-instance'>
+        - (void) <strong>isConstrained</strong>(path, includeAttrs = false)
+      </a>
+    </span>
+    <span class='desc'>
+      Check to see whether a path is constrained to a value.
     </span>
   </li>
   <li>
@@ -331,13 +422,33 @@
       </a>
     </span>
     <span class='desc'>
-      
+      Return true is the path passed as an argument could possibly represent multiple values (this is true when any of the nodes that the path descends from represents a collection of values.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#getQueryNodes-instance'>
         - (void) <strong>getQueryNodes</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get all the nodes present to the query, whether they are in the views, or the constraints.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isInQuery-instance'>
+        - (void) <strong>isInQuery</strong>(p)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isRelevant-instance'>
+        - (void) <strong>isRelevant</strong>(path)
       </a>
     </span>
     <span class='desc'>
@@ -352,7 +463,7 @@
     </span>
     <span class='bound note title'>Bound</span>
     <span class='desc'>
-      
+      Interpret a path that might end in '*' or '**' as the set of default paths it represent.
     </span>
   </li>
   <li>
@@ -378,11 +489,11 @@
   <li>
     <span class='signature'>
       <a href='#count-instance'>
-        - (void) <strong>count</strong>(cont)
+        - (Promise&lt;Number&gt;) <strong>count</strong>(cont)
       </a>
     </span>
     <span class='desc'>
-      
+      Get a promise to yield a count.
     </span>
   </li>
   <li>
@@ -392,7 +503,17 @@
       </a>
     </span>
     <span class='desc'>
-      TODO: unit tests
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#makeListQuery-instance'>
+        - (void) <strong>makeListQuery</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      
     </span>
   </li>
   <li>
@@ -408,61 +529,61 @@
   <li>
     <span class='signature'>
       <a href='#summarise-instance'>
-        - (void) <strong>summarise</strong>(path, limit, cont)
+        - (Promise&lt;Array&lt;Object&gt;, Object&gt;) <strong>summarise</strong>(path, limit, cont)
       </a>
     </span>
     <span class='desc'>
-      
+      Get a summary for a single column in the results.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#summarize-instance'>
-        - (void) <strong>summarize</strong>(args...)
+        - (Promise&lt;Array&lt;Object&gt;, Object&gt;) <strong>summarize</strong>(args...)
       </a>
     </span>
     <span class='desc'>
-      
+      Get a summary for a single column in the results.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#filterSummary-instance'>
-        - (void) <strong>filterSummary</strong>(path, term, limit, cont = (function() {}))
+        - (Promise&lt;Array&lt;Object&gt;, Object&gt;) <strong>filterSummary</strong>(path, term, limit, cont = (function() {}))
       </a>
     </span>
     <span class='desc'>
-      
+      Get a summary for a single column in the results, filtered by a given value.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#clone-instance'>
-        - (void) <strong>clone</strong>(cloneEvents)
+        - (Query) <strong>clone</strong>(cloneEvents)
       </a>
     </span>
     <span class='desc'>
-      
+      Get an unconnected, deep clone of this query.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#next-instance'>
-        - (void) <strong>next</strong>()
+        - (Query) <strong>next</strong>()
       </a>
     </span>
     <span class='desc'>
-      
+      Get the query for the next page of results.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#previous-instance'>
-        - (void) <strong>previous</strong>()
+        - (Query) <strong>previous</strong>()
       </a>
     </span>
     <span class='desc'>
-      
+      Get the query for the previous page of results.
     </span>
   </li>
   <li>
@@ -581,6 +702,7 @@
         - (void) <strong>addConstraint</strong>(constraint)
       </a>
     </span>
+    <span class='bound note title'>Bound</span>
     <span class='desc'>
       
     </span>
@@ -627,8 +749,8 @@
   </li>
   <li>
     <span class='signature'>
-      <a href='#isRelevant-instance'>
-        - (void) <strong>isRelevant</strong>(p)
+      <a href='#toJSON-instance'>
+        - (void) <strong>toJSON</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -677,6 +799,26 @@
   </li>
   <li>
     <span class='signature'>
+      <a href='#fetchQID-instance'>
+        - (Promise&lt;int&gt;) <strong>fetchQID</strong>(cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Get a query id for referencing this query in subsequent requests.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addPI-instance'>
+        - (void) <strong>addPI</strong>(p)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
       <a href='#__bio_req-instance'>
         - (void) <strong>__bio_req</strong>(types, n)
       </a>
@@ -706,6 +848,16 @@
     </span>
   </li>
 </ul>
+      <h2>Class Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='fromXML-class'>
+      + (void) <strong>fromXML</strong>(xml)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+</div>
       <h2>Constructor Details</h2>
       <div class='methods'>
   <div class='method_details'>
@@ -747,6 +899,27 @@
 </div>
   </div>
   <div class='method_details'>
+    <p class='signature' id='toAttrPairs-instance'>
+      - (void) <strong>toAttrPairs</strong>(el, attrs)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='kids-instance'>
+      - (void) <strong>kids</strong>(el, name)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='xmlAttr-instance'>
+      - (void) <strong>xmlAttr</strong>(name)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
     <p class='signature' id='removeFromSelect-instance'>
       - (void) <strong>removeFromSelect</strong>(unwanted)
     </p>
@@ -764,14 +937,25 @@
     <p class='signature' id='addToSelect-instance'>
       - (void) <strong>addToSelect</strong>(views)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Add an element to the select list.
+</p>
+
+</div>
+<div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='select-instance'>
       - (void) <strong>select</strong>(views)
+      (bound)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Replace the existing select list with the one passed as an argument.
+</p>
+
+</div>
+<div class='tags'>
 </div>
   </div>
   <div class='method_details'>
@@ -779,7 +963,14 @@
       - (void) <strong>adjustPath</strong>(path)
       (bound)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Interpret an argument as resolve the canonical path it refers to.
+For example, if the root of this query is known, then this method will
+check that the path has the same root, and add it if it is absent.
+</p>
+
+</div>
+<div class='tags'>
 </div>
   </div>
   <div class='method_details'>
@@ -807,26 +998,118 @@
     <p class='signature' id='getType-instance'>
       - (void) <strong>getType</strong>(path)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Get the type of a path.
+</p>
+
+</div>
+<div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getViewNodes-instance'>
-      - (void) <strong>getViewNodes</strong>(path)
+      - (void) <strong>getViewNodes</strong>()
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Get all the nodes present in the view. A node is defined as the PathInfo object
+representing the class or reference that the attributes selected in the view belong to.
+</p>
+
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isInView-instance'>
+      - (void) <strong>isInView</strong>(path)
+    </p>
+    <div class='docstring'>
+  <p>Check to see whether a path is in the view. This method responds correctly
+whether the argument is a full path string, a headless path string, or a
+PathInfo object. If the path represents an attribute path then it is a simple
+index look up of the view. If the argument represents a reference path, then
+this method returns true if any of the views descends from that path.
+</p>
+
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isConstrained-instance'>
+      - (void) <strong>isConstrained</strong>(path, includeAttrs = false)
+    </p>
+    <div class='docstring'>
+  <p>Check to see whether a path is constrained to a value. If the includeAttrs
+parameter is true, then this method will return true if any of the attributes
+of the class referenced by this path are constrained to a value. Type constraints
+are not considered in this analysis.
+
+
+</p>
+<p>@return Whether or not this path is constrained.
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>path</span>
+      <span class='type'>
+        (<tt>String|PathInfo</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The path to check.</span>
+    </li>
+    <li>
+      <span class='name'>includeAttrs</span>
+      <span class='type'>
+        (<tt>boolean</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>Whether to include attributes.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='canHaveMultipleValues-instance'>
       - (void) <strong>canHaveMultipleValues</strong>(path)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Return true is the path passed as an argument could possibly
+represent multiple values (this is true when any of the nodes that
+the path descends from represents a collection of values.
+</p>
+
+</div>
+<div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getQueryNodes-instance'>
       - (void) <strong>getQueryNodes</strong>()
+    </p>
+    <div class='docstring'>
+  <p>Get all the nodes present to the query, whether they are in the views,
+or the constraints.
+</p>
+
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isInQuery-instance'>
+      - (void) <strong>isInQuery</strong>(p)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isRelevant-instance'>
+      - (void) <strong>isRelevant</strong>(path)
     </p>
     <div class='tags'>
 </div>
@@ -836,7 +1119,13 @@
       - (void) <strong>expandStar</strong>(path)
       (bound)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Interpret a path that might end in &#39;<em>&#39; or &#39;*</em>&#39; as the
+set of default paths it represent.
+</p>
+
+</div>
+<div class='tags'>
 </div>
   </div>
   <div class='method_details'>
@@ -855,21 +1144,50 @@
   </div>
   <div class='method_details'>
     <p class='signature' id='count-instance'>
-      - (void) <strong>count</strong>(cont)
+      - (Promise&lt;Number&gt;) <strong>count</strong>(cont)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Get a promise to yield a count.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>cont</span>
+      <span class='type'>
+        (<tt>Function<Number></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An optional callback.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Number></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a number representing the number of rows.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='appendToList-instance'>
       - (void) <strong>appendToList</strong>(target, cb)
     </p>
-    <div class='docstring'>
-  <p>TODO: unit tests
-</p>
-
+    <div class='tags'>
 </div>
-<div class='tags'>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='makeListQuery-instance'>
+      - (void) <strong>makeListQuery</strong>()
+    </p>
+    <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
@@ -881,44 +1199,266 @@
   </div>
   <div class='method_details'>
     <p class='signature' id='summarise-instance'>
-      - (void) <strong>summarise</strong>(path, limit, cont)
+      - (Promise&lt;Array&lt;Object&gt;, Object&gt;) <strong>summarise</strong>(path, limit, cont)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Get a summary for a single column in the results.
+
+</p>
+<p>A summary consists of rows of summary information, and a statistics object, which
+always includes a uniqueValues property, which is the number of different values in the
+column.
+
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>path</span>
+      <span class='type'>
+        (<tt>String|PathInfo</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The column to summarise.</span>
+    </li>
+    <li>
+      <span class='name'>limit</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The maximum number of rows to return.</span>
+    </li>
+    <li>
+      <span class='name'>cont</span>
+      <span class='type'>
+        (<tt>Function</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An optional callback</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<Object>, Object></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to return a summary.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='summarize-instance'>
-      - (void) <strong>summarize</strong>(args...)
+      - (Promise&lt;Array&lt;Object&gt;, Object&gt;) <strong>summarize</strong>(args...)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Get a summary for a single column in the results.
+
+</p>
+<p>A summary consists of rows of summary information, and a statistics object, which
+always includes a uniqueValues property, which is the number of different values in the
+column.
+
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>path</span>
+      <span class='type'>
+        (<tt>String|PathInfo</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The column to summarise.</span>
+    </li>
+    <li>
+      <span class='name'>limit</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The maximum number of rows to return.</span>
+    </li>
+    <li>
+      <span class='name'>cont</span>
+      <span class='type'>
+        (<tt>Function</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An optional callback</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<Object>, Object></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to return a summary.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='filterSummary-instance'>
-      - (void) <strong>filterSummary</strong>(path, term, limit, cont = (function() {}))
+      - (Promise&lt;Array&lt;Object&gt;, Object&gt;) <strong>filterSummary</strong>(path, term, limit, cont = (function() {}))
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Get a summary for a single column in the results, filtered by a given value.
+
+</p>
+<p>A summary consists of rows of summary information, and a statistics object, which
+always includes a uniqueValues property, which is the number of different values in the
+column.
+
+</p>
+<p>This method also allows the caller to have the server return only items which match
+the given filter.
+
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>path</span>
+      <span class='type'>
+        (<tt>String|PathInfo</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The column to summarise.</span>
+    </li>
+    <li>
+      <span class='name'>term</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The term to filter by.</span>
+    </li>
+    <li>
+      <span class='name'>limit</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The maximum number of rows to return.</span>
+    </li>
+    <li>
+      <span class='name'>cont</span>
+      <span class='type'>
+        (<tt>Function</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An optional callback</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<Object>, Object></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to return a summary.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='clone-instance'>
-      - (void) <strong>clone</strong>(cloneEvents)
+      - (Query) <strong>clone</strong>(cloneEvents)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Get an unconnected, deep clone of this query.
+
+</p>
+<p>Any changes to the clone will not affect the original query.
+
+</p>
+<pre><code>                         will also be cloned.</code></pre>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>cloneEvents</span>
+      <span class='type'>
+        (<tt>Boolean</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>If true, the events for the original query</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt><a href='../classes/Query.html'>Query</a></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A clone of this query.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='next-instance'>
-      - (void) <strong>next</strong>()
+      - (Query) <strong>next</strong>()
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Get the query for the next page of results.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt><a href='../classes/Query.html'>Query</a></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A query for the next logical page of results.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='previous-instance'>
-      - (void) <strong>previous</strong>()
+      - (Query) <strong>previous</strong>()
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Get the query for the previous page of results.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt><a href='../classes/Query.html'>Query</a></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A query for the previous logical page of results.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
@@ -1001,6 +1541,7 @@
   <div class='method_details'>
     <p class='signature' id='addConstraint-instance'>
       - (void) <strong>addConstraint</strong>(constraint)
+      (bound)
     </p>
     <div class='tags'>
 </div>
@@ -1034,8 +1575,8 @@
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='isRelevant-instance'>
-      - (void) <strong>isRelevant</strong>(p)
+    <p class='signature' id='toJSON-instance'>
+      - (void) <strong>toJSON</strong>()
     </p>
     <div class='tags'>
 </div>
@@ -1074,6 +1615,58 @@
 </div>
   </div>
   <div class='method_details'>
+    <p class='signature' id='fetchQID-instance'>
+      - (Promise&lt;int&gt;) <strong>fetchQID</strong>(cb)
+    </p>
+    <div class='docstring'>
+  <p>Get a query id for referencing this query in subsequent requests.
+
+</p>
+<p>Note that this id represents a snapshot of the query at the time of
+the request. Any changes to the query should require a new id to be fetched.
+
+</p>
+<p>Duplicate queries posted to the same service will receive the same id back. So go
+wild*
+
+</p>
+<p>[* do not really go wild]
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>-></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An optional callback function.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<int></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield an id.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addPI-instance'>
+      - (void) <strong>addPI</strong>(p)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
     <p class='signature' id='__bio_req-instance'>
       - (void) <strong>__bio_req</strong>(types, n)
     </p>
@@ -1098,11 +1691,11 @@
     </div>
     <div id='footer'>
   Generated on
-  Thu Nov 29 2012 00:47:12 GMT+0100 (CET)
+  Tue Apr 23 2013 18:16:26 GMT+0100 (BST)
   by
   <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>codo</a>
   v0.3.0
-  (Node.js v0.6.19).
+  (Node.js v0.8.20).
   &#10034;
   <a href='http://twitter.com/#!/netzpirat'>@netzpirat</a>
   &#10034;

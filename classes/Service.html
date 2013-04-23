@@ -125,7 +125,7 @@ the service is connected with the &#39;noCache&#39; option.
   <li>
     <span class='signature'>
       <a href='#count-instance'>
-        - (Deferred&lt;Number&gt;) <strong>count</strong>(q, cb)
+        - (Promise&lt;Number&gt;) <strong>count</strong>(q, cb = (function() {}))
       </a>
     </span>
     <span class='bound note title'>Bound</span>
@@ -160,8 +160,42 @@ the service is connected with the &#39;noCache&#39; option.
         - (Promise&lt;User&gt;) <strong>whoami</strong>(cb)
       </a>
     </span>
+    <span class='bound note title'>Bound</span>
     <span class='desc'>
       Retrieve information about the currently authenticated user.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#fetchUser-instance'>
+        - (void) <strong>fetchUser</strong>(args...)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Alias for {Service#whoami}
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#values-instance'>
+        - (Promise&lt;Array&lt;Object&gt;, Number&gt;) <strong>values</strong>(path, typeConstraints = {}, cb = (function() {}))
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Retrieve a list of values that a path can have.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#pathValues-instance'>
+        - (void) <strong>pathValues</strong>(path, wanted)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      
     </span>
   </li>
   <li>
@@ -316,10 +350,22 @@ the service is connected with the &#39;noCache&#39; option.
   </li>
   <li>
     <span class='signature'>
+      <a href='#complement-instance'>
+        - (Promise&lt;List&gt;) <strong>complement</strong>(options = {}, cb = function() {})
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Create a new list from the complement of two groups of lists.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
       <a href='#fetchWidgets-instance'>
         - (Promise&lt;Array&lt;Object&gt;&gt;) <strong>fetchWidgets</strong>(cb)
       </a>
     </span>
+    <span class='bound note title'>Bound</span>
     <span class='desc'>
       Fetch the list widgets that are available from this service.
     </span>
@@ -330,6 +376,7 @@ the service is connected with the &#39;noCache&#39; option.
         - (void) <strong>fetchWidgetMap</strong>(cb)
       </a>
     </span>
+    <span class='bound note title'>Bound</span>
     <span class='desc'>
       
     </span>
@@ -392,6 +439,7 @@ the service is connected with the &#39;noCache&#39; option.
         - (Promise&lt;IDResolutionJob&gt;) <strong>resolveIds</strong>(opts, cb)
       </a>
     </span>
+    <span class='bound note title'>Bound</span>
     <span class='desc'>
       Submit an ID resolution job.
     </span>
@@ -399,7 +447,7 @@ the service is connected with the &#39;noCache&#39; option.
   <li>
     <span class='signature'>
       <a href='#createList-instance'>
-        - (Promise&lt;List&gt;) <strong>createList</strong>(opts, ids, cb = function() {})
+        - (Promise&lt;List&gt;) <strong>createList</strong>(opts = {}, ids = '', cb = function() {})
       </a>
     </span>
     <span class='bound note title'>Bound</span>
@@ -821,7 +869,7 @@ want to construct more sophisticated queries. See {Query}.
   </div>
   <div class='method_details'>
     <p class='signature' id='count-instance'>
-      - (Deferred&lt;Number&gt;) <strong>count</strong>(q, cb)
+      - (Promise&lt;Number&gt;) <strong>count</strong>(q, cb = (function() {}))
       (bound)
     </p>
     <div class='docstring'>
@@ -836,10 +884,10 @@ want to construct more sophisticated queries. See {Query}.
     <li>
       <span class='name'>The</span>
       <span class='type'>
-        (<tt>Query|Object</tt>)
+        (<tt>Query|PathInfo|String|Object</tt>)
       </span>
       &mdash;
-      <span class='desc'>query to run. If it is not already instantiated as a Query object, it will be, so the JSON definition of a query can be used here.</span>
+      <span class='desc'>query to run. If it is not already instantiated as a Query object, it will be, so the JSON definition of a query can be used here. Alternatively a single path argument (as a PathInfo object or as a string) may be used, in which cases the count of all unique values for that path will be returned.</span>
     </li>
     <li>
       <span class='name'>cb</span>
@@ -854,7 +902,7 @@ want to construct more sophisticated queries. See {Query}.
   <ul class='return'>
     <li>
       <span class='type'>
-        (<tt>Deferred<Number></tt>)
+        (<tt>Promise<Number></tt>)
       </span>
       &mdash;
       <span class='desc'>A promise to yield a count.</span>
@@ -965,6 +1013,7 @@ TODO: add support for extra-values
   <div class='method_details'>
     <p class='signature' id='whoami-instance'>
       - (Promise&lt;User&gt;) <strong>whoami</strong>(cb)
+      (bound)
     </p>
     <div class='docstring'>
   <p>Retrieve information about the currently authenticated user.
@@ -975,12 +1024,12 @@ TODO: add support for extra-values
   <h3>Parameters:</h3>
   <ul class='param'>
     <li>
-      <span class='name'>A</span>
+      <span class='name'>cb</span>
       <span class='type'>
         (<tt>(User) -></tt>)
       </span>
       &mdash;
-      <span class='desc'>callback the receives a User object.</span>
+      <span class='desc'>A callback the receives a User object.</span>
     </li>
   </ul>
   <h3>Returns:</h3>
@@ -993,6 +1042,79 @@ TODO: add support for extra-values
       <span class='desc'>A promise to yield a user.</span>
     </li>
   </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='fetchUser-instance'>
+      - (void) <strong>fetchUser</strong>(args...)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Alias for {Service#whoami}
+</p>
+
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='values-instance'>
+      - (Promise&lt;Array&lt;Object&gt;, Number&gt;) <strong>values</strong>(path, typeConstraints = {}, cb = (function() {}))
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Retrieve a list of values that a path can have.
+This functionality is expected to be of use when developing auto-completion interfaces.
+  (only required if there are any. Default = {}).
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>path</span>
+      <span class='type'>
+        (<tt>.toString|PathInfo</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The path to evaluate.</span>
+    </li>
+    <li>
+      <span class='name'>typeConstraints</span>
+      <span class='type'>
+        (<tt>Object<String, String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The type constraints on this path.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(Array<Object>|Number) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An optional callback.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<Object>, Number></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to return a list of objects with two properties (&#39;count&#39; and &#39;value&#39;).</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='pathValues-instance'>
+      - (void) <strong>pathValues</strong>(path, wanted)
+      (bound)
+    </p>
+    <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
@@ -1953,8 +2075,101 @@ page to fetch. Not intended for public consumption.
 </div>
   </div>
   <div class='method_details'>
+    <p class='signature' id='complement-instance'>
+      - (Promise&lt;List&gt;) <strong>complement</strong>(options = {}, cb = function() {})
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Create a new list from the complement of two groups of lists. The
+complement is often what is meant by the concept of subtraction, in that the
+result of this operation will always be a proper subset of the union
+of the references.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>options</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The parameters to this option.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(List) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>cb An optional callback.</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (option):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name for the new list. (optional, defaults to &quot;The reverse complement of B in A&quot;)</span>
+    </li>
+    <li>
+      <span class='name'>description</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The description of the new list (optional, defailts to &quot;The reverse complement of B in A&quot;)</span>
+    </li>
+    <li>
+      <span class='name'>tags</span>
+      <span class='type'>
+        (<tt>String|Array<String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The tags the new list should have.</span>
+    </li>
+    <li>
+      <span class='name'>from</span>
+      <span class='type'>
+        (<tt>String|List|Array<String|List></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The lists that serve as the left hand side in the complement, ie. the union of lists we will subtract items from.</span>
+    </li>
+    <li>
+      <span class='name'>exclude</span>
+      <span class='type'>
+        (<tt>String|List|Array<String|List></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The lists that serve as the right hand side in the complement, ie. the union of lists we will subtract from the reference lists.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<<a href='../classes/List.html'>List</a>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a {List}.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
     <p class='signature' id='fetchWidgets-instance'>
       - (Promise&lt;Array&lt;Object&gt;&gt;) <strong>fetchWidgets</strong>(cb)
+      (bound)
     </p>
     <div class='docstring'>
   <p>Fetch the list widgets that are available from this service.
@@ -1977,6 +2192,7 @@ page to fetch. Not intended for public consumption.
   <div class='method_details'>
     <p class='signature' id='fetchWidgetMap-instance'>
       - (void) <strong>fetchWidgetMap</strong>(cb)
+      (bound)
     </p>
     <div class='tags'>
 </div>
@@ -2137,6 +2353,7 @@ The summary fields describe which fields should be used to summarise each class.
   <div class='method_details'>
     <p class='signature' id='resolveIds-instance'>
       - (Promise&lt;IDResolutionJob&gt;) <strong>resolveIds</strong>(opts, cb)
+      (bound)
     </p>
     <div class='docstring'>
   <p>Submit an ID resolution job.
@@ -2223,7 +2440,7 @@ The summary fields describe which fields should be used to summarise each class.
   </div>
   <div class='method_details'>
     <p class='signature' id='createList-instance'>
-      - (Promise&lt;List&gt;) <strong>createList</strong>(opts, ids, cb = function() {})
+      - (Promise&lt;List&gt;) <strong>createList</strong>(opts = {}, ids = '', cb = function() {})
       (bound)
     </p>
     <div class='docstring'>
@@ -2327,11 +2544,11 @@ over this functionality then see [Service#resolveIds].
     </div>
     <div id='footer'>
   Generated on
-  Thu Nov 29 2012 00:47:12 GMT+0100 (CET)
+  Tue Apr 23 2013 18:16:26 GMT+0100 (BST)
   by
   <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>codo</a>
   v0.3.0
-  (Node.js v0.6.19).
+  (Node.js v0.8.20).
   &#10034;
   <a href='http://twitter.com/#!/netzpirat'>@netzpirat</a>
   &#10034;

@@ -69,6 +69,7 @@ the query saving mechanism (Query#saveAsList).
         - (boolean) <strong>hasTag</strong>(t)
       </a>
     </span>
+    <span class='bound note title'>Bound</span>
     <span class='desc'>
       Whether or not this list has a certain tag.
     </span>
@@ -86,11 +87,41 @@ the query saving mechanism (Query#saveAsList).
   <li>
     <span class='signature'>
       <a href='#del-instance'>
-        - (void) <strong>del</strong>(cb)
+        - (Promise&lt;?&gt;) <strong>del</strong>(cb)
       </a>
     </span>
     <span class='desc'>
-      
+      Delete this list on the server.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#fetchTags-instance'>
+        - (Promise&lt;Array&lt;String&gt;&gt;) <strong>fetchTags</strong>(cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Get the current set of tags for this list, and update this object so it reflects the current state of the server.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addTags-instance'>
+        - (Promise&lt;Array&lt;String&gt;&gt;) <strong>addTags</strong>(tags, cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Add the given tags to the current set of tags for this list, and update this object so it reflects the current state of the server.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#removeTags-instance'>
+        - (Promise&lt;Array&lt;String&gt;&gt;) <strong>removeTags</strong>(tags, cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Remove the given tags from the current set of tags for this list, and update this object so it reflects the current state of the server.
     </span>
   </li>
   <li>
@@ -106,7 +137,7 @@ the query saving mechanism (Query#saveAsList).
   <li>
     <span class='signature'>
       <a href='#rename-instance'>
-        - (Promise&lt;String&gt;) <strong>rename</strong>(newName, cb)
+        - (Promise&lt;List&gt;) <strong>rename</strong>(newName, cb)
       </a>
     </span>
     <span class='desc'>
@@ -116,7 +147,7 @@ the query saving mechanism (Query#saveAsList).
   <li>
     <span class='signature'>
       <a href='#copy-instance'>
-        - (Promise&lt;List&gt;) <strong>copy</strong>(name, cb)
+        - (Promise&lt;List&gt;) <strong>copy</strong>(opts = {}, cb = (function() {}))
       </a>
     </span>
     <span class='desc'>
@@ -240,6 +271,7 @@ the query saving mechanism (Query#saveAsList).
   <div class='method_details'>
     <p class='signature' id='hasTag-instance'>
       - (boolean) <strong>hasTag</strong>(t)
+      (bound)
     </p>
     <div class='docstring'>
   <p>Whether or not this list has a certain tag.
@@ -307,9 +339,157 @@ the query saving mechanism (Query#saveAsList).
   </div>
   <div class='method_details'>
     <p class='signature' id='del-instance'>
-      - (void) <strong>del</strong>(cb)
+      - (Promise&lt;?&gt;) <strong>del</strong>(cb)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Delete this list on the server. The list should not be subsequently used.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>-></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An optional callback, called upon successful deletion.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<?></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to delete the list.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='fetchTags-instance'>
+      - (Promise&lt;Array&lt;String&gt;&gt;) <strong>fetchTags</strong>(cb)
+    </p>
+    <div class='docstring'>
+  <p>Get the current set of tags for this list, and update this object so it reflects the
+current state of the server.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(Array<String>) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An optional callback</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<String>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a list of tags.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addTags-instance'>
+      - (Promise&lt;Array&lt;String&gt;&gt;) <strong>addTags</strong>(tags, cb)
+    </p>
+    <div class='docstring'>
+  <p>Add the given tags to the current set of tags for this list, and update this object so it
+reflects the current state of the server.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>tags</span>
+      <span class='type'>
+        (<tt>Array<String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The tags to add.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(Array<String>) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An optional callback</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<String>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a list of tags.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='removeTags-instance'>
+      - (Promise&lt;Array&lt;String&gt;&gt;) <strong>removeTags</strong>(tags, cb)
+    </p>
+    <div class='docstring'>
+  <p>Remove the given tags from the current set of tags for this list, and update this object so it
+reflects the current state of the server.
+
+</p>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>tags</span>
+      <span class='type'>
+        (<tt>Array<String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The tags to remove.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>(Array<String>) -></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An optional callback</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'>
+        (<tt>Promise<Array<String>></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A promise to yield a list of tags.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
@@ -352,7 +532,7 @@ we don&#39;t miss out on any due to the implicit constraints of inner joins.
   </div>
   <div class='method_details'>
     <p class='signature' id='rename-instance'>
-      - (Promise&lt;String&gt;) <strong>rename</strong>(newName, cb)
+      - (Promise&lt;List&gt;) <strong>rename</strong>(newName, cb)
     </p>
     <div class='docstring'>
   <p>Rename this list. Upon resolution of this actions promise, this object will have its
@@ -375,27 +555,27 @@ name property set to the new value.
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>(String) -></tt>)
+        (<tt>(List) -></tt>)
       </span>
       &mdash;
-      <span class='desc'>A function that receives a string. optional.</span>
+      <span class='desc'>An optional callback.</span>
     </li>
   </ul>
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
       <span class='type'>
-        (<tt>Promise<String></tt>)
+        (<tt>Promise<<a href='../classes/List.html'>List</a>></tt>)
       </span>
       &mdash;
-      <span class='desc'>A promise to yield a name (the name this list now has).</span>
+      <span class='desc'>A promise to yield the new state of the list.</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='copy-instance'>
-      - (Promise&lt;List&gt;) <strong>copy</strong>(name, cb)
+      - (Promise&lt;List&gt;) <strong>copy</strong>(opts = {}, cb = (function() {}))
     </p>
     <div class='docstring'>
   <p>Copy this list to an exact duplicate with a different name.
@@ -412,12 +592,12 @@ probably check the yielded value to see what name it ended up with.
   <h3>Parameters:</h3>
   <ul class='param'>
     <li>
-      <span class='name'>name</span>
+      <span class='name'>opts</span>
       <span class='type'>
-        (<tt>String</tt>)
+        (<tt>Object|String</tt>)
       </span>
       &mdash;
-      <span class='desc'>The name to copy this list as. Optional. Defaults to @name + _copy.</span>
+      <span class='desc'>Either an options object specifying the parameters for this operation, or the name to copy this list as.</span>
     </li>
     <li>
       <span class='name'>cb</span>
@@ -426,6 +606,28 @@ probably check the yielded value to see what name it ended up with.
       </span>
       &mdash;
       <span class='desc'>An optional function that receives a List.</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (opt):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name for the copy. If a list already exists with this name then a number will be added to the name to make it unique. (optional, defaults to @name + _copy.)</span>
+    </li>
+    <li>
+      <span class='name'>tags</span>
+      <span class='type'>
+        (<tt>Array<String></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>Tags to apply to the new list. These tags will be in addition to any that the list currently has, which will be copied over. (optional)</span>
     </li>
   </ul>
   <h3>Returns:</h3>
@@ -629,11 +831,11 @@ against this list. See Service#enrichment.
     </div>
     <div id='footer'>
   Generated on
-  Thu Nov 29 2012 00:47:12 GMT+0100 (CET)
+  Tue Apr 23 2013 18:16:26 GMT+0100 (BST)
   by
   <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>codo</a>
   v0.3.0
-  (Node.js v0.6.19).
+  (Node.js v0.8.20).
   &#10034;
   <a href='http://twitter.com/#!/netzpirat'>@netzpirat</a>
   &#10034;
