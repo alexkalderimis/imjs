@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset='UTF-8'>
+  <title>CoffeeScript API Documentation</title>
+  <link rel='stylesheet' href='../assets/codo.css' type='text/css'>
+  <script src='../assets/codo.js'></script>
+  <script src='../assets/search_data.js'></script>
+</head>
+  <body>
+    <div id='base' data-path='../'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='../README.md.html' title='imjs'>imjs</a>
+    &raquo;
+    <a href='../class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>service.coffee</span>
+    <nav>
+      <ul>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='../class_list.html'>Classes</a>
+      <a id='file_list_link' href='../file_list.html'>Files</a>
+      <a id='method_list_link' href='../method_list.html'>Methods</a>
+      <a id='extra_list_link' href='../extra_list.html'>Extras</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+  <div id='fuzzySearch'>
+    <input type='text'>
+    <ol></ol>
+  </div>
+  <div id='help'>
+    <p>
+      Quickly fuzzy find classes, mixins, methods, file:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-T</span>
+        Open fuzzy finder dialog
+      </li>
+    </ul>
+    <p>
+      In frame mode you can toggle the list naviation frame on the left side:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-L</span>
+        Toggle list view
+      </li>
+    </ul>
+    <p>
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-C</span>
+        Class list
+      </li>
+      <li>
+        <span>Ctrl-I</span>
+        Mixin list
+      </li>
+      <li>
+        <span>Ctrl-F</span>
+        File list
+      </li>
+      <li>
+        <span>Ctrl-M</span>
+        Method list
+      </li>
+      <li>
+        <span>Ctrl-E</span>
+        Extras list
+      </li>
+    </ul>
+    <p>
+      You can focus and blur the search input:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-S</span>
+        Focus search input
+      </li>
+      <li>
+        <span>Esc</span>
+        Blur search input
+      </li>
+    </ul>
+    <p>
+      In frameless mode you can close the list tab:
+    </p>
+    <ul>
+      <li>
+        <span>Esc</span>
+        Close list tab
+      </li>
+    </ul>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        File:
+        service.coffee
+      </h1>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td></td>
+        </tr>
+      </table>
+      <h2>Constant Summary</h2>
+      <dl class='constants'>
+        <dt id='DEFAULT_PROTOCOL-constant'>
+          DEFAULT_PROTOCOL
+          =
+          <div class='docstring'>
+  <p>If the user doesn&#39;t add one on their
+url, assume HTTP.</p>
+</div>
+<div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>"http://"</code></pre>
+        </dd>
+        <dt id='VERSION_PATH-constant'>
+          VERSION_PATH
+          =
+          <div class='docstring'>
+  <p>A list of endpoints exposed by the service.</p>
+</div>
+<div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>"version"</code></pre>
+        </dd>
+        <dt id='TEMPLATES_PATH-constant'>
+          TEMPLATES_PATH
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>"templates"</code></pre>
+        </dd>
+        <dt id='LISTS_PATH-constant'>
+          LISTS_PATH
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>"lists"</code></pre>
+        </dd>
+        <dt id='MODEL_PATH-constant'>
+          MODEL_PATH
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>"model"</code></pre>
+        </dd>
+        <dt id='SUMMARYFIELDS_PATH-constant'>
+          SUMMARYFIELDS_PATH
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>"summaryfields"</code></pre>
+        </dd>
+        <dt id='QUERY_RESULTS_PATH-constant'>
+          QUERY_RESULTS_PATH
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>"query/results"</code></pre>
+        </dd>
+        <dt id='QUICKSEARCH_PATH-constant'>
+          QUICKSEARCH_PATH
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>"search"</code></pre>
+        </dd>
+        <dt id='WIDGETS_PATH-constant'>
+          WIDGETS_PATH
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>"widgets"</code></pre>
+        </dd>
+        <dt id='ENRICHMENT_PATH-constant'>
+          ENRICHMENT_PATH
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>"list/enrichment"</code></pre>
+        </dd>
+        <dt id='WITH_OBJ_PATH-constant'>
+          WITH_OBJ_PATH
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>"listswithobject"</code></pre>
+        </dd>
+        <dt id='SUBTRACT_PATH-constant'>
+          SUBTRACT_PATH
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>'lists/subtract'</code></pre>
+        </dd>
+        <dt id='WHOAMI_PATH-constant'>
+          WHOAMI_PATH
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>"user/whoami"</code></pre>
+        </dd>
+        <dt id='PREF_PATH-constant'>
+          PREF_PATH
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>'user/preferences'</code></pre>
+        </dd>
+        <dt id='PATH_VALUES_PATH-constant'>
+          PATH_VALUES_PATH
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>'path/values'</code></pre>
+        </dd>
+        <dt id='HAS_PROTOCOL-constant'>
+          HAS_PROTOCOL
+          =
+          <div class='docstring'>
+  <p>Pattern for detecting if URI has a protocol</p>
+</div>
+<div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>/^https?:\/\//i</code></pre>
+        </dd>
+        <dt id='HAS_SUFFIX-constant'>
+          HAS_SUFFIX
+          =
+          <div class='docstring'>
+  <p>Pattern for detecting if the URI has the necessary service suffix.</p>
+</div>
+<div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>/service\/?$/i</code></pre>
+        </dd>
+        <dt id='SUFFIX-constant'>
+          SUFFIX
+          =
+          <div class='docstring'>
+  <p>The suffix all service URIs must end in.</p>
+</div>
+<div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>"/service/"</code></pre>
+        </dd>
+      </dl>
+      <h2>Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#IDENTITY-file'>
+        ? (void) <strong>IDENTITY</strong>(x)
+      </a>
+    </span>
+    <span class='desc'>
+      The identity function f x = x
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#DEFAULT_ERROR_HANDLER-file'>
+        ? (void) <strong>DEFAULT_ERROR_HANDLER</strong>(e)
+      </a>
+    </span>
+    <span class='desc'>
+      BY DEFAULT, LOG ERRORS TO THE CONSOLE.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getListFinder-file'>
+        ? (([List) <strong>getListFinder</strong>(name)
+      </a>
+    </span>
+    <span class='desc'>
+      A private helper that produces a function that will read through an array of Lists, and find the first one with the given name.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#LIST_PIPE-file'>
+        ? (void) <strong>LIST_PIPE</strong>(service, prop = 'listName')
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#TO_NAMES-file'>
+        ? (void) <strong>TO_NAMES</strong>(xs = [])
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#Service.flushCaches-file'>
+        ? (void) <strong>Service.flushCaches</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Static method to flush the cached models, versions and summary-field informations.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#Service.connect-file'>
+        ? (void) <strong>Service.connect</strong>(opts = {})
+      </a>
+    </span>
+    <span class='desc'>
+      Static method for instantiation.
+    </span>
+  </li>
+</ul>
+      <h2>Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='IDENTITY-file'>
+      ? (void) <strong>IDENTITY</strong>(x)
+    </p>
+    <div class='docstring'>
+  <p>The identity function f x = x</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='DEFAULT_ERROR_HANDLER-file'>
+      ? (void) <strong>DEFAULT_ERROR_HANDLER</strong>(e)
+    </p>
+    <div class='docstring'>
+  <p>BY DEFAULT, LOG ERRORS TO THE CONSOLE.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getListFinder-file'>
+      ? (([List) <strong>getListFinder</strong>(name)
+    </p>
+    <div class='docstring'>
+  <p>A private helper that produces a function that will read
+through an array of Lists, and find the first one with the
+given name. The returned function returns a promise to find
+the given list, and will be rejected if no list of that name
+can be found.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name of the list to find.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span><tt>([List</tt></li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='LIST_PIPE-file'>
+      ? (void) <strong>LIST_PIPE</strong>(service, prop = 'listName')
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='TO_NAMES-file'>
+      ? (void) <strong>TO_NAMES</strong>(xs = [])
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='Service.flushCaches-file'>
+      ? (void) <strong>Service.flushCaches</strong>()
+    </p>
+    <div class='docstring'>
+  <p>Static method to flush the cached
+models, versions and summary-field informations.</p><p>This should be used if running in a persistent process and this data is
+at risk of getting stale.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='Service.connect-file'>
+      ? (void) <strong>Service.connect</strong>(opts = {})
+    </p>
+    <div class='docstring'>
+  <p>Static method for instantiation. Allows us to provide
+alternate implementations in the future, and pass this function
+around when needed.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Tue Apr 23 2013 18:33:16 GMT+0100 (BST)
+  by
+  <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
+  v1.6.0
+  (Node.js v0.8.20).
+  &#10034;
+  Press Ctrl-h to see the keyboard shortcuts
+  &#10034;
+  <a href='http://twitter.com/#!/netzpirat'>@netzpirat</a>
+  &#10034;
+  <a href='https://mksoft.ch'>mksoft.ch</a>
+</div>
+  </body>
+</html>

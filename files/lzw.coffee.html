@@ -15,7 +15,7 @@
     &raquo;
     <a href='../class_index.html' title='Index'>Index</a>
     &raquo;
-    <span class='title'>Table</span>
+    <span class='title'>lzw.coffee</span>
     <nav>
       <ul>
         <li class='noframes'>
@@ -105,138 +105,52 @@
 </div>
     <div id='content'>
       <h1>
-        Class:
-        Table
+        File:
+        lzw.coffee
       </h1>
       <table class='box'>
         <tr>
           <td>Defined in:</td>
-          <td>src&#47;table.coffee</td>
+          <td></td>
         </tr>
       </table>
-      <h2>Overview</h2>
-      <div class='docstring'>
-  <p>A representation of a single database table. It includes information
-on the fields that this table stores, as well as the relationships
-between it and other tables, either as N-&gt;1 (references) or N-&gt;many (collections).</p>
-</div>
-<div class='tags'>
-</div>
-      <h2>Instance Method Summary</h2>
+      <h2>Method Summary</h2>
       <ul class='summary'>
   <li>
     <span class='signature'>
-      <a href='#constructor-instance'>
-        - (void) <strong>constructor</strong>()
+      <a href='#buildDict-file'>
+        ? (void) <strong>buildDict</strong>(size)
       </a>
     </span>
-    <span class='constructor note title'>Constructor</span>
     <span class='desc'>
-      Constructor.
+      
     </span>
   </li>
   <li>
     <span class='signature'>
-      <a href='#toString-instance'>
-        - (void) <strong>toString</strong>()
+      <a href='#buildArray-file'>
+        ? (void) <strong>buildArray</strong>(size)
       </a>
     </span>
     <span class='desc'>
-      Stringification.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#parents-instance'>
-        - (Array&lt;String&gt;) <strong>parents</strong>()
-      </a>
-    </span>
-    <span class='desc'>
-      Get the names of all the classes this class directly inherits from.
+      
     </span>
   </li>
 </ul>
-      <h2>Constructor Details</h2>
+      <h2>Method Details</h2>
       <div class='methods'>
   <div class='method_details'>
-    <p class='signature' id='constructor-instance'>
-      - (void) <strong>constructor</strong>()
+    <p class='signature' id='buildDict-file'>
+      ? (void) <strong>buildDict</strong>(size)
     </p>
-    <div class='docstring'>
-  <p>Constructor.
-@param opts The configuration options</p>
-</div>
-<div class='tags'>
-  <h3>
-    Options Hash:
-    (opt):
-  </h3>
-  <ul class='options'>
-    <li>
-      <span class='name'>name</span>
-      <span class='type'>
-        (<tt>String</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The name of this table</span>
-    </li>
-    <li>
-      <span class='name'>attributes</span>
-      <span class='type'>
-        (<tt>Object&lt;String, Object&gt;</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The descriptions of the table&#39;s fields.</span>
-    </li>
-    <li>
-      <span class='name'>references</span>
-      <span class='type'>
-        (<tt>Object&lt;String, Object&gt;</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The descriptions of the N-&gt;1 relationships.</span>
-    </li>
-    <li>
-      <span class='name'>attributes</span>
-      <span class='type'>
-        (<tt>Object&lt;String, Object&gt;</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The descriptions of the N-&gt;X relationships.</span>
-    </li>
-  </ul>
-</div>
-  </div>
-</div>
-      <h2>Instance Method Details</h2>
-      <div class='methods'>
-  <div class='method_details'>
-    <p class='signature' id='toString-instance'>
-      - (void) <strong>toString</strong>()
-    </p>
-    <div class='docstring'>
-  <p>Stringification.</p><p>Stringifies to a readable representation with table name and the names of all fields.</p>
-</div>
-<div class='tags'>
+    <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='parents-instance'>
-      - (Array&lt;String&gt;) <strong>parents</strong>()
+    <p class='signature' id='buildArray-file'>
+      ? (void) <strong>buildArray</strong>(size)
     </p>
-    <div class='docstring'>
-  <p>Get the names of all the classes this class directly inherits from.</p>
-</div>
-<div class='tags'>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>Array&lt;String&gt;</tt>)
-      &mdash;
-      <span class='desc'>A copy of the direct inheritance list.</span>
-    </li>
-  </ul>
+    <div class='tags'>
 </div>
   </div>
 </div>

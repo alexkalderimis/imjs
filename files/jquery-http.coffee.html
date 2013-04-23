@@ -15,7 +15,7 @@
     &raquo;
     <a href='../class_index.html' title='Index'>Index</a>
     &raquo;
-    <span class='title'>IDResolutionJob</span>
+    <span class='title'>jquery-http.coffee</span>
     <nav>
       <ul>
         <li class='noframes'>
@@ -105,184 +105,109 @@
 </div>
     <div id='content'>
       <h1>
-        Class:
-        IDResolutionJob
+        File:
+        jquery-http.coffee
       </h1>
       <table class='box'>
         <tr>
           <td>Defined in:</td>
-          <td>src&#47;id-resolution-job.coffee</td>
+          <td></td>
         </tr>
       </table>
-      <h2>Instance Method Summary</h2>
+      <h2>Method Summary</h2>
       <ul class='summary'>
   <li>
     <span class='signature'>
-      <a href='#constructor-instance'>
-        - (void) <strong>constructor</strong>(uid, service)
+      <a href='#CHECKING_PIPE-file'>
+        ? (void) <strong>CHECKING_PIPE</strong>(response)
       </a>
     </span>
-    <span class='constructor note title'>Constructor</span>
+    <span class='desc'>
+      A pipe for checking the webservice response.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#ERROR_PIPE-file'>
+        ? (void) <strong>ERROR_PIPE</strong>(xhr, textStatus, e)
+      </a>
+    </span>
+    <span class='desc'>
+      Process the errors returned from the webservice.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#wrapCbs-file'>
+        ? (void) <strong>wrapCbs</strong>(cbs)
+      </a>
+    </span>
     <span class='desc'>
       
     </span>
   </li>
   <li>
     <span class='signature'>
-      <a href='#fetchStatus-instance'>
-        - (void) <strong>fetchStatus</strong>(cb)
+      <a href='#http.iterReq-file'>
+        ? (void) <strong>http.iterReq</strong>(method, path, fmt)
       </a>
     </span>
-    <span class='bound note title'>Bound</span>
     <span class='desc'>
       
     </span>
   </li>
   <li>
     <span class='signature'>
-      <a href='#fetchErrorMessage-instance'>
-        - (void) <strong>fetchErrorMessage</strong>(cb)
+      <a href='#http.doReq-file'>
+        ? (void) <strong>http.doReq</strong>(opts)
       </a>
     </span>
-    <span class='bound note title'>Bound</span>
     <span class='desc'>
       
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#fetchResults-instance'>
-        - (void) <strong>fetchResults</strong>(cb)
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#del-instance'>
-        - (void) <strong>del</strong>(cb)
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#poll-instance'>
-        - (Promise&lt;Object&gt;) <strong>poll</strong>(onSuccess, onError, onProgress)
-      </a>
-    </span>
-    <span class='desc'>
-      Poll the service until the results are available.
     </span>
   </li>
 </ul>
-      <h2>Constructor Details</h2>
+      <h2>Method Details</h2>
       <div class='methods'>
   <div class='method_details'>
-    <p class='signature' id='constructor-instance'>
-      - (void) <strong>constructor</strong>(uid, service)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-</div>
-      <h2>Instance Method Details</h2>
-      <div class='methods'>
-  <div class='method_details'>
-    <p class='signature' id='fetchStatus-instance'>
-      - (void) <strong>fetchStatus</strong>(cb)
-      (bound)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='fetchErrorMessage-instance'>
-      - (void) <strong>fetchErrorMessage</strong>(cb)
-      (bound)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='fetchResults-instance'>
-      - (void) <strong>fetchResults</strong>(cb)
-      (bound)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='del-instance'>
-      - (void) <strong>del</strong>(cb)
-      (bound)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='poll-instance'>
-      - (Promise&lt;Object&gt;) <strong>poll</strong>(onSuccess, onError, onProgress)
+    <p class='signature' id='CHECKING_PIPE-file'>
+      ? (void) <strong>CHECKING_PIPE</strong>(response)
     </p>
     <div class='docstring'>
-  <p>Poll the service until the results are available.</p>
-  <div class='examples'>
-    <h3>Examples:</h3>
-    <h4>
-      Poll a job
-    </h4>
-    <pre><code class='coffee'>job.poll().then (results) -&gt; handle results</code></pre>
-  </div>
+  <p>A pipe for checking the webservice response.</p>
 </div>
 <div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>onSuccess</span>
-      <span class='type'>
-        (<tt>Function</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The success handler (optional)</span>
-    </li>
-    <li>
-      <span class='name'>onError</span>
-      <span class='type'>
-        (<tt>Function</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The error handler for if the job fails (optional).</span>
-    </li>
-    <li>
-      <span class='name'>onProgress</span>
-      <span class='type'>
-        (<tt>Function</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The progress handler to receive status updates.</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>Promise&lt;Object&gt;</tt>)
-      &mdash;
-      <span class='desc'>A promise to yield the results.</span>
-    </li>
-  </ul>
-  <h3>See also:</h3>
-  <ul class='see'>
-    <li>
-      <a href='../classes/Service.html#resolveIds-instance'>Service#resolveIds</a>
-    </li>
-  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='ERROR_PIPE-file'>
+      ? (void) <strong>ERROR_PIPE</strong>(xhr, textStatus, e)
+    </p>
+    <div class='docstring'>
+  <p>Process the errors returned from the webservice.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='wrapCbs-file'>
+      ? (void) <strong>wrapCbs</strong>(cbs)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='http.iterReq-file'>
+      ? (void) <strong>http.iterReq</strong>(method, path, fmt)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='http.doReq-file'>
+      ? (void) <strong>http.doReq</strong>(opts)
+    </p>
+    <div class='tags'>
 </div>
   </div>
 </div>

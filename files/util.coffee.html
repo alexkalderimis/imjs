@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset='UTF-8'>
+  <title>CoffeeScript API Documentation</title>
+  <link rel='stylesheet' href='../assets/codo.css' type='text/css'>
+  <script src='../assets/codo.js'></script>
+  <script src='../assets/search_data.js'></script>
+</head>
+  <body>
+    <div id='base' data-path='../'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='../README.md.html' title='imjs'>imjs</a>
+    &raquo;
+    <a href='../class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>util.coffee</span>
+    <nav>
+      <ul>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='../class_list.html'>Classes</a>
+      <a id='file_list_link' href='../file_list.html'>Files</a>
+      <a id='method_list_link' href='../method_list.html'>Methods</a>
+      <a id='extra_list_link' href='../extra_list.html'>Extras</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+  <div id='fuzzySearch'>
+    <input type='text'>
+    <ol></ol>
+  </div>
+  <div id='help'>
+    <p>
+      Quickly fuzzy find classes, mixins, methods, file:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-T</span>
+        Open fuzzy finder dialog
+      </li>
+    </ul>
+    <p>
+      In frame mode you can toggle the list naviation frame on the left side:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-L</span>
+        Toggle list view
+      </li>
+    </ul>
+    <p>
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-C</span>
+        Class list
+      </li>
+      <li>
+        <span>Ctrl-I</span>
+        Mixin list
+      </li>
+      <li>
+        <span>Ctrl-F</span>
+        File list
+      </li>
+      <li>
+        <span>Ctrl-M</span>
+        Method list
+      </li>
+      <li>
+        <span>Ctrl-E</span>
+        Extras list
+      </li>
+    </ul>
+    <p>
+      You can focus and blur the search input:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-S</span>
+        Focus search input
+      </li>
+      <li>
+        <span>Esc</span>
+        Blur search input
+      </li>
+    </ul>
+    <p>
+      In frameless mode you can close the list tab:
+    </p>
+    <ul>
+      <li>
+        <span>Esc</span>
+        Close list tab
+      </li>
+    </ul>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        File:
+        util.coffee
+      </h1>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td></td>
+        </tr>
+      </table>
+      <h2>Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#root.error-file'>
+        ? (Promise&lt;Error&gt;) <strong>root.error</strong>(e)
+      </a>
+    </span>
+    <span class='desc'>
+      Helper for transforming an error into a rejection.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.take-file'>
+        ? (void) <strong>root.take</strong>(n)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.filter-file'>
+        ? (void) <strong>root.filter</strong>(f)
+      </a>
+    </span>
+    <span class='desc'>
+      Curried version of filtering
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.omap-file'>
+        ? (void) <strong>root.omap</strong>(f)
+      </a>
+    </span>
+    <span class='desc'>
+      Until I can find a nicer name for this...
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.partition-file'>
+        ? (void) <strong>root.partition</strong>(f)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.concatMap-file'>
+        ? (void) <strong>root.concatMap</strong>(f)
+      </a>
+    </span>
+    <span class='desc'>
+      Implementation of concatmap.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.AND-file'>
+        ? (void) <strong>root.AND</strong>(a, b)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.OR-file'>
+        ? (void) <strong>root.OR</strong>(a, b)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.NOT-file'>
+        ? (void) <strong>root.NOT</strong>(x)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.any-file'>
+        ? (void) <strong>root.any</strong>(xs, f = id)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.invoke-file'>
+        ? ((obj) -&gt; ?) <strong>root.invoke</strong>(name, args...)
+      </a>
+    </span>
+    <span class='desc'>
+      Get a function that invokes a named method on an object of type A.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.invokeWith-file'>
+        ? ((obj) -&gt; ?) <strong>root.invokeWith</strong>(name, args = [], ctx = null)
+      </a>
+    </span>
+    <span class='desc'>
+      Get a function that invokes a method on an object that is passed to it with the arguments given here, with an optional binding for this.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.get-file'>
+        ? ((obj) -&gt; ?) <strong>root.get</strong>(name)
+      </a>
+    </span>
+    <span class='desc'>
+      Get a function that gets a named property off an object.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.set-file'>
+        ? ((obj) -&gt; ?) <strong>root.set</strong>(name, value)
+      </a>
+    </span>
+    <span class='desc'>
+      Get a function that sets a named property, or set of properties on an object, returning the new state of the object.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.flip-file'>
+        ? (void) <strong>root.flip</strong>(f)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#REQUIRES-file'>
+        ? (void) <strong>REQUIRES</strong>(required, got)
+      </a>
+    </span>
+    <span class='desc'>
+      Make a function that lets users know when they are trying to use a service that isn&#39;t supported by their current service.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.REQUIRES_VERSION-file'>
+        ? (void) <strong>root.REQUIRES_VERSION</strong>(s, n, f)
+      </a>
+    </span>
+    <span class='desc'>
+      A wrapper for functions that make requests to endpoints that require a certain version of the intermine API.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.dejoin-file'>
+        ? (void) <strong>root.dejoin</strong>(q)
+      </a>
+    </span>
+    <span class='desc'>
+      Helper function that makes sure a query doesn&#39;t have any implicit constraints through the use of inner-joins.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.sequence-file'>
+        ? (void) <strong>root.sequence</strong>(fns...)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.pairsToObj-file'>
+        ? (void) <strong>root.pairsToObj</strong>(pairs)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+</ul>
+      <h2>Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='root.error-file'>
+      ? (Promise&lt;Error&gt;) <strong>root.error</strong>(e)
+    </p>
+    <div class='docstring'>
+  <p>Helper for transforming an error into a rejection.
+@param e The error.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Promise&lt;Error&gt;</tt>)
+      &mdash;
+      <span class='desc'>A promise to reject with an error.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.take-file'>
+      ? (void) <strong>root.take</strong>(n)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.filter-file'>
+      ? (void) <strong>root.filter</strong>(f)
+    </p>
+    <div class='docstring'>
+  <p>Curried version of filtering</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.omap-file'>
+      ? (void) <strong>root.omap</strong>(f)
+    </p>
+    <div class='docstring'>
+  <p>Until I can find a nicer name for this...
+Basically a mapping over an object, taking a
+function of the form (oldk, oldv) -&gt; [newk, newv]</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.partition-file'>
+      ? (void) <strong>root.partition</strong>(f)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.concatMap-file'>
+      ? (void) <strong>root.concatMap</strong>(f)
+    </p>
+    <div class='docstring'>
+  <p>Implementation of concatmap.</p><p>This a function that applies a function to each member
+of an array, and combines the results through the natural
+method of combination. Arrays are concatenated, and strings
+are, well, concatenated. Objects are merged.</p><p>@param f The function to apply to each item.
+@param xs The things to apply them to.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.AND-file'>
+      ? (void) <strong>root.AND</strong>(a, b)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.OR-file'>
+      ? (void) <strong>root.OR</strong>(a, b)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.NOT-file'>
+      ? (void) <strong>root.NOT</strong>(x)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.any-file'>
+      ? (void) <strong>root.any</strong>(xs, f = id)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.invoke-file'>
+      ? ((obj) -&gt; ?) <strong>root.invoke</strong>(name, args...)
+    </p>
+    <div class='docstring'>
+  <p>Get a function that invokes a named method
+on an object of type A.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name of a method</span>
+    </li>
+    <li>
+      <span class='name'>args</span>
+      <span class='type'>
+        (<tt>Array</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An optional argument list, passed as varargs</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>(obj) -&gt; ?</tt>)
+      &mdash;
+      <span class='desc'>A function that invokes a named method.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.invokeWith-file'>
+      ? ((obj) -&gt; ?) <strong>root.invokeWith</strong>(name, args = [], ctx = null)
+    </p>
+    <div class='docstring'>
+  <p>Get a function that invokes a method on an object
+that is passed to it with the arguments given here, with
+an optional binding for this.</p><p>This function differs from invoke in that it expects the optional
+argument list to be passed in an Array, rather than as separate
+elements in the argument list.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name of the method</span>
+    </li>
+    <li>
+      <span class='name'>args</span>
+      <span class='type'>
+        (<tt>Array</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The arguments to the method</span>
+    </li>
+    <li>
+      <span class='name'>ctx</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The value for this in the invocation (optional)</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>(obj) -&gt; ?</tt>)
+      &mdash;
+      <span class='desc'>A function that invokes a named method.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.get-file'>
+      ? ((obj) -&gt; ?) <strong>root.get</strong>(name)
+    </p>
+    <div class='docstring'>
+  <p>Get a function that gets a named property off an object.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>the name of the property</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>(obj) -&gt; ?</tt>)
+      &mdash;
+      <span class='desc'>A function that gets a property&#39;s value.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.set-file'>
+      ? ((obj) -&gt; ?) <strong>root.set</strong>(name, value)
+    </p>
+    <div class='docstring'>
+  <p>Get a function that sets a named property, or set of properties
+on an object, returning the new state of the object.</p>
+  <div class='examples'>
+    <h3>Examples:</h3>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffee'>promise.then(set(&#39;name&#39;, &#39;Anne&#39;))
+promise.then(set({name: &#39;Bill&#39;, age: 43}))</code></pre>
+  </div>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (<tt>String|Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>the name of the property, or an object of properties to set.</span>
+    </li>
+    <li>
+      <span class='name'>value</span>
+      <span class='type'>
+        (<tt>?</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The value to set (optional).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>(obj) -&gt; ?</tt>)
+      &mdash;
+      <span class='desc'>A function that sets a property&#39;s value, and returns the object.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.flip-file'>
+      ? (void) <strong>root.flip</strong>(f)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='REQUIRES-file'>
+      ? (void) <strong>REQUIRES</strong>(required, got)
+    </p>
+    <div class='docstring'>
+  <p>Make a function that lets users know
+when they are trying to use a service that
+isn&#39;t supported by their current service.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.REQUIRES_VERSION-file'>
+      ? (void) <strong>root.REQUIRES_VERSION</strong>(s, n, f)
+    </p>
+    <div class='docstring'>
+  <p>A wrapper for functions that make requests to endpoints
+that require a certain version of the intermine API.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.dejoin-file'>
+      ? (void) <strong>root.dejoin</strong>(q)
+    </p>
+    <div class='docstring'>
+  <p>Helper function that makes sure a query doesn&#39;t have
+any implicit constraints through the use of inner-joins.
+All chains of references will be converted to outer-joins.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.sequence-file'>
+      ? (void) <strong>root.sequence</strong>(fns...)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.pairsToObj-file'>
+      ? (void) <strong>root.pairsToObj</strong>(pairs)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Tue Apr 23 2013 18:33:16 GMT+0100 (BST)
+  by
+  <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
+  v1.6.0
+  (Node.js v0.8.20).
+  &#10034;
+  Press Ctrl-h to see the keyboard shortcuts
+  &#10034;
+  <a href='http://twitter.com/#!/netzpirat'>@netzpirat</a>
+  &#10034;
+  <a href='https://mksoft.ch'>mksoft.ch</a>
+</div>
+  </body>
+</html>

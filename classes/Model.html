@@ -1,51 +1,125 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <meta charset='UTF-8'>
   <title>CoffeeScript API Documentation</title>
-  <link rel='stylesheet' href='..&#47;assets/codo.css' type='text/css'>
-  <script src='..&#47;assets/codo.js'></script>
+  <link rel='stylesheet' href='../assets/codo.css' type='text/css'>
+  <script src='../assets/codo.js'></script>
+  <script src='../assets/search_data.js'></script>
 </head>
   <body>
-    <div id='header'>
+    <div id='base' data-path='../'></div>
+<div id='header'>
   <div id='menu'>
-    <a href='..&#47;class_index.html' title='Index'>Index</a>
+    <a href='../README.md.html' title='imjs'>imjs</a>
+    &raquo;
+    <a href='../class_index.html' title='Index'>Index</a>
     &raquo;
     <span class='title'>Model</span>
     <nav>
       <ul>
-        <li class='frames'>
-          (<a class='frames' href='..&#47;frames.html'>frames</a>)
-        </li>
         <li class='noframes'>
           (<a class='noframes' href='#'>no frames</a>)
         </li>
       </ul>
     </nav>
     <div id='search'>
-      <a id='class_list_link' href='..&#47;class_list.html'>Class List</a>
-      <a id='method_list_link' href='..&#47;method_list.html'>Method List</a>
-      <a id='file_list_link' href='..&#47;file_list.html'>File List</a>
+      <a id='class_list_link' href='../class_list.html'>Classes</a>
+      <a id='file_list_link' href='../file_list.html'>Files</a>
+      <a id='method_list_link' href='../method_list.html'>Methods</a>
+      <a id='extra_list_link' href='../extra_list.html'>Extras</a>
     </div>
   </div>
   <iframe id='search_frame'></iframe>
+  <div id='fuzzySearch'>
+    <input type='text'>
+    <ol></ol>
+  </div>
+  <div id='help'>
+    <p>
+      Quickly fuzzy find classes, mixins, methods, file:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-T</span>
+        Open fuzzy finder dialog
+      </li>
+    </ul>
+    <p>
+      In frame mode you can toggle the list naviation frame on the left side:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-L</span>
+        Toggle list view
+      </li>
+    </ul>
+    <p>
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-C</span>
+        Class list
+      </li>
+      <li>
+        <span>Ctrl-I</span>
+        Mixin list
+      </li>
+      <li>
+        <span>Ctrl-F</span>
+        File list
+      </li>
+      <li>
+        <span>Ctrl-M</span>
+        Method list
+      </li>
+      <li>
+        <span>Ctrl-E</span>
+        Extras list
+      </li>
+    </ul>
+    <p>
+      You can focus and blur the search input:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-S</span>
+        Focus search input
+      </li>
+      <li>
+        <span>Esc</span>
+        Blur search input
+      </li>
+    </ul>
+    <p>
+      In frameless mode you can close the list tab:
+    </p>
+    <ul>
+      <li>
+        <span>Esc</span>
+        Close list tab
+      </li>
+    </ul>
+  </div>
 </div>
     <div id='content'>
       <h1>
         Class:
         Model
       </h1>
-      <dl class='box'>
-        <dt>Defined in:</dt>
-        <dd>src&#47;model.coffee</dd>
-      </dl>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>src&#47;model.coffee</td>
+        </tr>
+      </table>
       <h2>Overview</h2>
       <div class='docstring'>
   <p>A representation of the metadata for an InterMine. This class
 allows the user to inspect what kinds of data a mine is configured
 with, allowing us to verify existing queries, as well as constructing
-queries automatically by walking the data-model.
-</p>
-
+queries automatically by walking the data-model.</p>
 </div>
 <div class='tags'>
 </div>
@@ -125,12 +199,7 @@ queries automatically by walking the data-model.
       - (void) <strong>constructor</strong>()
     </p>
     <div class='docstring'>
-  <p>Constructor.
-
-</p>
-<p>@param options The data used to construct this model.
-</p>
-
+  <p>Constructor.</p><p>@param options The data used to construct this model.</p>
 </div>
 <div class='tags'>
   <h3>
@@ -149,7 +218,7 @@ queries automatically by walking the data-model.
     <li>
       <span class='name'>classes</span>
       <span class='type'>
-        (<tt>Object<String, Object></tt>)
+        (<tt>Object&lt;String, Object&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A description of the classes.</span>
@@ -167,9 +236,7 @@ queries automatically by walking the data-model.
     </p>
     <div class='docstring'>
   <p>Construct a PathInfo object representing the given path, given the
-specified subclass constraints.
-</p>
-
+specified subclass constraints.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -185,7 +252,7 @@ specified subclass constraints.
     <li>
       <span class='name'>subcls</span>
       <span class='type'>
-        (<tt>Object<String, String></tt>)
+        (<tt>Object&lt;String, String&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>The subclass constraints. (optional)</span>
@@ -194,9 +261,8 @@ specified subclass constraints.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt><a href='../classes/PathInfo.html'>PathInfo</a></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt><a href='../classes/PathInfo.html'>PathInfo</a></tt>)
       &mdash;
       <span class='desc'>A representation of the path.</span>
     </li>
@@ -211,22 +277,15 @@ specified subclass constraints.
     <div class='docstring'>
   <p>Get a list that contains all the names of the
 subclasses of this class, as well as itself.
-For an inheritance pattern such as:
-
-</p>
-<pre><code>   A        B   C
+For an inheritance pattern such as:</p><pre><code>   A        B   C
    |         \ /
    D   E  F   G
     \ /    \ / \
      |      |   \
      H      I    J
        \  /  \   |
-        K     L  M</code></pre>
-<p>The subclasses of B will be [B, G, I, K, L, J, M] or [B, G, J, M, I, K, L],
-depending on the order in which the classes are iterated over.
-
-</p>
-
+        K     L  M</code></pre><p>The subclasses of B will be [B, G, I, K, L, J, M] or [B, G, J, M, I, K, L],
+depending on the order in which the classes are iterated over.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -243,9 +302,8 @@ depending on the order in which the classes are iterated over.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Array<String></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Array&lt;String&gt;</tt>)
       &mdash;
       <span class='desc'>The names of this class and all its subclasses.</span>
     </li>
@@ -259,21 +317,14 @@ depending on the order in which the classes are iterated over.
     </p>
     <div class='docstring'>
   <p>Get the list of classes that the given class descends from.
-The list does not include the class itself. For an inheritance pattern such as:
-
-</p>
-<pre><code>   A        B   C
+The list does not include the class itself. For an inheritance pattern such as:</p><pre><code>   A        B   C
    |         \ /
    D   E  F   G
     \ /    \ / \
      |      |   \
      H      I    J
        \  /  \   |
-        K     L  M</code></pre>
-<p>The list of ancestors of J will be [H, I, D, E, A, F, G, B, C]
-
-</p>
-
+        K     L  M</code></pre><p>The list of ancestors of J will be [H, I, D, E, A, F, G, B, C]</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -290,9 +341,8 @@ The list does not include the class itself. For an inheritance pattern such as:
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Array<String></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Array&lt;String&gt;</tt>)
       &mdash;
       <span class='desc'>A list of names of classes this class inherits from.</span>
     </li>
@@ -306,22 +356,15 @@ The list does not include the class itself. For an inheritance pattern such as:
     </p>
     <div class='docstring'>
   <p>Get the closest shared ancestor of these two classes.
-For an inheritance pattern such as:
-
-</p>
-<pre><code>   A        B   C
+For an inheritance pattern such as:</p><pre><code>   A        B   C
    |         \ /
    D   E  F   G
     \ /    \ / \
      |      |   \
      H      I    J
        \  /  \   |
-        K     L  M</code></pre>
-<p>The closest shared ancestor of K and M is G, while the closest shared
-ancestor of K and L is I. The closest shared ancestor of H and I is null.
-
-</p>
-
+        K     L  M</code></pre><p>The closest shared ancestor of K and M is G, while the closest shared
+ancestor of K and L is I. The closest shared ancestor of H and I is null.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -346,9 +389,8 @@ ancestor of K and L is I. The closest shared ancestor of H and I is null.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>String</tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>String</tt>)
       &mdash;
       <span class='desc'>The name of the closest shared ancestor</span>
     </li>
@@ -362,9 +404,7 @@ ancestor of K and L is I. The closest shared ancestor of H and I is null.
     </p>
     <div class='docstring'>
   <p>Find the common type of a list of classes or class names, or null if there is no
-one common type.
-</p>
-
+one common type.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -372,7 +412,7 @@ one common type.
     <li>
       <span class='name'>xs</span>
       <span class='type'>
-        (<tt>Array<String|Table></tt>)
+        (<tt>Array&lt;String|Table&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>the classes.</span>
@@ -381,9 +421,8 @@ one common type.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>String</tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>String</tt>)
       &mdash;
       <span class='desc'>The name of the common superclass, or null.</span>
     </li>
@@ -394,11 +433,13 @@ one common type.
     </div>
     <div id='footer'>
   Generated on
-  Tue Apr 23 2013 18:16:26 GMT+0100 (BST)
+  Tue Apr 23 2013 18:33:16 GMT+0100 (BST)
   by
-  <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>codo</a>
-  v0.3.0
+  <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
+  v1.6.0
   (Node.js v0.8.20).
+  &#10034;
+  Press Ctrl-h to see the keyboard shortcuts
   &#10034;
   <a href='http://twitter.com/#!/netzpirat'>@netzpirat</a>
   &#10034;

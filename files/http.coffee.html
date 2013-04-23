@@ -15,7 +15,7 @@
     &raquo;
     <a href='../class_index.html' title='Index'>Index</a>
     &raquo;
-    <span class='title'>IDResolutionJob</span>
+    <span class='title'>http.coffee</span>
     <nav>
       <ul>
         <li class='noframes'>
@@ -105,184 +105,191 @@
 </div>
     <div id='content'>
       <h1>
-        Class:
-        IDResolutionJob
+        File:
+        http.coffee
       </h1>
       <table class='box'>
         <tr>
           <td>Defined in:</td>
-          <td>src&#47;id-resolution-job.coffee</td>
+          <td></td>
         </tr>
       </table>
-      <h2>Instance Method Summary</h2>
+      <h2>Constant Summary</h2>
+      <dl class='constants'>
+        <dt id='PESKY_COMMA-constant'>
+          PESKY_COMMA
+          =
+          <div class='docstring'>
+  <p>Pattern to match optional trailing commas</p>
+</div>
+<div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>/,\s*$/</code></pre>
+        </dd>
+        <dt id='URLENC-constant'>
+          URLENC
+          =
+          <div class='docstring'>
+  <p>The urlencoded content-type.</p>
+</div>
+<div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>"application/x-www-form-urlencoded"</code></pre>
+        </dd>
+      </dl>
+      <h2>Method Summary</h2>
       <ul class='summary'>
   <li>
     <span class='signature'>
-      <a href='#constructor-instance'>
-        - (void) <strong>constructor</strong>(uid, service)
+      <a href='#getMethod-class'>
+        + (void) <strong>getMethod</strong>(x)
       </a>
     </span>
-    <span class='constructor note title'>Constructor</span>
+    <span class='desc'>
+      Get the method we should actually use to make a request of method &#39;x&#39;.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#supports-class'>
+        + (void) <strong>supports</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Whether or not this service supports the given method The default implementation returns true for all inputs.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#streaming-file'>
+        ? (void) <strong>streaming</strong>(ret, opts)
+      </a>
+    </span>
+    <span class='desc'>
+      The function to use when streaming results one by one from the connection, rather than buffering them all in memory.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getMsg-file'>
+        ? (void) <strong>getMsg</strong>(, text, e, code)
+      </a>
+    </span>
+    <span class='desc'>
+      Get a message that explains what went wrong.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#blocking-file'>
+        ? (void) <strong>blocking</strong>(ret, opts)
+      </a>
+    </span>
     <span class='desc'>
       
     </span>
   </li>
   <li>
     <span class='signature'>
-      <a href='#fetchStatus-instance'>
-        - (void) <strong>fetchStatus</strong>(cb)
+      <a href='#iterReq-class'>
+        + (void) <strong>iterReq</strong>(method, path, format)
       </a>
     </span>
-    <span class='bound note title'>Bound</span>
     <span class='desc'>
       
     </span>
   </li>
   <li>
     <span class='signature'>
-      <a href='#fetchErrorMessage-instance'>
-        - (void) <strong>fetchErrorMessage</strong>(cb)
+      <a href='#doReq-class'>
+        + (void) <strong>doReq</strong>(opts, iter)
       </a>
     </span>
-    <span class='bound note title'>Bound</span>
     <span class='desc'>
       
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#fetchResults-instance'>
-        - (void) <strong>fetchResults</strong>(cb)
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#del-instance'>
-        - (void) <strong>del</strong>(cb)
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#poll-instance'>
-        - (Promise&lt;Object&gt;) <strong>poll</strong>(onSuccess, onError, onProgress)
-      </a>
-    </span>
-    <span class='desc'>
-      Poll the service until the results are available.
     </span>
   </li>
 </ul>
-      <h2>Constructor Details</h2>
+      <h2>Method Details</h2>
       <div class='methods'>
   <div class='method_details'>
-    <p class='signature' id='constructor-instance'>
-      - (void) <strong>constructor</strong>(uid, service)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-</div>
-      <h2>Instance Method Details</h2>
-      <div class='methods'>
-  <div class='method_details'>
-    <p class='signature' id='fetchStatus-instance'>
-      - (void) <strong>fetchStatus</strong>(cb)
-      (bound)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='fetchErrorMessage-instance'>
-      - (void) <strong>fetchErrorMessage</strong>(cb)
-      (bound)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='fetchResults-instance'>
-      - (void) <strong>fetchResults</strong>(cb)
-      (bound)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='del-instance'>
-      - (void) <strong>del</strong>(cb)
-      (bound)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='poll-instance'>
-      - (Promise&lt;Object&gt;) <strong>poll</strong>(onSuccess, onError, onProgress)
+    <p class='signature' id='getMethod-class'>
+      + (void) <strong>getMethod</strong>(x)
     </p>
     <div class='docstring'>
-  <p>Poll the service until the results are available.</p>
-  <div class='examples'>
-    <h3>Examples:</h3>
-    <h4>
-      Poll a job
-    </h4>
-    <pre><code class='coffee'>job.poll().then (results) -&gt; handle results</code></pre>
-  </div>
+  <p>Get the method we should actually use to make a request of
+method &#39;x&#39;.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
   <ul class='param'>
     <li>
-      <span class='name'>onSuccess</span>
+      <span class='name'>x</span>
       <span class='type'>
-        (<tt>Function</tt>)
+        (<tt>String</tt>)
       </span>
       &mdash;
-      <span class='desc'>The success handler (optional)</span>
-    </li>
-    <li>
-      <span class='name'>onError</span>
-      <span class='type'>
-        (<tt>Function</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The error handler for if the job fails (optional).</span>
-    </li>
-    <li>
-      <span class='name'>onProgress</span>
-      <span class='type'>
-        (<tt>Function</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The progress handler to receive status updates.</span>
+      <span class='desc'>The method I&#39;m thinking of using.</span>
     </li>
   </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>Promise&lt;Object&gt;</tt>)
-      &mdash;
-      <span class='desc'>A promise to yield the results.</span>
-    </li>
-  </ul>
-  <h3>See also:</h3>
-  <ul class='see'>
-    <li>
-      <a href='../classes/Service.html#resolveIds-instance'>Service#resolveIds</a>
-    </li>
-  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='supports-class'>
+      + (void) <strong>supports</strong>()
+    </p>
+    <div class='docstring'>
+  <p>Whether or not this service supports the given method
+The default implementation returns true for all inputs.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='streaming-file'>
+      ? (void) <strong>streaming</strong>(ret, opts)
+    </p>
+    <div class='docstring'>
+  <p>The function to use when streaming results one by
+one from the connection, rather than buffering them all
+in memory.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getMsg-file'>
+      ? (void) <strong>getMsg</strong>(, text, e, code)
+    </p>
+    <div class='docstring'>
+  <p>Get a message that explains what went wrong.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='blocking-file'>
+      ? (void) <strong>blocking</strong>(ret, opts)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='iterReq-class'>
+      + (void) <strong>iterReq</strong>(method, path, format)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='doReq-class'>
+      + (void) <strong>doReq</strong>(opts, iter)
+    </p>
+    <div class='tags'>
 </div>
   </div>
 </div>

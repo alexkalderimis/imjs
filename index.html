@@ -1,127 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <meta charset='UTF-8'>
   <title>CoffeeScript API Documentation</title>
   <link rel='stylesheet' href='assets/codo.css' type='text/css'>
   <script src='assets/codo.js'></script>
+  <script src='assets/search_data.js'></script>
 </head>
-  <body>
-    <div id='header'>
-  <div id='menu'>
-    <a href='class_index.html' title='Index'>Index</a>
-    &raquo;
-    <span class='title'>README.md</span>
-    <nav>
-      <ul>
-        <li class='frames'>
-          (<a class='frames' href='frames.html'>frames</a>)
-        </li>
-        <li class='noframes'>
-          (<a class='noframes' href='#'>no frames</a>)
-        </li>
-      </ul>
-    </nav>
-    <div id='search'>
-      <a id='class_list_link' href='class_list.html'>Class List</a>
-      <a id='method_list_link' href='method_list.html'>Method List</a>
-      <a id='file_list_link' href='file_list.html'>File List</a>
-    </div>
-  </div>
-  <iframe id='search_frame'></iframe>
-</div>
-    <div id='content'>
-      <div id='filecontents'>
-        <h1>IMJS</h1>
-<p>InterMine Web-Services Communication Client Library
-
-</p>
-<h1>SYNOPSIS</h1>
-<p><!-- Execute scripts in the synopsis with test/check-synopsis.sh -->
-</p>
-<pre><code class="lang-javascript">// Find and print all the exons associated with eve in D. melanogaster
-var util      = require(&#39;util&#39;);
-var intermine = require(&#39;imjs&#39;);
-var printf    = function(fmt) { return function (args) {
-  console.log(util.format.apply(null, [fmt].concat(args)));
-}};
-
-var flymine   = new intermine.Service({root: &#39;www.flymine.org/query&#39;});
-var query     = {
-  from: &#39;Gene&#39;,
-  select: [
-    &#39;exons.symbol&#39;,
-    &#39;chromosome.primaryIdentifier&#39;,
-    &#39;exons.chromosomeLocation.start&#39;,
-    &#39;exons.chromosomeLocation.end&#39;
-  ],
-  where: {
-    symbol: &#39;eve&#39;,
-    organism: {lookup: &#39;D. melanogaster&#39;}}
-};
-
-flymine.rows(query).then(function(rows) {
-  console.log(util.format(&#39;Found %d exons:&#39;, rows.length));
-  rows.forEach(printf(&#39;[%s] %s:%d..%d&#39;));
-});</code></pre>
-<h1>DESCRIPTION</h1>
-<p>This library abstracts the functionality of InterMine&#39;s web service layer. It is meant for
-those wishing to build in communication layers to intermine servers, build graphical widgets
-on top of the webservice APIs, or perform client side scripting.
-
-</p>
-<p>The purpose of this library is to expose a uniform interface to the web-service API for both
-node.js and browser based programming, wrapping some of the minor unpleasantness of dealing with
-raw HTTP requests, as well as the more major issue of dealing with the path-query format, which
-is complex.
-
-</p>
-<h2>Functionality</h2>
-<ul>
-<li><p>Data Queries</p>
-<p>Users may make arbitrarily complex queries against an intermine data-warehouse. See the
-<a href="classes/Query.html">Query</a> class for more information.</p>
-</li>
-<li><p>List Management</p>
-<p>Users may authenticate to their accounts (through the use of web-service tokens) and then
-have full freedom to create, edit and delete lists they have access to. See the <a href="classes/List.html">List</a> class 
-for more information.</p>
-</li>
-<li><p>Analysis</p>
-<p>Users may perform enrichment analysis over lists they have access to. See <a href="classes/Service.html#enrichment-instance">Service#enrichment</a>
-and <a href="classes/List.html#enrichment-instance">List#enrichment</a> for more information.</p>
-</li>
-<li><p>Data Model Introspection</p>
-<p>The structure of the data available in the data model is available for instropection through
-the <a href="classes/Model.html">Model</a> class. This is particularly useful for constructing dynamic data-driven interfaces.</p>
-</li>
-</ul>
-<h1>LICENCE</h1>
-<p>All intermine code is free software released under the LGPL licence <a href="http://www.gnu.org/copyleft/lesser.html">http://www.gnu.org/copyleft/lesser.html</a>.
-You are free to modify and redistribute this software.
-
-</p>
-<p>The copyright is held by Alex Kalderimis <a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#x61;&#108;&#101;&#x78;&#64;&#105;&#110;&#116;&#x65;&#x72;&#x6d;&#105;&#x6e;&#x65;&#x2e;&#x6f;&#x72;&#103;">&#x61;&#108;&#101;&#x78;&#64;&#105;&#110;&#116;&#x65;&#x72;&#x6d;&#105;&#x6e;&#x65;&#x2e;&#x6f;&#x72;&#103;</a>.
-
-</p>
-<h1>SUPPORT</h1>
-<p>For help with this library, or the use of intermine in general, please contact <a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#100;&#101;&#x76;&#64;&#105;&#x6e;&#116;&#101;&#114;&#109;&#x69;&#110;&#101;&#x2e;&#111;&#114;&#103;">&#100;&#101;&#x76;&#64;&#105;&#x6e;&#116;&#101;&#114;&#109;&#x69;&#110;&#101;&#x2e;&#111;&#114;&#103;</a>.
-
-
-</p>
-
-      </div>
-    </div>
-    <div id='footer'>
-  Generated on
-  Tue Apr 23 2013 18:16:26 GMT+0100 (BST)
-  by
-  <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>codo</a>
-  v0.3.0
-  (Node.js v0.8.20).
-  &#10034;
-  <a href='http://twitter.com/#!/netzpirat'>@netzpirat</a>
-  &#10034;
-  <a href='https://mksoft.ch'>mksoft.ch</a>
-</div>
-  </body>
+  <frameset cols='20%, *'>
+    <frame name='list' src='class_list.html'></frame>
+    <frame name='main' src='README.md.html'></frame>
+  </frameset>
 </html>

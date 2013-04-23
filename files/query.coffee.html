@@ -15,7 +15,7 @@
     &raquo;
     <a href='../class_index.html' title='Index'>Index</a>
     &raquo;
-    <span class='title'>PathInfo</span>
+    <span class='title'>query.coffee</span>
     <nav>
       <ul>
         <li class='noframes'>
@@ -105,183 +105,21 @@
 </div>
     <div id='content'>
       <h1>
-        Class:
-        PathInfo
+        File:
+        query.coffee
       </h1>
       <table class='box'>
         <tr>
           <td>Defined in:</td>
-          <td>src&#47;path.coffee</td>
+          <td></td>
         </tr>
       </table>
-      <h2>Overview</h2>
-      <div class='docstring'>
-  <p>A representation of the information contained in a path
-expression. This class exposes the metadata available for this
-path, and is aware of class constraints placed upon it.</p>
-</div>
-<div class='tags'>
-</div>
-      <h2>Instance Method Summary</h2>
+      <h2>Method Summary</h2>
       <ul class='summary'>
   <li>
     <span class='signature'>
-      <a href='#constructor-instance'>
-        - (void) <strong>constructor</strong>()
-      </a>
-    </span>
-    <span class='constructor note title'>Constructor</span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#isRoot-instance'>
-        - (void) <strong>isRoot</strong>()
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#isAttribute-instance'>
-        - (void) <strong>isAttribute</strong>()
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#isClass-instance'>
-        - (void) <strong>isClass</strong>()
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#isReference-instance'>
-        - (void) <strong>isReference</strong>()
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#isCollection-instance'>
-        - (void) <strong>isCollection</strong>()
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#containsCollection-instance'>
-        - (void) <strong>containsCollection</strong>()
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#getEndClass-instance'>
-        - (void) <strong>getEndClass</strong>()
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#getParent-instance'>
-        - (void) <strong>getParent</strong>()
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#append-instance'>
-        - (void) <strong>append</strong>(attr)
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#isa-instance'>
-        - (void) <strong>isa</strong>(clazz)
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#getDisplayName-instance'>
-        - (void) <strong>getDisplayName</strong>(cb)
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#getChildNodes-instance'>
-        - (void) <strong>getChildNodes</strong>()
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#allDescriptors-instance'>
-        - (void) <strong>allDescriptors</strong>()
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#toString-instance'>
-        - (void) <strong>toString</strong>()
+      <a href='#get_canonical_op-file'>
+        ? (void) <strong>get_canonical_op</strong>(orig)
       </a>
     </span>
     <span class='desc'>
@@ -290,8 +128,8 @@ path, and is aware of class constraints placed upon it.</p>
   </li>
   <li>
     <span class='signature'>
-      <a href='#equals-instance'>
-        - (void) <strong>equals</strong>(other)
+      <a href='#LIST_PIPE-file'>
+        ? (void) <strong>LIST_PIPE</strong>(service)
       </a>
     </span>
     <span class='desc'>
@@ -300,164 +138,328 @@ path, and is aware of class constraints placed upon it.</p>
   </li>
   <li>
     <span class='signature'>
-      <a href='#getType-instance'>
-        - (String|Table) <strong>getType</strong>()
+      <a href='#decapitate-file'>
+        ? (void) <strong>decapitate</strong>(x)
       </a>
     </span>
     <span class='desc'>
-      Get the type of this path.
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#conValStr-file'>
+        ? (void) <strong>conValStr</strong>(v)
+      </a>
+    </span>
+    <span class='desc'>
+      Constraint XML machinery
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#conAttrs-file'>
+        ? (void) <strong>conAttrs</strong>(c, names)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#noValueConStr-file'>
+        ? (void) <strong>noValueConStr</strong>(c)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#typeConStr-file'>
+        ? (void) <strong>typeConStr</strong>(c)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#simpleConStr-file'>
+        ? (void) <strong>simpleConStr</strong>(c)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#multiConStr-file'>
+        ? (void) <strong>multiConStr</strong>(c)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#idConStr-file'>
+        ? (void) <strong>idConStr</strong>(c)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#conStr-file'>
+        ? (void) <strong>conStr</strong>(c)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#headLess-file'>
+        ? (void) <strong>headLess</strong>(path)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#copyCon-file'>
+        ? (void) <strong>copyCon</strong>(con)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#conToJSON-file'>
+        ? (void) <strong>conToJSON</strong>(con)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#noUndefVals-file'>
+        ? (void) <strong>noUndefVals</strong>(x)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#didntRemove-file'>
+        ? (void) <strong>didntRemove</strong>(orig, reduced)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#interpretConstraint-file'>
+        ? (void) <strong>interpretConstraint</strong>(path, con)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#interpretConArray-file'>
+        ? (void) <strong>interpretConArray</strong>(conArgs)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#stringToSortOrder-file'>
+        ? (void) <strong>stringToSortOrder</strong>(str)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#_get_data_fetcher-file'>
+        ? (void) <strong>_get_data_fetcher</strong>(server_fn)
+      </a>
+    </span>
+    <span class='desc'>
+      
     </span>
   </li>
 </ul>
-      <h2>Constructor Details</h2>
+      <h2>Method Details</h2>
       <div class='methods'>
   <div class='method_details'>
-    <p class='signature' id='constructor-instance'>
-      - (void) <strong>constructor</strong>()
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-</div>
-      <h2>Instance Method Details</h2>
-      <div class='methods'>
-  <div class='method_details'>
-    <p class='signature' id='isRoot-instance'>
-      - (void) <strong>isRoot</strong>()
-      (bound)
+    <p class='signature' id='get_canonical_op-file'>
+      ? (void) <strong>get_canonical_op</strong>(orig)
     </p>
     <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='isAttribute-instance'>
-      - (void) <strong>isAttribute</strong>()
-      (bound)
+    <p class='signature' id='LIST_PIPE-file'>
+      ? (void) <strong>LIST_PIPE</strong>(service)
     </p>
     <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='isClass-instance'>
-      - (void) <strong>isClass</strong>()
-      (bound)
+    <p class='signature' id='decapitate-file'>
+      ? (void) <strong>decapitate</strong>(x)
     </p>
     <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='isReference-instance'>
-      - (void) <strong>isReference</strong>()
-      (bound)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='isCollection-instance'>
-      - (void) <strong>isCollection</strong>()
-      (bound)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='containsCollection-instance'>
-      - (void) <strong>containsCollection</strong>()
-      (bound)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='getEndClass-instance'>
-      - (void) <strong>getEndClass</strong>()
-      (bound)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='getParent-instance'>
-      - (void) <strong>getParent</strong>()
-      (bound)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='append-instance'>
-      - (void) <strong>append</strong>(attr)
-      (bound)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='isa-instance'>
-      - (void) <strong>isa</strong>(clazz)
-      (bound)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='getDisplayName-instance'>
-      - (void) <strong>getDisplayName</strong>(cb)
-      (bound)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='getChildNodes-instance'>
-      - (void) <strong>getChildNodes</strong>()
-      (bound)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='allDescriptors-instance'>
-      - (void) <strong>allDescriptors</strong>()
-      (bound)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='toString-instance'>
-      - (void) <strong>toString</strong>()
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='equals-instance'>
-      - (void) <strong>equals</strong>(other)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='getType-instance'>
-      - (String|Table) <strong>getType</strong>()
+    <p class='signature' id='conValStr-file'>
+      ? (void) <strong>conValStr</strong>(v)
     </p>
     <div class='docstring'>
-  <p>Get the type of this path. If the path represents a class or a reference,
-the class itself is returned, otherwise the name of the attribute type is returned,
-minus any &quot;java.lang.&quot; prefix.</p>
+  <p>Constraint XML machinery</p>
 </div>
 <div class='tags'>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>String|Table</tt>)
-      &mdash;
-      <span class='desc'>A class-descriptor, or an attribute type name.</span>
-    </li>
-  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='conAttrs-file'>
+      ? (void) <strong>conAttrs</strong>(c, names)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='noValueConStr-file'>
+      ? (void) <strong>noValueConStr</strong>(c)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='typeConStr-file'>
+      ? (void) <strong>typeConStr</strong>(c)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='simpleConStr-file'>
+      ? (void) <strong>simpleConStr</strong>(c)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='multiConStr-file'>
+      ? (void) <strong>multiConStr</strong>(c)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='idConStr-file'>
+      ? (void) <strong>idConStr</strong>(c)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='conStr-file'>
+      ? (void) <strong>conStr</strong>(c)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='headLess-file'>
+      ? (void) <strong>headLess</strong>(path)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='copyCon-file'>
+      ? (void) <strong>copyCon</strong>(con)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='conToJSON-file'>
+      ? (void) <strong>conToJSON</strong>(con)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='noUndefVals-file'>
+      ? (void) <strong>noUndefVals</strong>(x)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='didntRemove-file'>
+      ? (void) <strong>didntRemove</strong>(orig, reduced)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='interpretConstraint-file'>
+      ? (void) <strong>interpretConstraint</strong>(path, con)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='interpretConArray-file'>
+      ? (void) <strong>interpretConArray</strong>(conArgs)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='stringToSortOrder-file'>
+      ? (void) <strong>stringToSortOrder</strong>(str)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='_get_data_fetcher-file'>
+      ? (void) <strong>_get_data_fetcher</strong>(server_fn)
+    </p>
+    <div class='tags'>
 </div>
   </div>
 </div>

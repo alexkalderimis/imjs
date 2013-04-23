@@ -1,49 +1,122 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <meta charset='UTF-8'>
   <title>CoffeeScript API Documentation</title>
-  <link rel='stylesheet' href='..&#47;assets/codo.css' type='text/css'>
-  <script src='..&#47;assets/codo.js'></script>
+  <link rel='stylesheet' href='../assets/codo.css' type='text/css'>
+  <script src='../assets/codo.js'></script>
+  <script src='../assets/search_data.js'></script>
 </head>
   <body>
-    <div id='header'>
+    <div id='base' data-path='../'></div>
+<div id='header'>
   <div id='menu'>
-    <a href='..&#47;class_index.html' title='Index'>Index</a>
+    <a href='../README.md.html' title='imjs'>imjs</a>
+    &raquo;
+    <a href='../class_index.html' title='Index'>Index</a>
     &raquo;
     <span class='title'>Service</span>
     <nav>
       <ul>
-        <li class='frames'>
-          (<a class='frames' href='..&#47;frames.html'>frames</a>)
-        </li>
         <li class='noframes'>
           (<a class='noframes' href='#'>no frames</a>)
         </li>
       </ul>
     </nav>
     <div id='search'>
-      <a id='class_list_link' href='..&#47;class_list.html'>Class List</a>
-      <a id='method_list_link' href='..&#47;method_list.html'>Method List</a>
-      <a id='file_list_link' href='..&#47;file_list.html'>File List</a>
+      <a id='class_list_link' href='../class_list.html'>Classes</a>
+      <a id='file_list_link' href='../file_list.html'>Files</a>
+      <a id='method_list_link' href='../method_list.html'>Methods</a>
+      <a id='extra_list_link' href='../extra_list.html'>Extras</a>
     </div>
   </div>
   <iframe id='search_frame'></iframe>
+  <div id='fuzzySearch'>
+    <input type='text'>
+    <ol></ol>
+  </div>
+  <div id='help'>
+    <p>
+      Quickly fuzzy find classes, mixins, methods, file:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-T</span>
+        Open fuzzy finder dialog
+      </li>
+    </ul>
+    <p>
+      In frame mode you can toggle the list naviation frame on the left side:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-L</span>
+        Toggle list view
+      </li>
+    </ul>
+    <p>
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-C</span>
+        Class list
+      </li>
+      <li>
+        <span>Ctrl-I</span>
+        Mixin list
+      </li>
+      <li>
+        <span>Ctrl-F</span>
+        File list
+      </li>
+      <li>
+        <span>Ctrl-M</span>
+        Method list
+      </li>
+      <li>
+        <span>Ctrl-E</span>
+        Extras list
+      </li>
+    </ul>
+    <p>
+      You can focus and blur the search input:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-S</span>
+        Focus search input
+      </li>
+      <li>
+        <span>Esc</span>
+        Blur search input
+      </li>
+    </ul>
+    <p>
+      In frameless mode you can close the list tab:
+    </p>
+    <ul>
+      <li>
+        <span>Esc</span>
+        Close list tab
+      </li>
+    </ul>
+  </div>
 </div>
     <div id='content'>
       <h1>
         Class:
         Service
       </h1>
-      <dl class='box'>
-        <dt>Defined in:</dt>
-        <dd>src&#47;service.coffee</dd>
-      </dl>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>src&#47;service.coffee</td>
+        </tr>
+      </table>
       <h2>Overview</h2>
       <div class='docstring'>
-  <p>The representation of a connection to an InterMine web-service.
-
-</p>
-<p>The Service class is the entry-point into the imjs library,
+  <p>The representation of a connection to an InterMine web-service.</p><p>The Service class is the entry-point into the imjs library,
 and the focal point for communication with the server. Connections
 to specific services are instantiated with reference to their
 base url and optional authentication information for accessing
@@ -51,10 +124,7 @@ private user data. If data is required from more than one user at
 the same service, multiple connection objects should be instantiated,
 each authenticated to the appropriate user (requests that return
 data that can be cached between users will be made as most once, unless
-the service is connected with the &#39;noCache&#39; option.
-
-</p>
-
+the service is connected with the &#39;noCache&#39; option.</p>
 </div>
 <div class='tags'>
 </div>
@@ -173,7 +243,7 @@ the service is connected with the &#39;noCache&#39; option.
     </span>
     <span class='bound note title'>Bound</span>
     <span class='desc'>
-      Alias for {Service#whoami}
+      Alias for <a href='../classes/Service.html#whoami-instance'>Service#whoami</a>
     </span>
   </li>
   <li>
@@ -196,17 +266,6 @@ the service is connected with the &#39;noCache&#39; option.
     <span class='bound note title'>Bound</span>
     <span class='desc'>
       
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#doPagedRequest-instance'>
-        - (Promise&lt;Array&lt;?&gt;&gt;) <strong>doPagedRequest</strong>(q, path, page = {}, format, cb)
-      </a>
-    </span>
-    <span class='note private title'>Private</span>
-    <span class='desc'>
-      Perform a request for results that accepts a parameter specifying the page to fetch.
     </span>
   </li>
   <li>
@@ -424,17 +483,6 @@ the service is connected with the &#39;noCache&#39; option.
   </li>
   <li>
     <span class='signature'>
-      <a href='#manageUserPreferences-instance'>
-        - (Promise&lt;Object&gt;) <strong>manageUserPreferences</strong>(method, data)
-      </a>
-    </span>
-    <span class='note private title'>Private</span>
-    <span class='desc'>
-      Perform operations on a user's preferences.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
       <a href='#resolveIds-instance'>
         - (Promise&lt;IDResolutionJob&gt;) <strong>resolveIds</strong>(opts, cb)
       </a>
@@ -463,10 +511,7 @@ the service is connected with the &#39;noCache&#39; option.
       - (void) <strong>constructor</strong>()
     </p>
     <div class='docstring'>
-  <p>Construct a new connection to a service.
-
-</p>
-
+  <p>Construct a new connection to a service.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -491,7 +536,7 @@ the service is connected with the &#39;noCache&#39; option.
         (<tt>String</tt>)
       </span>
       &mdash;
-      <span class='desc'>The base URL of the webservice (required). This is typically of the form &quot;http:&#47;&#47;HOST&#47;PATH&quot;, eg: &quot;http:&#47;&#47;www.flymine.org&#47;query&quot;</span>
+      <span class='desc'>The base URL of the webservice (required). This is typically of the form &quot;<a href="http://HOST/PATH">http://HOST/PATH</a>&quot;, eg: &quot;<a href="http://www.flymine.org/query">http://www.flymine.org/query</a>&quot;</span>
     </li>
     <li>
       <span class='name'>token</span>
@@ -504,7 +549,7 @@ the service is connected with the &#39;noCache&#39; option.
     <li>
       <span class='name'>A</span>
       <span class='type'>
-        (<tt>(err) -></tt>)
+        (<tt>(err) -&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>function that handles errors. (optional) If any errors occur when making HTTP calls to the server, the errors will be logged by this global error handler, which by default logs to the console. This can be changed by passing an alternative error handler, such as (-&gt;) to suppress error logging.</span>
@@ -544,9 +589,7 @@ the service is connected with the &#39;noCache&#39; option.
       - (Promise&lt;Object&gt;) <strong>post</strong>(path, data = {})
     </p>
     <div class='docstring'>
-  <p>Convenience method for making basic POST requests.
-</p>
-
+  <p>Convenience method for making basic POST requests.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -562,7 +605,7 @@ the service is connected with the &#39;noCache&#39; option.
     <li>
       <span class='name'>data</span>
       <span class='type'>
-        (<tt>Object<String, String>|Array<[String, String]></tt>)
+        (<tt>Object&lt;String, String&gt;|Array&lt;[String, String]&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>parameters to send (optional)</span>
@@ -571,9 +614,8 @@ the service is connected with the &#39;noCache&#39; option.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Object></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Object&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to yield a response object.</span>
     </li>
@@ -585,9 +627,7 @@ the service is connected with the &#39;noCache&#39; option.
       - (Promise&lt;Object&gt;) <strong>get</strong>(path, data)
     </p>
     <div class='docstring'>
-  <p>Convenience method for making basic GET requests.
-</p>
-
+  <p>Convenience method for making basic GET requests.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -603,7 +643,7 @@ the service is connected with the &#39;noCache&#39; option.
     <li>
       <span class='name'>data</span>
       <span class='type'>
-        (<tt>Object<String, String>|Array<[String, String]></tt>)
+        (<tt>Object&lt;String, String&gt;|Array&lt;[String, String]&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>parameters to send (optional)</span>
@@ -612,9 +652,8 @@ the service is connected with the &#39;noCache&#39; option.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Object></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Object&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to yield a response object.</span>
     </li>
@@ -629,17 +668,7 @@ the service is connected with the &#39;noCache&#39; option.
   <p>The generalised method through which ALL requests pass when using
 this class. You should not use this method; instead use one of the
 specific methods on this class (such as Service#fetchModel, or Service#fetchVersion)
-or one of the methods on the Query object.
-
-</p>
-<p>TL/DR: Don&#39;t. Finger weg.
-
-
-</p>
-<p>All parameters are optional.
-
-</p>
-
+or one of the methods on the Query object.</p><p>TL/DR: Don&#39;t. Finger weg.</p><p>All parameters are optional.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -671,7 +700,7 @@ or one of the methods on the Query object.
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>(data) -></tt>)
+        (<tt>(data) -&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A function that will be called on the results when received.</span>
@@ -688,9 +717,8 @@ or one of the methods on the Query object.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Object></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Object&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to yield a response object.</span>
     </li>
@@ -706,9 +734,7 @@ or one of the methods on the Query object.
   <p>Get the results of using a list enrichment widget to calculate
 statistics for a set of objects. An enrichment calculation
 attempts to find related items that are particularly characteristic
-of the items in this list.
-</p>
-
+of the items in this list.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -716,7 +742,7 @@ of the items in this list.
     <li>
       <span class='name'>opts</span>
       <span class='type'>
-        (<tt>Object<String, String></tt>)
+        (<tt>Object&lt;String, String&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>The parameters to pass to the calculation.</span>
@@ -724,7 +750,7 @@ of the items in this list.
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>-></tt>)
+        (<tt>-&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A function to call with the results when they have been received (optional).</span>
@@ -787,9 +813,8 @@ of the items in this list.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Array<Object>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Array&lt;Object&gt;&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to get results.</span>
     </li>
@@ -801,17 +826,11 @@ of the items in this list.
       - (Promise&lt;Array, Object, Object&gt;) <strong>search</strong>(options = {}, cb = (function() {}))
     </p>
     <div class='docstring'>
-  <p>Search for items in the database by any term or facet.
-
-</p>
-<p>This method performs a wide-ranging free-text search (powered
+  <p>Search for items in the database by any term or facet.</p><p>This method performs a wide-ranging free-text search (powered
 by Lucene) for items in the database matching a given term. The data
 returned is limited to a precalculated document of key-fields for
 each object. To further explore the dataset, the user will
-want to construct more sophisticated queries. See {Query}.
-
-</p>
-
+want to construct more sophisticated queries. See <a href='../classes/Query.html'>Query</a>.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -827,7 +846,7 @@ want to construct more sophisticated queries. See {Query}.
     <li>
       <span class='name'>An</span>
       <span class='type'>
-        (<tt>(Array.<Object>, Object, Object) -></tt>)
+        (<tt>(Array.&lt;Object&gt;, Object, Object) -&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>optional call-back function.</span>
@@ -849,7 +868,7 @@ want to construct more sophisticated queries. See {Query}.
     <li>
       <span class='name'>facets</span>
       <span class='type'>
-        (<tt>Object<String, String></tt>)
+        (<tt>Object&lt;String, String&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A set of facet constraints.</span>
@@ -858,9 +877,8 @@ want to construct more sophisticated queries. See {Query}.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Array, Object, Object></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Array, Object, Object&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to search the database.</span>
     </li>
@@ -873,10 +891,7 @@ want to construct more sophisticated queries. See {Query}.
       (bound)
     </p>
     <div class='docstring'>
-  <p>Find out how many rows a given query would return when run.
-
-</p>
-
+  <p>Find out how many rows a given query would return when run.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -892,7 +907,7 @@ want to construct more sophisticated queries. See {Query}.
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>(Number) -></tt>)
+        (<tt>(Number) -&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A callback that receives a number. Optional.</span>
@@ -901,9 +916,8 @@ want to construct more sophisticated queries. See {Query}.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Number></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Number&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to yield a count.</span>
     </li>
@@ -916,9 +930,7 @@ want to construct more sophisticated queries. See {Query}.
       (bound)
     </p>
     <div class='docstring'>
-  <p>Retrieve a representation of a specific object.
-</p>
-
+  <p>Retrieve a representation of a specific object.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -942,7 +954,7 @@ want to construct more sophisticated queries. See {Query}.
     <li>
       <span class='name'>A</span>
       <span class='type'>
-        (<tt>(obj) -></tt>)
+        (<tt>(obj) -&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>callback that receives an object. (optional).</span>
@@ -951,9 +963,8 @@ want to construct more sophisticated queries. See {Query}.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Object></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Object&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to yield an object.</span>
     </li>
@@ -966,9 +977,7 @@ want to construct more sophisticated queries. See {Query}.
     </p>
     <div class='docstring'>
   <p>Find all the objects in the database that match the search term.
-TODO: add support for extra-values
-</p>
-
+TODO: add support for extra-values</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -992,7 +1001,7 @@ TODO: add support for extra-values
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>(Array<Object>) -></tt>)
+        (<tt>(Array&lt;Object&gt;) -&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A callback that receives an Array of objects. (optional).</span>
@@ -1001,9 +1010,8 @@ TODO: add support for extra-values
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Array<Object>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Array&lt;Object&gt;&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to yield an array of objects.</span>
     </li>
@@ -1016,9 +1024,7 @@ TODO: add support for extra-values
       (bound)
     </p>
     <div class='docstring'>
-  <p>Retrieve information about the currently authenticated user.
-</p>
-
+  <p>Retrieve information about the currently authenticated user.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -1026,7 +1032,7 @@ TODO: add support for extra-values
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>(User) -></tt>)
+        (<tt>(User) -&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A callback the receives a User object.</span>
@@ -1035,9 +1041,8 @@ TODO: add support for extra-values
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<<a href='../classes/User.html'>User</a>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;<a href='../classes/User.html'>User</a>&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to yield a user.</span>
     </li>
@@ -1050,9 +1055,7 @@ TODO: add support for extra-values
       (bound)
     </p>
     <div class='docstring'>
-  <p>Alias for {Service#whoami}
-</p>
-
+  <p>Alias for <a href='../classes/Service.html#whoami-instance'>Service#whoami</a></p>
 </div>
 <div class='tags'>
 </div>
@@ -1064,10 +1067,7 @@ TODO: add support for extra-values
     </p>
     <div class='docstring'>
   <p>Retrieve a list of values that a path can have.
-This functionality is expected to be of use when developing auto-completion interfaces.
-  (only required if there are any. Default = {}).
-</p>
-
+This functionality is expected to be of use when developing auto-completion interfaces.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -1083,15 +1083,15 @@ This functionality is expected to be of use when developing auto-completion inte
     <li>
       <span class='name'>typeConstraints</span>
       <span class='type'>
-        (<tt>Object<String, String></tt>)
+        (<tt>Object&lt;String, String&gt;</tt>)
       </span>
       &mdash;
-      <span class='desc'>The type constraints on this path.</span>
+      <span class='desc'>The type constraints on this path. (only required if there are any. Default = {}).</span>
     </li>
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>(Array<Object>|Number) -></tt>)
+        (<tt>(Array&lt;Object&gt;|Number) -&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>An optional callback.</span>
@@ -1100,11 +1100,16 @@ This functionality is expected to be of use when developing auto-completion inte
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Array<Object>, Number></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Array&lt;Object&gt;, Number&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to return a list of objects with two properties (&#39;count&#39; and &#39;value&#39;).</span>
+    </li>
+  </ul>
+  <h3>See also:</h3>
+  <ul class='see'>
+    <li>
+      {Query#summarise}
     </li>
   </ul>
 </div>
@@ -1118,107 +1123,12 @@ This functionality is expected to be of use when developing auto-completion inte
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='doPagedRequest-instance'>
-      - (Promise&lt;Array&lt;?&gt;&gt;) <strong>doPagedRequest</strong>(q, path, page = {}, format, cb)
-      (private)
-    </p>
-    <div class='docstring'>
-  <p>Perform a request for results that accepts a parameter specifying the
-page to fetch. Not intended for public consumption.
-
-
-</p>
-
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>q</span>
-      <span class='type'>
-        (<tt>Query|Object</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The query to request results for. If not a {Query}, the object will be lifted to one via {Service#query}</span>
-    </li>
-    <li>
-      <span class='name'>The</span>
-      <span class='type'>
-        (<tt>String</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>path to make this request to.</span>
-    </li>
-    <li>
-      <span class='name'>page</span>
-      <span class='type'>
-        (<tt>Object</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>An object specifying the page (optional).</span>
-    </li>
-    <li>
-      <span class='name'>format</span>
-      <span class='type'>
-        (<tt>String</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The format to request results in (eg. &#39;json&#39;).</span>
-    </li>
-    <li>
-      <span class='name'>cb</span>
-      <span class='type'>
-        (<tt>-></tt>)
-      </span>
-      &mdash;
-      <span class='desc'>A call-back to which results will be yielded. (optional).</span>
-    </li>
-  </ul>
-  <h3>
-    Options Hash:
-    (page):
-  </h3>
-  <ul class='options'>
-    <li>
-      <span class='name'>start</span>
-      <span class='type'>
-        (<tt>Number</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The index of the first result to retrieve (default = 0).</span>
-    </li>
-    <li>
-      <span class='name'>size</span>
-      <span class='type'>
-        (<tt>Number</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The maximum number of results to retrieve (default = null, ie. &#39;all&#39;).</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'>
-        (<tt>Promise<Array<?>></tt>)
-      </span>
-      &mdash;
-      <span class='desc'>A promise to yield results.</span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
     <p class='signature' id='table-instance'>
       - (Promise&lt;Array&lt;?&gt;&gt;) <strong>table</strong>(q, page, cb)
       (bound)
     </p>
     <div class='docstring'>
-  <p>Get a page of results in jsontable format.
-
-
-</p>
-
+  <p>Get a page of results in jsontable format.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -1229,7 +1139,7 @@ page to fetch. Not intended for public consumption.
         (<tt>Query|Object</tt>)
       </span>
       &mdash;
-      <span class='desc'>The query to request results for. If not a {Query}, the object will be lifted to one via {Service#query}</span>
+      <span class='desc'>The query to request results for. If not a <a href='../classes/Query.html'>Query</a>, the object will be lifted to one via <a href='../classes/Service.html#query-instance'>Service#query</a></span>
     </li>
     <li>
       <span class='name'>page</span>
@@ -1242,7 +1152,7 @@ page to fetch. Not intended for public consumption.
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>-></tt>)
+        (<tt>-&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A call-back to which results will be yielded. (optional).</span>
@@ -1273,9 +1183,8 @@ page to fetch. Not intended for public consumption.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Array<?>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Array&lt;?&gt;&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to yield results.</span>
     </li>
@@ -1288,11 +1197,7 @@ page to fetch. Not intended for public consumption.
       (bound)
     </p>
     <div class='docstring'>
-  <p>Get a page of results in jsonobject format.
-
-
-</p>
-
+  <p>Get a page of results in jsonobject format.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -1303,7 +1208,7 @@ page to fetch. Not intended for public consumption.
         (<tt>Query|Object</tt>)
       </span>
       &mdash;
-      <span class='desc'>The query to request results for. If not a {Query}, the object will be lifted to one via {Service#query}</span>
+      <span class='desc'>The query to request results for. If not a <a href='../classes/Query.html'>Query</a>, the object will be lifted to one via <a href='../classes/Service.html#query-instance'>Service#query</a></span>
     </li>
     <li>
       <span class='name'>page</span>
@@ -1316,7 +1221,7 @@ page to fetch. Not intended for public consumption.
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>-></tt>)
+        (<tt>-&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A call-back to which results will be yielded. (optional).</span>
@@ -1347,9 +1252,8 @@ page to fetch. Not intended for public consumption.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Array<Object>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Array&lt;Object&gt;&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to yield results.</span>
     </li>
@@ -1362,11 +1266,7 @@ page to fetch. Not intended for public consumption.
       (bound)
     </p>
     <div class='docstring'>
-  <p>Get a page of results in json format.
-
-
-</p>
-
+  <p>Get a page of results in json format.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -1377,7 +1277,7 @@ page to fetch. Not intended for public consumption.
         (<tt>Query|Object</tt>)
       </span>
       &mdash;
-      <span class='desc'>The query to request results for. If not a {Query}, the object will be lifted to one via {Service#query}</span>
+      <span class='desc'>The query to request results for. If not a <a href='../classes/Query.html'>Query</a>, the object will be lifted to one via <a href='../classes/Service.html#query-instance'>Service#query</a></span>
     </li>
     <li>
       <span class='name'>page</span>
@@ -1390,7 +1290,7 @@ page to fetch. Not intended for public consumption.
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>-></tt>)
+        (<tt>-&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A call-back to which results will be yielded. (optional).</span>
@@ -1421,9 +1321,8 @@ page to fetch. Not intended for public consumption.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Array<Array<Object>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Array&lt;Array&lt;Object&gt;&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to yield results.</span>
     </li>
@@ -1436,11 +1335,7 @@ page to fetch. Not intended for public consumption.
       (bound)
     </p>
     <div class='docstring'>
-  <p>Get a page of results suitable for building the cells in a table.
-
-
-</p>
-
+  <p>Get a page of results suitable for building the cells in a table.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -1451,7 +1346,7 @@ page to fetch. Not intended for public consumption.
         (<tt>Query|Object</tt>)
       </span>
       &mdash;
-      <span class='desc'>The query to request results for. If not a {Query}, the object will be lifted to one via {Service#query}</span>
+      <span class='desc'>The query to request results for. If not a <a href='../classes/Query.html'>Query</a>, the object will be lifted to one via <a href='../classes/Service.html#query-instance'>Service#query</a></span>
     </li>
     <li>
       <span class='name'>page</span>
@@ -1464,7 +1359,7 @@ page to fetch. Not intended for public consumption.
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>-></tt>)
+        (<tt>-&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A call-back to which results will be yielded. (optional).</span>
@@ -1495,9 +1390,8 @@ page to fetch. Not intended for public consumption.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Array<Array<Object>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Array&lt;Array&lt;Object&gt;&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to yield results.</span>
     </li>
@@ -1510,10 +1404,7 @@ page to fetch. Not intended for public consumption.
       (bound)
     </p>
     <div class='docstring'>
-  <p>Get the templates this user currently has access to.
-
-</p>
-
+  <p>Get the templates this user currently has access to.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -1521,7 +1412,7 @@ page to fetch. Not intended for public consumption.
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>(Array<Object>) -></tt>)
+        (<tt>(Array&lt;Object&gt;) -&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A callback (optional).</span>
@@ -1530,9 +1421,8 @@ page to fetch. Not intended for public consumption.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Array<Object>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Array&lt;Object&gt;&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to yield an array of templates.</span>
     </li>
@@ -1545,10 +1435,7 @@ page to fetch. Not intended for public consumption.
       (bound)
     </p>
     <div class='docstring'>
-  <p>Get the lists this user currently has access to.
-
-</p>
-
+  <p>Get the lists this user currently has access to.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -1556,7 +1443,7 @@ page to fetch. Not intended for public consumption.
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>(Array<<a href='../classes/List.html'>List</a>>) -></tt>)
+        (<tt>(Array&lt;<a href='../classes/List.html'>List</a>&gt;) -&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A callback (optional).</span>
@@ -1565,11 +1452,10 @@ page to fetch. Not intended for public consumption.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Array<<a href='../classes/List.html'>List</a>>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Array&lt;<a href='../classes/List.html'>List</a>&gt;&gt;</tt>)
       &mdash;
-      <span class='desc'>A promise to yield an array of {List} objects.</span>
+      <span class='desc'>A promise to yield an array of <a href='../classes/List.html'>List</a> objects.</span>
     </li>
   </ul>
 </div>
@@ -1580,12 +1466,7 @@ page to fetch. Not intended for public consumption.
       (bound)
     </p>
     <div class='docstring'>
-  <p>Get the lists this user currently has access to which match the given name.
-
-</p>
-<p>  (Optional - default = &#39;&#39;, ie. all lists).
-</p>
-
+  <p>Get the lists this user currently has access to which match the given name.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -1596,12 +1477,12 @@ page to fetch. Not intended for public consumption.
         (<tt>String</tt>)
       </span>
       &mdash;
-      <span class='desc'>The name the lists we want to find must have (may include wildcards).</span>
+      <span class='desc'>The name the lists we want to find must have (may include wildcards). (Optional - default = &#39;&#39;, ie. all lists).</span>
     </li>
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>(Array<<a href='../classes/List.html'>List</a>>) -></tt>)
+        (<tt>(Array&lt;<a href='../classes/List.html'>List</a>&gt;) -&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A callback (optional).</span>
@@ -1610,11 +1491,10 @@ page to fetch. Not intended for public consumption.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Array<<a href='../classes/List.html'>List</a>>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Array&lt;<a href='../classes/List.html'>List</a>&gt;&gt;</tt>)
       &mdash;
-      <span class='desc'>A promise to yield an array of {List} objects.</span>
+      <span class='desc'>A promise to yield an array of <a href='../classes/List.html'>List</a> objects.</span>
     </li>
   </ul>
 </div>
@@ -1625,10 +1505,7 @@ page to fetch. Not intended for public consumption.
       (bound)
     </p>
     <div class='docstring'>
-  <p>Get a list by name.
-
-</p>
-
+  <p>Get a list by name.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -1644,7 +1521,7 @@ page to fetch. Not intended for public consumption.
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>-></tt>)
+        (<tt>-&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A callback function (optional).</span>
@@ -1653,11 +1530,10 @@ page to fetch. Not intended for public consumption.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<<a href='../classes/List.html'>List</a>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;<a href='../classes/List.html'>List</a>&gt;</tt>)
       &mdash;
-      <span class='desc'>A promise to yield a {List}.</span>
+      <span class='desc'>A promise to yield a <a href='../classes/List.html'>List</a>.</span>
     </li>
   </ul>
 </div>
@@ -1668,10 +1544,7 @@ page to fetch. Not intended for public consumption.
       (bound)
     </p>
     <div class='docstring'>
-  <p>Get the lists that contain the given object.
-
-</p>
-
+  <p>Get the lists that contain the given object.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -1687,7 +1560,7 @@ page to fetch. Not intended for public consumption.
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>-></tt>)
+        (<tt>-&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A callback function (Optional).</span>
@@ -1726,11 +1599,10 @@ page to fetch. Not intended for public consumption.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Array<<a href='../classes/List.html'>List</a>>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Array&lt;<a href='../classes/List.html'>List</a>&gt;&gt;</tt>)
       &mdash;
-      <span class='desc'>A promise to yield an array of {List} objects.</span>
+      <span class='desc'>A promise to yield an array of <a href='../classes/List.html'>List</a> objects.</span>
     </li>
   </ul>
 </div>
@@ -1740,12 +1612,7 @@ page to fetch. Not intended for public consumption.
       - (Promise&lt;List&gt;) <strong>combineLists</strong>(operation, options, cb)
     </p>
     <div class='docstring'>
-  <p>Combine two or more lists using the given operation.
-
-</p>
-<p>  (optional - defaults to &quot;operation of listA, listB&quot;)
-</p>
-
+  <p>Combine two or more lists using the given operation.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -1769,7 +1636,7 @@ page to fetch. Not intended for public consumption.
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>(List) -></tt>)
+        (<tt>(List) -&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A callback function. (optional).</span>
@@ -1794,12 +1661,12 @@ page to fetch. Not intended for public consumption.
         (<tt>String</tt>)
       </span>
       &mdash;
-      <span class='desc'>The description of the new list.</span>
+      <span class='desc'>The description of the new list. (optional - defaults to &quot;operation of listA, listB&quot;)</span>
     </li>
     <li>
       <span class='name'>lists</span>
       <span class='type'>
-        (<tt>Array<String></tt>)
+        (<tt>Array&lt;String&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>The lists to combine.</span>
@@ -1807,7 +1674,7 @@ page to fetch. Not intended for public consumption.
     <li>
       <span class='name'>tags</span>
       <span class='type'>
-        (<tt>Array<String></tt>)
+        (<tt>Array&lt;String&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A set of tags to apply to the new list (optional).</span>
@@ -1816,11 +1683,10 @@ page to fetch. Not intended for public consumption.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<<a href='../classes/List.html'>List</a>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;<a href='../classes/List.html'>List</a>&gt;</tt>)
       &mdash;
-      <span class='desc'>A promise to yield a {List} object.</span>
+      <span class='desc'>A promise to yield a <a href='../classes/List.html'>List</a> object.</span>
     </li>
   </ul>
 </div>
@@ -1830,15 +1696,7 @@ page to fetch. Not intended for public consumption.
       - (Promise&lt;List&gt;) <strong>merge</strong>()
     </p>
     <div class='docstring'>
-  <p>Combine two or more lists through a union operation.
-
-</p>
-<p>also available as {Service#union}.
-
-</p>
-<p>  (optional - defaults to &quot;operation of listA, listB&quot;)
-</p>
-
+  <p>Combine two or more lists through a union operation.</p><p>also available as {Service#union}.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -1854,7 +1712,7 @@ page to fetch. Not intended for public consumption.
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>(List) -></tt>)
+        (<tt>(List) -&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A callback function. (optional).</span>
@@ -1879,12 +1737,12 @@ page to fetch. Not intended for public consumption.
         (<tt>String</tt>)
       </span>
       &mdash;
-      <span class='desc'>The description of the new list.</span>
+      <span class='desc'>The description of the new list. (optional - defaults to &quot;operation of listA, listB&quot;)</span>
     </li>
     <li>
       <span class='name'>lists</span>
       <span class='type'>
-        (<tt>Array<String></tt>)
+        (<tt>Array&lt;String&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>The lists to combine.</span>
@@ -1892,7 +1750,7 @@ page to fetch. Not intended for public consumption.
     <li>
       <span class='name'>tags</span>
       <span class='type'>
-        (<tt>Array<String></tt>)
+        (<tt>Array&lt;String&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A set of tags to apply to the new list (optional).</span>
@@ -1901,11 +1759,10 @@ page to fetch. Not intended for public consumption.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<<a href='../classes/List.html'>List</a>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;<a href='../classes/List.html'>List</a>&gt;</tt>)
       &mdash;
-      <span class='desc'>A promise to yield a {List} object.</span>
+      <span class='desc'>A promise to yield a <a href='../classes/List.html'>List</a> object.</span>
     </li>
   </ul>
 </div>
@@ -1915,12 +1772,7 @@ page to fetch. Not intended for public consumption.
       - (Promise&lt;List&gt;) <strong>intersect</strong>()
     </p>
     <div class='docstring'>
-  <p>Combine two or more lists through an intersection operation.
-
-</p>
-<p>  (optional - defaults to &quot;operation of listA, listB&quot;)
-</p>
-
+  <p>Combine two or more lists through an intersection operation.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -1936,7 +1788,7 @@ page to fetch. Not intended for public consumption.
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>(List) -></tt>)
+        (<tt>(List) -&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A callback function. (optional).</span>
@@ -1961,12 +1813,12 @@ page to fetch. Not intended for public consumption.
         (<tt>String</tt>)
       </span>
       &mdash;
-      <span class='desc'>The description of the new list.</span>
+      <span class='desc'>The description of the new list. (optional - defaults to &quot;operation of listA, listB&quot;)</span>
     </li>
     <li>
       <span class='name'>lists</span>
       <span class='type'>
-        (<tt>Array<String></tt>)
+        (<tt>Array&lt;String&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>The lists to combine.</span>
@@ -1974,7 +1826,7 @@ page to fetch. Not intended for public consumption.
     <li>
       <span class='name'>tags</span>
       <span class='type'>
-        (<tt>Array<String></tt>)
+        (<tt>Array&lt;String&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A set of tags to apply to the new list (optional).</span>
@@ -1983,11 +1835,10 @@ page to fetch. Not intended for public consumption.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<<a href='../classes/List.html'>List</a>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;<a href='../classes/List.html'>List</a>&gt;</tt>)
       &mdash;
-      <span class='desc'>A promise to yield a {List} object.</span>
+      <span class='desc'>A promise to yield a <a href='../classes/List.html'>List</a> object.</span>
     </li>
   </ul>
 </div>
@@ -1997,12 +1848,7 @@ page to fetch. Not intended for public consumption.
       - (Promise&lt;List&gt;) <strong>diff</strong>()
     </p>
     <div class='docstring'>
-  <p>Combine two more lists through a symmetric difference opertation.
-
-</p>
-<p>  (optional - defaults to &quot;operation of listA, listB&quot;)
-</p>
-
+  <p>Combine two more lists through a symmetric difference opertation.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -2018,7 +1864,7 @@ page to fetch. Not intended for public consumption.
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>(List) -></tt>)
+        (<tt>(List) -&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A callback function. (optional).</span>
@@ -2043,12 +1889,12 @@ page to fetch. Not intended for public consumption.
         (<tt>String</tt>)
       </span>
       &mdash;
-      <span class='desc'>The description of the new list.</span>
+      <span class='desc'>The description of the new list. (optional - defaults to &quot;operation of listA, listB&quot;)</span>
     </li>
     <li>
       <span class='name'>lists</span>
       <span class='type'>
-        (<tt>Array<String></tt>)
+        (<tt>Array&lt;String&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>The lists to combine.</span>
@@ -2056,7 +1902,7 @@ page to fetch. Not intended for public consumption.
     <li>
       <span class='name'>tags</span>
       <span class='type'>
-        (<tt>Array<String></tt>)
+        (<tt>Array&lt;String&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A set of tags to apply to the new list (optional).</span>
@@ -2065,11 +1911,10 @@ page to fetch. Not intended for public consumption.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<<a href='../classes/List.html'>List</a>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;<a href='../classes/List.html'>List</a>&gt;</tt>)
       &mdash;
-      <span class='desc'>A promise to yield a {List} object.</span>
+      <span class='desc'>A promise to yield a <a href='../classes/List.html'>List</a> object.</span>
     </li>
   </ul>
 </div>
@@ -2083,10 +1928,7 @@ page to fetch. Not intended for public consumption.
   <p>Create a new list from the complement of two groups of lists. The
 complement is often what is meant by the concept of subtraction, in that the
 result of this operation will always be a proper subset of the union
-of the references.
-
-</p>
-
+of the references.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -2102,7 +1944,7 @@ of the references.
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>(List) -></tt>)
+        (<tt>(List) -&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>cb An optional callback.</span>
@@ -2132,7 +1974,7 @@ of the references.
     <li>
       <span class='name'>tags</span>
       <span class='type'>
-        (<tt>String|Array<String></tt>)
+        (<tt>String|Array&lt;String&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>The tags the new list should have.</span>
@@ -2140,7 +1982,7 @@ of the references.
     <li>
       <span class='name'>from</span>
       <span class='type'>
-        (<tt>String|List|Array<String|List></tt>)
+        (<tt>String|List|Array&lt;String|List&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>The lists that serve as the left hand side in the complement, ie. the union of lists we will subtract items from.</span>
@@ -2148,7 +1990,7 @@ of the references.
     <li>
       <span class='name'>exclude</span>
       <span class='type'>
-        (<tt>String|List|Array<String|List></tt>)
+        (<tt>String|List|Array&lt;String|List&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>The lists that serve as the right hand side in the complement, ie. the union of lists we will subtract from the reference lists.</span>
@@ -2157,11 +1999,10 @@ of the references.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<<a href='../classes/List.html'>List</a>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;<a href='../classes/List.html'>List</a>&gt;</tt>)
       &mdash;
-      <span class='desc'>A promise to yield a {List}.</span>
+      <span class='desc'>A promise to yield a <a href='../classes/List.html'>List</a>.</span>
     </li>
   </ul>
 </div>
@@ -2172,17 +2013,14 @@ of the references.
       (bound)
     </p>
     <div class='docstring'>
-  <p>Fetch the list widgets that are available from this service.
-</p>
-
+  <p>Fetch the list widgets that are available from this service.</p>
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Array<Object>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Array&lt;Object&gt;&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to yield a list of widgets.</span>
     </li>
@@ -2202,17 +2040,14 @@ of the references.
       - (Promise&lt;Model&gt;) <strong>fetchModel</strong>(cb)
     </p>
     <div class='docstring'>
-  <p>Fetch the description of the data model for this service.
-</p>
-
+  <p>Fetch the description of the data model for this service.</p>
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<<a href='../classes/Model.html'>Model</a>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;<a href='../classes/Model.html'>Model</a>&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to yield metadata about this service.</span>
     </li>
@@ -2225,17 +2060,14 @@ of the references.
     </p>
     <div class='docstring'>
   <p>Fetch the configured summary-fields.
-The summary fields describe which fields should be used to summarise each class.
-</p>
-
+The summary fields describe which fields should be used to summarise each class.</p>
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Object<String, Array<String>>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Object&lt;String, Array&lt;String&gt;&gt;&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to yield a mapping from class-name to a list of paths.</span>
     </li>
@@ -2247,17 +2079,14 @@ The summary fields describe which fields should be used to summarise each class.
       - (Promise&lt;Number&gt;) <strong>fetchVersion</strong>(cb)
     </p>
     <div class='docstring'>
-  <p>Fetch the number that describes the web-service capabilities.
-</p>
-
+  <p>Fetch the number that describes the web-service capabilities.</p>
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<Number></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;Number&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to yield a version number.</span>
     </li>
@@ -2270,10 +2099,7 @@ The summary fields describe which fields should be used to summarise each class.
       (bound)
     </p>
     <div class='docstring'>
-  <p>Promise to make a new Query.
-
-</p>
-
+  <p>Promise to make a new Query.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -2284,12 +2110,12 @@ The summary fields describe which fields should be used to summarise each class.
         (<tt>Object</tt>)
       </span>
       &mdash;
-      <span class='desc'>The JSON representation of the query. See {Query#constructor} for more information on the structure of these options.</span>
+      <span class='desc'>The JSON representation of the query. See <a href='../classes/Query.html#constructor-instance'>Query#constructor</a> for more information on the structure of these options.</span>
     </li>
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>(Query) -></tt>)
+        (<tt>(Query) -&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>An optional callback to be called when the query is made.</span>
@@ -2298,54 +2124,10 @@ The summary fields describe which fields should be used to summarise each class.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<<a href='../classes/Query.html'>Query</a>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;<a href='../classes/Query.html'>Query</a>&gt;</tt>)
       &mdash;
-      <span class='desc'>A promise to yield a new {Query}.</span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='manageUserPreferences-instance'>
-      - (Promise&lt;Object&gt;) <strong>manageUserPreferences</strong>(method, data)
-      (private)
-    </p>
-    <div class='docstring'>
-  <p>Perform operations on a user&#39;s preferences.
-
-</p>
-
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>method</span>
-      <span class='type'>
-        (<tt>String</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The HTTP method to call.</span>
-    </li>
-    <li>
-      <span class='name'>data</span>
-      <span class='type'>
-        (<tt>Object</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The parameters for this request.</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'>
-        (<tt>Promise<Object></tt>)
-      </span>
-      &mdash;
-      <span class='desc'>A promise to yield the user&#39;s preferences following the update.</span>
+      <span class='desc'>A promise to yield a new <a href='../classes/Query.html'>Query</a>.</span>
     </li>
   </ul>
 </div>
@@ -2356,9 +2138,7 @@ The summary fields describe which fields should be used to summarise each class.
       (bound)
     </p>
     <div class='docstring'>
-  <p>Submit an ID resolution job.
-</p>
-
+  <p>Submit an ID resolution job.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -2374,7 +2154,7 @@ The summary fields describe which fields should be used to summarise each class.
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>-></tt>)
+        (<tt>-&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>An optional callback.</span>
@@ -2388,7 +2168,7 @@ The summary fields describe which fields should be used to summarise each class.
     <li>
       <span class='name'>identifiers</span>
       <span class='type'>
-        (<tt>Array<String></tt>)
+        (<tt>Array&lt;String&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>The identifiers you want to resolve.</span>
@@ -2429,9 +2209,8 @@ The summary fields describe which fields should be used to summarise each class.
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<<a href='../classes/IDResolutionJob.html'>IDResolutionJob</a>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;<a href='../classes/IDResolutionJob.html'>IDResolutionJob</a>&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to yield a job id.</span>
     </li>
@@ -2444,15 +2223,9 @@ The summary fields describe which fields should be used to summarise each class.
       (bound)
     </p>
     <div class='docstring'>
-  <p>Create a new list through the identifier upload service.
-
-</p>
-<p>This service takes a source of identifiers and attempts to resolve them automatically
+  <p>Create a new list through the identifier upload service.</p><p>This service takes a source of identifiers and attempts to resolve them automatically
 and create a new list for the results. If you require more fine-grained control
-over this functionality then see [Service#resolveIds].
-
-</p>
-
+over this functionality then see [Service#resolveIds].</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -2468,7 +2241,7 @@ over this functionality then see [Service#resolveIds].
     <li>
       <span class='name'>ids</span>
       <span class='type'>
-        (<tt>Array<String>|String</tt>)
+        (<tt>Array&lt;String&gt;|String</tt>)
       </span>
       &mdash;
       <span class='desc'>The identifiers to resolve.</span>
@@ -2476,10 +2249,10 @@ over this functionality then see [Service#resolveIds].
     <li>
       <span class='name'>cb</span>
       <span class='type'>
-        (<tt>(List) -></tt>)
+        (<tt>(List) -&gt;</tt>)
       </span>
       &mdash;
-      <span class='desc'>A function that receives a {List}.</span>
+      <span class='desc'>A function that receives a <a href='../classes/List.html'>List</a>.</span>
     </li>
   </ul>
   <h3>
@@ -2522,7 +2295,7 @@ over this functionality then see [Service#resolveIds].
     <li>
       <span class='name'>tags</span>
       <span class='type'>
-        (<tt>Array<String></tt>)
+        (<tt>Array&lt;String&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>A list of tags to apply to the new list (optional).</span>
@@ -2531,11 +2304,10 @@ over this functionality then see [Service#resolveIds].
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
-      <span class='type'>
-        (<tt>Promise<<a href='../classes/List.html'>List</a>></tt>)
-      </span>
+      <span class='type'></span>
+      (<tt>Promise&lt;<a href='../classes/List.html'>List</a>&gt;</tt>)
       &mdash;
-      <span class='desc'>A promise to yield a {List}.</span>
+      <span class='desc'>A promise to yield a <a href='../classes/List.html'>List</a>.</span>
     </li>
   </ul>
 </div>
@@ -2544,11 +2316,13 @@ over this functionality then see [Service#resolveIds].
     </div>
     <div id='footer'>
   Generated on
-  Tue Apr 23 2013 18:16:26 GMT+0100 (BST)
+  Tue Apr 23 2013 18:33:16 GMT+0100 (BST)
   by
-  <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>codo</a>
-  v0.3.0
+  <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
+  v1.6.0
   (Node.js v0.8.20).
+  &#10034;
+  Press Ctrl-h to see the keyboard shortcuts
   &#10034;
   <a href='http://twitter.com/#!/netzpirat'>@netzpirat</a>
   &#10034;
