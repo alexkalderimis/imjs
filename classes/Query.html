@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset='UTF-8'>
-  <title>CoffeeScript API Documentation</title>
+  <title>InterMine Client Library Documentation</title>
   <link rel='stylesheet' href='../assets/codo.css' type='text/css'>
   <script src='../assets/codo.js'></script>
   <script src='../assets/search_data.js'></script>
@@ -242,11 +242,11 @@
   <li>
     <span class='signature'>
       <a href='#fromXML-class'>
-        + (void) <strong>fromXML</strong>(xml)
+        + (Object) <strong>fromXML</strong>(xml)
       </a>
     </span>
     <span class='desc'>
-      
+      Load a query from XML.
     </span>
   </li>
 </ul>
@@ -255,11 +255,11 @@
   <li>
     <span class='signature'>
       <a href='#on-instance'>
-        - (void) <strong>on</strong>(events, callback, context)
+        - (Query) <strong>on</strong>(events, callback, context)
       </a>
     </span>
     <span class='desc'>
-      
+      Bind a callback to an event.
     </span>
   </li>
   <li>
@@ -269,17 +269,57 @@
       </a>
     </span>
     <span class='desc'>
-      
+      alias for <a href='../classes/Query.html#on-instance'>#on</a>
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#off-instance'>
+        - (void) <strong>off</strong>(events, callback, context)
+      </a>
+    </span>
+    <span class='desc'>
+      Remove a particular event handler, or a more general collection.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#unbind-instance'>
+        - (void) <strong>unbind</strong>(args...)
+      </a>
+    </span>
+    <span class='desc'>
+      alias for <a href='../classes/Query.html#off-instance'>#off</a>
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#once-instance'>
+        - (Query) <strong>once</strong>(events, callback, context)
+      </a>
+    </span>
+    <span class='desc'>
+      Bind an event to be executed once, and then unbound.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#emit-instance'>
+        - (void) <strong>emit</strong>(args...)
+      </a>
+    </span>
+    <span class='desc'>
+      Alias for <a href='../classes/Query.html#trigger-instance'>#trigger</a>
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#trigger-instance'>
-        - (void) <strong>trigger</strong>(events, rest...)
+        - (Query) <strong>trigger</strong>(events, rest...)
       </a>
     </span>
     <span class='desc'>
-      
+      Trigger a given set of events.
     </span>
   </li>
   <li>
@@ -290,17 +330,17 @@
     </span>
     <span class='constructor note title'>Constructor</span>
     <span class='desc'>
-      
+      Construct a new Query object from a set of properties.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#removeFromSelect-instance'>
-        - (void) <strong>removeFromSelect</strong>(unwanted)
+        - (Query) <strong>removeFromSelect</strong>(unwanted)
       </a>
     </span>
     <span class='desc'>
-      
+      Remove the given paths from the select list.
     </span>
   </li>
   <li>
@@ -842,9 +882,42 @@
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='fromXML-class'>
-      + (void) <strong>fromXML</strong>(xml)
+      + (Object) <strong>fromXML</strong>(xml)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Load a query from XML.</p><pre><code>             to `new Query(json)`.</code></pre>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>The</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>serialised PathQuery XML</span>
+    </li>
+  </ul>
+  <h3>Throws:</h3>
+  <ul class='throw'>
+    <li>
+      <span class='type'></span>
+      (<tt>?</tt>)
+      &mdash;
+      <span class='desc'>Error if there is no query in the XML, or if XML is invalid.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Object</tt>)
+      &mdash;
+      <span class='desc'>The JSON representation of the Query, suitable for passing</span>
+    </li>
+  </ul>
 </div>
   </div>
 </div>
@@ -854,7 +927,127 @@
     <p class='signature' id='constructor-instance'>
       - (void) <strong>constructor</strong>(properties, service)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Construct a new Query object from a set of properties.</p><h1>All options are optional. Alternative names permitted are separated by bars.</h1>
+<pre><code>    to be used for given paths.
+    when expanding `*` paths.
+    paths to use to determine the sort-order.</code></pre>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>properties</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The options that define the query.</span>
+    </li>
+    <li>
+      <span class='name'>The</span>
+      <span class='type'>
+        (<tt><a href='../classes/Service.html'>Service</a></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>service this query belongs to.</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (propertie):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>aliases|displayNames</span>
+      <span class='type'>
+        (<tt>Object&lt;String, String&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>Display names</span>
+    </li>
+    <li>
+      <span class='name'>model</span>
+      <span class='type'>
+        (<tt><a href='../classes/Model.html'>Model</a></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The model this query is over.</span>
+    </li>
+    <li>
+      <span class='name'>summaryFields</span>
+      <span class='type'>
+        (<tt>Object&lt;String, Array&lt;String&gt;&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The fields to use</span>
+    </li>
+    <li>
+      <span class='name'>root|from</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The root of the query (eg. <code>Gene</code>).</span>
+    </li>
+    <li>
+      <span class='name'>size|limit|maxRows</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The maximum number of rows to return.</span>
+    </li>
+    <li>
+      <span class='name'>start|offset</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The index of the first row to return.</span>
+    </li>
+    <li>
+      <span class='name'>views|view|select</span>
+      <span class='type'>
+        (<tt>Array&lt;String&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The columns to return as output.</span>
+    </li>
+    <li>
+      <span class='name'>constraints|where</span>
+      <span class='type'>
+        (<tt>Array&lt;Constraint&gt;, Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The constraints.</span>
+    </li>
+    <li>
+      <span class='name'>joins|join</span>
+      <span class='type'>
+        (<tt>Array&lt;String&gt;, Array&lt;Join&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The outer-joins.</span>
+    </li>
+    <li>
+      <span class='name'>sortOrder|orderBy</span>
+      <span class='type'>
+        (<tt>Array&lt;String&gt;, Array&lt;SortOrderElement&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The</span>
+    </li>
+    <li>
+      <span class='name'>constraintLogic</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The constraint logic.</span>
+    </li>
+  </ul>
 </div>
   </div>
 </div>
@@ -862,30 +1055,354 @@
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='on-instance'>
-      - (void) <strong>on</strong>(events, callback, context)
+      - (Query) <strong>on</strong>(events, callback, context)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Bind a callback to an event.</p><p>An implementation of the EventEmitter API, allowing clients to subscribe
+to events on <a href='../classes/Query.html'>Query</a>s.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>events</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A space separated set of events to subscribe to.</span>
+    </li>
+    <li>
+      <span class='name'>callback</span>
+      <span class='type'>
+        (<tt>Function</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The event-handler.</span>
+    </li>
+    <li>
+      <span class='name'>context</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The context to bind as this for the callback (optional).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='../classes/Query.html'>Query</a></tt>)
+      &mdash;
+      <span class='desc'>This query, for chaining.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='bind-instance'>
       - (void) <strong>bind</strong>(args...)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>alias for <a href='../classes/Query.html#on-instance'>#on</a></p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='off-instance'>
+      - (Query) <strong>off</strong>()
+      <br>
+      - (Query) <strong>off</strong>(events)
+      <br>
+      - (Query) <strong>off</strong>(events, handler)
+      <br>
+      - (Query) <strong>off</strong>(events, handler, context)
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Remove a particular event handler, or a more general collection.</p>
+</div>
+<div class='tags'>
+  <div class='overloads'>
+    <h3>Overloads:</h3>
+    <div class='overload'>
+      <p class='signature'>
+        - (Query) <strong>off</strong>()
+      </p>
+      <div class='docstring'>
+  <p>Unbinds all event handlers.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='../classes/Query.html'>Query</a></tt>)
+      &mdash;
+      <span class='desc'>this query, for chaining.</span>
+    </li>
+  </ul>
+</div>
+    </div>
+    <div class='overload'>
+      <p class='signature'>
+        - (Query) <strong>off</strong>(events)
+      </p>
+      <div class='docstring'>
+  <p>Unbinds all event handlers for the given events.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>events</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A space separated set of event names.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='../classes/Query.html'>Query</a></tt>)
+      &mdash;
+      <span class='desc'>this query, for chaining.</span>
+    </li>
+  </ul>
+</div>
+    </div>
+    <div class='overload'>
+      <p class='signature'>
+        - (Query) <strong>off</strong>(events, handler)
+      </p>
+      <div class='docstring'>
+  <p>Unbinds the given handler for the given events.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>events</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A space separated set of event names.</span>
+    </li>
+    <li>
+      <span class='name'>handler</span>
+      <span class='type'>
+        (<tt>Function</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The event handler to unbind.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='../classes/Query.html'>Query</a></tt>)
+      &mdash;
+      <span class='desc'>this query, for chaining.</span>
+    </li>
+  </ul>
+</div>
+    </div>
+    <div class='overload'>
+      <p class='signature'>
+        - (Query) <strong>off</strong>(events, handler, context)
+      </p>
+      <div class='docstring'>
+  <p>Unbinds the given handler from all the given events where is it is bound with
+the given context.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>events</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A space separated set of event names.</span>
+    </li>
+    <li>
+      <span class='name'>handler</span>
+      <span class='type'>
+        (<tt>Function</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The event handler to unbind.</span>
+    </li>
+    <li>
+      <span class='name'>context</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The <code>this</code> for the handler.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='../classes/Query.html'>Query</a></tt>)
+      &mdash;
+      <span class='desc'>this query, for chaining.</span>
+    </li>
+  </ul>
+</div>
+    </div>
+  </div>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='unbind-instance'>
+      - (void) <strong>unbind</strong>(args...)
+    </p>
+    <div class='docstring'>
+  <p>alias for <a href='../classes/Query.html#off-instance'>#off</a></p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='once-instance'>
+      - (Query) <strong>once</strong>(events, callback, context)
+    </p>
+    <div class='docstring'>
+  <p>Bind an event to be executed once, and then unbound.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>events</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A space separated set of event names.</span>
+    </li>
+    <li>
+      <span class='name'>callback</span>
+      <span class='type'>
+        (<tt>Function</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The event handler.</span>
+    </li>
+    <li>
+      <span class='name'>context</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The <code>this</code> for the event handler.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='../classes/Query.html'>Query</a></tt>)
+      &mdash;
+      <span class='desc'>this query, for chaining.</span>
+    </li>
+  </ul>
+  <h3>See also:</h3>
+  <ul class='see'>
+    <li>
+      <a href='../classes/Query.html#on-instance'>#on</a>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='emit-instance'>
+      - (void) <strong>emit</strong>(args...)
+    </p>
+    <div class='docstring'>
+  <p>Alias for <a href='../classes/Query.html#trigger-instance'>#trigger</a></p>
+</div>
+<div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='trigger-instance'>
-      - (void) <strong>trigger</strong>(events, rest...)
+      - (Query) <strong>trigger</strong>(events, rest...)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Trigger a given set of events.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>events</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A space separated set of event names.</span>
+    </li>
+    <li>
+      <span class='name'>args</span>
+      <span class='type'>
+        (<tt>Array&lt;Object&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The arguments to send to the handlers.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='../classes/Query.html'>Query</a></tt>)
+      &mdash;
+      <span class='desc'>this query, for chaining.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='removeFromSelect-instance'>
-      - (void) <strong>removeFromSelect</strong>(unwanted)
+      - (Query) <strong>removeFromSelect</strong>(unwanted)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Remove the given paths from the select list.</p><pre><code>   list of selected columns.</code></pre>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>The</span>
+      <span class='type'>
+        (<tt>Array&lt;String&gt;, Array&lt;<a href='../classes/PathInfo.html'>PathInfo</a>&gt;, String, <a href='../classes/PathInfo.html'>PathInfo</a></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>paths to remove from the</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='../classes/Query.html'>Query</a></tt>)
+      &mdash;
+      <span class='desc'>This query, for chaining.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
@@ -1570,7 +2087,7 @@ wild*</p><p>[* do not really go wild]</p>
     </div>
     <div id='footer'>
   Generated on
-  Tue Apr 23 2013 18:33:16 GMT+0100 (BST)
+  Wed Apr 24 2013 14:17:33 GMT+0100 (BST)
   by
   <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
   v1.6.0

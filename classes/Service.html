@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset='UTF-8'>
-  <title>CoffeeScript API Documentation</title>
+  <title>InterMine Client Library Documentation</title>
   <link rel='stylesheet' href='../assets/codo.css' type='text/css'>
   <script src='../assets/codo.js'></script>
   <script src='../assets/search_data.js'></script>
@@ -270,6 +270,17 @@ the service is connected with the &#39;noCache&#39; option.</p>
   </li>
   <li>
     <span class='signature'>
+      <a href='#doPagedRequest-instance'>
+        - (Promise&lt;Array&lt;?&gt;&gt;) <strong>doPagedRequest</strong>(q, path, page = {}, format, cb)
+      </a>
+    </span>
+    <span class='note private title'>Private</span>
+    <span class='desc'>
+      Perform a request for results that accepts a parameter specifying the page to fetch.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
       <a href='#table-instance'>
         - (Promise&lt;Array&lt;?&gt;&gt;) <strong>table</strong>(q, page, cb)
       </a>
@@ -483,6 +494,17 @@ the service is connected with the &#39;noCache&#39; option.</p>
   </li>
   <li>
     <span class='signature'>
+      <a href='#manageUserPreferences-instance'>
+        - (Promise&lt;Object&gt;) <strong>manageUserPreferences</strong>(method, data)
+      </a>
+    </span>
+    <span class='note private title'>Private</span>
+    <span class='desc'>
+      Perform operations on a user&#39;s preferences.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
       <a href='#resolveIds-instance'>
         - (Promise&lt;IDResolutionJob&gt;) <strong>resolveIds</strong>(opts, cb)
       </a>
@@ -547,12 +569,12 @@ the service is connected with the &#39;noCache&#39; option.</p>
       <span class='desc'>An authentication token (optional)</span>
     </li>
     <li>
-      <span class='name'>A</span>
+      <span class='name'>errorHandler</span>
       <span class='type'>
         (<tt>(err) -&gt;</tt>)
       </span>
       &mdash;
-      <span class='desc'>function that handles errors. (optional) If any errors occur when making HTTP calls to the server, the errors will be logged by this global error handler, which by default logs to the console. This can be changed by passing an alternative error handler, such as (-&gt;) to suppress error logging.</span>
+      <span class='desc'>A function that handles errors. (optional) If any errors occur when making HTTP calls to the server, the errors will be logged by this global error handler, which by default logs to the console. This can be changed by passing an alternative error handler, such as (-&gt;) to suppress error logging.</span>
     </li>
     <li>
       <span class='name'>DEBUG</span>
@@ -605,7 +627,7 @@ the service is connected with the &#39;noCache&#39; option.</p>
     <li>
       <span class='name'>data</span>
       <span class='type'>
-        (<tt>Object&lt;String, String&gt;|Array&lt;[String, String]&gt;</tt>)
+        (<tt>Object&lt;String, String&gt;, Array&lt;[String, String]&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>parameters to send (optional)</span>
@@ -643,7 +665,7 @@ the service is connected with the &#39;noCache&#39; option.</p>
     <li>
       <span class='name'>data</span>
       <span class='type'>
-        (<tt>Object&lt;String, String&gt;|Array&lt;[String, String]&gt;</tt>)
+        (<tt>Object&lt;String, String&gt;, Array&lt;[String, String]&gt;</tt>)
       </span>
       &mdash;
       <span class='desc'>parameters to send (optional)</span>
@@ -692,7 +714,7 @@ or one of the methods on the Query object.</p><p>TL/DR: Don&#39;t. Finger weg.</
     <li>
       <span class='name'>data</span>
       <span class='type'>
-        (<tt>Object|Array</tt>)
+        (<tt>Object, Array</tt>)
       </span>
       &mdash;
       <span class='desc'>The parameters to send to the service.</span>
@@ -1120,6 +1142,92 @@ This functionality is expected to be of use when developing auto-completion inte
       (bound)
     </p>
     <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='doPagedRequest-instance'>
+      - (Promise&lt;Array&lt;?&gt;&gt;) <strong>doPagedRequest</strong>(q, path, page = {}, format, cb)
+      (private)
+    </p>
+    <div class='docstring'>
+  <p>Perform a request for results that accepts a parameter specifying the
+page to fetch. Not intended for public consumption.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>q</span>
+      <span class='type'>
+        (<tt>Query|Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The query to request results for. If not a <a href='../classes/Query.html'>Query</a>, the object will be lifted to one via <a href='../classes/Service.html#query-instance'>Service#query</a></span>
+    </li>
+    <li>
+      <span class='name'>The</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>path to make this request to.</span>
+    </li>
+    <li>
+      <span class='name'>page</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An object specifying the page (optional).</span>
+    </li>
+    <li>
+      <span class='name'>format</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The format to request results in (eg. &#39;json&#39;).</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>-&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A call-back to which results will be yielded. (optional).</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (page):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>start</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The index of the first result to retrieve (default = 0).</span>
+    </li>
+    <li>
+      <span class='name'>size</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The maximum number of results to retrieve (default = null, ie. &#39;all&#39;).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Promise&lt;Array&lt;?&gt;&gt;</tt>)
+      &mdash;
+      <span class='desc'>A promise to yield results.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
@@ -2133,6 +2241,45 @@ The summary fields describe which fields should be used to summarise each class.
 </div>
   </div>
   <div class='method_details'>
+    <p class='signature' id='manageUserPreferences-instance'>
+      - (Promise&lt;Object&gt;) <strong>manageUserPreferences</strong>(method, data)
+      (private)
+    </p>
+    <div class='docstring'>
+  <p>Perform operations on a user&#39;s preferences.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>method</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The HTTP method to call.</span>
+    </li>
+    <li>
+      <span class='name'>data</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The parameters for this request.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Promise&lt;Object&gt;</tt>)
+      &mdash;
+      <span class='desc'>A promise to yield the user&#39;s preferences following the update.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
     <p class='signature' id='resolveIds-instance'>
       - (Promise&lt;IDResolutionJob&gt;) <strong>resolveIds</strong>(opts, cb)
       (bound)
@@ -2316,7 +2463,7 @@ over this functionality then see [Service#resolveIds].</p>
     </div>
     <div id='footer'>
   Generated on
-  Tue Apr 23 2013 18:33:16 GMT+0100 (BST)
+  Wed Apr 24 2013 14:17:33 GMT+0100 (BST)
   by
   <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
   v1.6.0

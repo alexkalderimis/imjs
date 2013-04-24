@@ -15,7 +15,7 @@
     &raquo;
     <a href='../class_index.html' title='Index'>Index</a>
     &raquo;
-    <span class='title'>path.coffee</span>
+    <span class='title'>SubTypeConstraint</span>
     <nav>
       <ul>
         <li class='noframes'>
@@ -105,105 +105,39 @@
 </div>
     <div id='content'>
       <h1>
-        File:
-        path.coffee
+        Class:
+        SubTypeConstraint
       </h1>
       <table class='box'>
         <tr>
           <td>Defined in:</td>
-          <td></td>
+          <td>src&#47;constraints.coffee</td>
+        </tr>
+        <tr>
+          <td>Inherits:</td>
+          <td>
+            <a href='../classes/Constraint.html'>Constraint</a>
+          </td>
         </tr>
       </table>
-      <h2>Method Summary</h2>
-      <ul class='summary'>
-  <li>
-    <span class='signature'>
-      <a href='#makeKey-file'>
-        ? (void) <strong>makeKey</strong>(model, path, subclasses)
-      </a>
-    </span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#PathInfo.parse-file'>
-        ? (PathInfo) <strong>PathInfo.parse</strong>(model, path, subclasses = {})
-      </a>
-    </span>
-    <span class='desc'>
-      Parse a string, or stringable thing, into a PathInfo object, given a model to describe the data model and a listing of the optional subclass constraints.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#PathInfo.flushCache-file'>
-        ? (void) <strong>PathInfo.flushCache</strong>()
-      </a>
-    </span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-</ul>
-      <h2>Method Details</h2>
-      <div class='methods'>
-  <div class='method_details'>
-    <p class='signature' id='makeKey-file'>
-      ? (void) <strong>makeKey</strong>(model, path, subclasses)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='PathInfo.parse-file'>
-      ? (PathInfo) <strong>PathInfo.parse</strong>(model, path, subclasses = {})
-    </p>
-    <div class='docstring'>
-  <p>Parse a string, or stringable thing, into a PathInfo object,
-given a model to describe the data model and a listing of the
-optional subclass constraints.</p><p>@subclasses [Object<String,String>] The subclass constraints to bear in mind. (Optional).</p><p>@throws if this path is invalid.</p>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>A constraint that expresses the limitation that a path be limited to only
+members of a sub-type of the natural type of this path.</p>
 </div>
 <div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>model</span>
-      <span class='type'>
-        (<tt><a href='../classes/Model.html'>Model</a></tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The data model to validate against.</span>
-    </li>
-    <li>
-      <span class='name'>The</span>
-      <span class='type'>
-        (<tt>#toString</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>path to interpret.</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt><a href='../classes/PathInfo.html'>PathInfo</a></tt>)
-      &mdash;
-      <span class='desc'>The path information for this path.</span>
-    </li>
-  </ul>
 </div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='PathInfo.flushCache-file'>
-      ? (void) <strong>PathInfo.flushCache</strong>()
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-</div>
+      <h2>Property Summary</h2>
+      <dl class='properties'>
+        <dt id='type-property'>
+          <span class='signature'>
+            (String) <strong>type</strong>
+          </span>
+        </dt>
+        <dd class='desc'>
+          <p>The type that this path is constrained to.</p>
+        </dd>
+      </dl>
     </div>
     <div id='footer'>
   Generated on
