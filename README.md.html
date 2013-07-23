@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset='UTF-8'>
-  <title>InterMine Client Library Documentation</title>
+  <title>CoffeeScript API Documentation</title>
   <link rel='stylesheet' href='assets/codo.css' type='text/css'>
   <script src='assets/codo.js'></script>
   <script src='assets/search_data.js'></script>
@@ -116,11 +116,9 @@
       </nav>
       <div id='filecontents'>
         <h1>IMJS</h1><p>InterMine Web-Services Communication Client Library</p><h1>SYNOPSIS</h1><p><!-- Execute scripts in the synopsis with test/check-synopsis.sh --></p><pre><code class="lang-javascript">// Find and print all the exons associated with eve in D. melanogaster
-var util      = require(&#39;util&#39;);
+
+// If running in node.js, the following line will be necessary:
 var intermine = require(&#39;imjs&#39;);
-var printf    = function(fmt) { return function (args) {
-  console.log(util.format.apply(null, [fmt].concat(args)));
-}};
 
 var flymine   = new intermine.Service({root: &#39;www.flymine.org/query&#39;});
 var query     = {
@@ -137,8 +135,10 @@ var query     = {
 };
 
 flymine.rows(query).then(function(rows) {
-  console.log(util.format(&#39;Found %d exons:&#39;, rows.length));
-  rows.forEach(printf(&#39;[%s] %s:%d..%d&#39;));
+  console.log(&quot;No. of exons: &quot; + rows.length);
+  rows.forEach(function printRow(row) {
+    console.log(&quot;[&quot; + row[0] + &quot;] &quot; + row[1] + &quot;:&quot; + row[2] + &quot;..&quot; + row[3]);
+  });
 });</code></pre>
 <h1>DESCRIPTION</h1><p>This library abstracts the functionality of InterMine&#39;s web service layer. It is meant for
 those wishing to build in communication layers to intermine servers, build graphical widgets
@@ -158,12 +158,12 @@ and <a href="classes/List.html#enrichment-instance">List#enrichment</a> for more
 the <a href="classes/Model.html">Model</a> class. This is particularly useful for constructing dynamic data-driven interfaces.</p></li>
 </ul>
 <h1>LICENCE</h1><p>All intermine code is free software released under the LGPL licence <a href="http://www.gnu.org/copyleft/lesser.html">http://www.gnu.org/copyleft/lesser.html</a>.
-You are free to modify and redistribute this software.</p><p>The copyright is held by Alex Kalderimis <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#58;&#x61;&#108;&#x65;&#120;&#x40;&#x69;&#110;&#116;&#101;&#114;&#x6d;&#x69;&#110;&#x65;&#46;&#111;&#114;&#103;">&#x61;&#108;&#x65;&#120;&#x40;&#x69;&#110;&#116;&#101;&#114;&#x6d;&#x69;&#110;&#x65;&#46;&#111;&#114;&#103;</a>.</p><h1>SUPPORT</h1><p>For help with this library, or the use of intermine in general, please contact <a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#x3a;&#x64;&#x65;&#x76;&#x40;&#105;&#x6e;&#x74;&#x65;&#x72;&#x6d;&#105;&#x6e;&#x65;&#x2e;&#x6f;&#x72;&#103;">&#x64;&#x65;&#x76;&#x40;&#105;&#x6e;&#x74;&#x65;&#x72;&#x6d;&#105;&#x6e;&#x65;&#x2e;&#x6f;&#x72;&#103;</a>.</p>
+You are free to modify and redistribute this software.</p><p>The copyright is held by Alex Kalderimis <a href="&#109;&#x61;&#x69;&#108;&#x74;&#x6f;&#x3a;&#97;&#108;&#101;&#120;&#x40;&#x69;&#x6e;&#116;&#101;&#114;&#109;&#x69;&#110;&#x65;&#46;&#111;&#x72;&#103;">&#97;&#108;&#101;&#120;&#x40;&#x69;&#x6e;&#116;&#101;&#114;&#109;&#x69;&#110;&#x65;&#46;&#111;&#x72;&#103;</a>.</p><h1>SUPPORT</h1><p>For help with this library, or the use of intermine in general, please contact <a href="&#109;&#97;&#105;&#x6c;&#x74;&#111;&#x3a;&#100;&#x65;&#118;&#x40;&#x69;&#110;&#x74;&#101;&#x72;&#x6d;&#x69;&#110;&#101;&#46;&#111;&#114;&#103;">&#100;&#x65;&#118;&#x40;&#x69;&#110;&#x74;&#101;&#x72;&#x6d;&#x69;&#110;&#101;&#46;&#111;&#114;&#103;</a>.</p>
       </div>
     </div>
     <div id='footer'>
   Generated on
-  Wed Apr 24 2013 14:17:33 GMT+0100 (BST)
+  Tue Jul 23 2013 11:25:38 GMT+0100 (BST)
   by
   <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
   v1.6.0
