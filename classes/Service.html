@@ -248,24 +248,13 @@ the service is connected with the &#39;noCache&#39; option.</p>
   </li>
   <li>
     <span class='signature'>
-      <a href='#values-instance'>
-        - (Promise&lt;Array&lt;Object&gt;, Number&gt;) <strong>values</strong>(path, typeConstraints = {}, cb = (function() {}))
+      <a href='#pathValues-instance'>
+        - (Promise&lt;Array&lt;Object&gt;, Number&gt;) <strong>pathValues</strong>(path, typeConstraints = {}, cb = (function() {}))
       </a>
     </span>
     <span class='bound note title'>Bound</span>
     <span class='desc'>
       Retrieve a list of values that a path can have.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#pathValues-instance'>
-        - (void) <strong>pathValues</strong>(path, wanted)
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-      
     </span>
   </li>
   <li>
@@ -299,6 +288,17 @@ the service is connected with the &#39;noCache&#39; option.</p>
     <span class='bound note title'>Bound</span>
     <span class='desc'>
       Get a page of results in json format.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#values-instance'>
+        - (Promise&lt;&lt;Array&lt;Object&gt;) <strong>values</strong>(q, opts, cb = (function() {}))
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Get a page of values.
     </span>
   </li>
   <li>
@@ -527,7 +527,7 @@ the service is connected with the &#39;noCache&#39; option.</p>
   </ul>
   <h3>
     Options Hash:
-    (option):
+    (options):
   </h3>
   <ul class='options'>
     <li>
@@ -758,7 +758,7 @@ of the items in this list.</p>
   </ul>
   <h3>
     Options Hash:
-    (opt):
+    (opts):
   </h3>
   <ul class='options'>
     <li>
@@ -854,7 +854,7 @@ want to construct more sophisticated queries. See <a href='../classes/Query.html
   </ul>
   <h3>
     Options Hash:
-    (option):
+    (options):
   </h3>
   <ul class='options'>
     <li>
@@ -1061,8 +1061,8 @@ TODO: add support for extra-values</p>
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='values-instance'>
-      - (Promise&lt;Array&lt;Object&gt;, Number&gt;) <strong>values</strong>(path, typeConstraints = {}, cb = (function() {}))
+    <p class='signature' id='pathValues-instance'>
+      - (Promise&lt;Array&lt;Object&gt;, Number&gt;) <strong>pathValues</strong>(path, typeConstraints = {}, cb = (function() {}))
       (bound)
     </p>
     <div class='docstring'>
@@ -1112,14 +1112,6 @@ This functionality is expected to be of use when developing auto-completion inte
       {Query#summarise}
     </li>
   </ul>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='pathValues-instance'>
-      - (void) <strong>pathValues</strong>(path, wanted)
-      (bound)
-    </p>
-    <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
@@ -1323,6 +1315,56 @@ This functionality is expected to be of use when developing auto-completion inte
     <li>
       <span class='type'></span>
       (<tt>Promise&lt;Array&lt;Array&lt;Object&gt;&gt;</tt>)
+      &mdash;
+      <span class='desc'>A promise to yield results.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='values-instance'>
+      - (Promise&lt;&lt;Array&lt;Object&gt;) <strong>values</strong>(q, opts, cb = (function() {}))
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Get a page of values.</p><pre><code>   If a PathInfo object or a String, then the pathValues method
+   will be run instead (backward compatibility). Otherwise the first
+   argument will be treated as a query as per the <a href='../classes/Service.html#rows-instance'>Service#rows</a> method.</code></pre>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>q</span>
+      <span class='type'>
+        (<tt>Query|Object|PathInfo|String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The query to request results for.</span>
+    </li>
+    <li>
+      <span class='name'>opts</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>Either a page, or options for pathValues.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>-&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A call-back to which results will be yielded. (optional).</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Promise&lt;&lt;Array&lt;Object&gt;</tt>)
       &mdash;
       <span class='desc'>A promise to yield results.</span>
     </li>
@@ -1568,7 +1610,7 @@ This functionality is expected to be of use when developing auto-completion inte
   </ul>
   <h3>
     Options Hash:
-    (opt):
+    (opts):
   </h3>
   <ul class='options'>
     <li>
@@ -1644,7 +1686,7 @@ This functionality is expected to be of use when developing auto-completion inte
   </ul>
   <h3>
     Options Hash:
-    (option):
+    (options):
   </h3>
   <ul class='options'>
     <li>
@@ -1720,7 +1762,7 @@ This functionality is expected to be of use when developing auto-completion inte
   </ul>
   <h3>
     Options Hash:
-    (option):
+    (options):
   </h3>
   <ul class='options'>
     <li>
@@ -1796,7 +1838,7 @@ This functionality is expected to be of use when developing auto-completion inte
   </ul>
   <h3>
     Options Hash:
-    (option):
+    (options):
   </h3>
   <ul class='options'>
     <li>
@@ -1872,7 +1914,7 @@ This functionality is expected to be of use when developing auto-completion inte
   </ul>
   <h3>
     Options Hash:
-    (option):
+    (options):
   </h3>
   <ul class='options'>
     <li>
@@ -1952,7 +1994,7 @@ of the references.</p>
   </ul>
   <h3>
     Options Hash:
-    (option):
+    (options):
   </h3>
   <ul class='options'>
     <li>
@@ -2162,7 +2204,7 @@ The summary fields describe which fields should be used to summarise each class.
   </ul>
   <h3>
     Options Hash:
-    (opt):
+    (opts):
   </h3>
   <ul class='options'>
     <li>
@@ -2257,7 +2299,7 @@ over this functionality then see [Service#resolveIds].</p>
   </ul>
   <h3>
     Options Hash:
-    (opt):
+    (opts):
   </h3>
   <ul class='options'>
     <li>
@@ -2316,10 +2358,10 @@ over this functionality then see [Service#resolveIds].</p>
     </div>
     <div id='footer'>
   Generated on
-  Tue Jul 23 2013 11:25:38 GMT+0100 (BST)
+  Tue Nov 12 2013 12:45:57 GMT+0000 (GMT)
   by
   <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
-  v1.6.0
+  v1.6.2
   (Node.js v0.8.20).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts

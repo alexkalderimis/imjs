@@ -349,6 +349,26 @@ url, assume HTTP.</p>
   </li>
   <li>
     <span class='signature'>
+      <a href='#Service.prototype.rowByRow-file'>
+        ? (Promise&lt;BufferedReader&lt;Array&lt;Object&gt;&gt;&gt;) <strong>Service.prototype.rowByRow</strong>(q, args...)
+      </a>
+    </span>
+    <span class='desc'>
+      Process the results of a query row by row.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#Service.prototype.recordByRecord-file'>
+        ? (Promise&lt;BufferedReader&lt;Object&gt;&gt;) <strong>Service.prototype.recordByRecord</strong>(q, args...)
+      </a>
+    </span>
+    <span class='desc'>
+      Process the results of a query item by item.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
       <a href='#Service.flushCaches-file'>
         ? (void) <strong>Service.flushCaches</strong>()
       </a>
@@ -435,6 +455,174 @@ can be found.</p>
 </div>
   </div>
   <div class='method_details'>
+    <p class='signature' id='Service.prototype.rowByRow-file'>
+      ? (Promise&lt;BufferedReader&lt;Array&lt;Object&gt;&gt;&gt;) <strong>Service.prototype.rowByRow</strong>(q, args...)
+    </p>
+    <div class='docstring'>
+  <p>Process the results of a query row by row.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>q</span>
+      <span class='type'>
+        (<tt><a href='../classes/Query.html'>Query</a></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The query to run.</span>
+    </li>
+    <li>
+      <span class='name'>page</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The page of results to return.</span>
+    </li>
+    <li>
+      <span class='name'>doThis</span>
+      <span class='type'>
+        (<tt>-&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A callback for each row (optional).</span>
+    </li>
+    <li>
+      <span class='name'>onErr</span>
+      <span class='type'>
+        (<tt>-&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A callback to handle errors (optional).</span>
+    </li>
+    <li>
+      <span class='name'>onEnd</span>
+      <span class='type'>
+        (<tt>-&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A callback to be called when all rows have been received (optional).</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (page):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>start</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The index of the first row to return (optional; default = 0)</span>
+    </li>
+    <li>
+      <span class='name'>size</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The maximum number of results to return (optional; default = null, ie. all)</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Promise&lt;BufferedReader&lt;Array&lt;Object&gt;&gt;&gt;</tt>)
+      &mdash;
+      <span class='desc'>a promise to yield an iterator over the rows.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='Service.prototype.recordByRecord-file'>
+      ? (Promise&lt;BufferedReader&lt;Object&gt;&gt;) <strong>Service.prototype.recordByRecord</strong>(q, args...)
+    </p>
+    <div class='docstring'>
+  <p>Process the results of a query item by item.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>q</span>
+      <span class='type'>
+        (<tt><a href='../classes/Query.html'>Query</a></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The query to run.</span>
+    </li>
+    <li>
+      <span class='name'>page</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The page of results to return. It is best not to try and page object based results unless for batching reasons.</span>
+    </li>
+    <li>
+      <span class='name'>doThis</span>
+      <span class='type'>
+        (<tt>-&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A callback for each row (optional).</span>
+    </li>
+    <li>
+      <span class='name'>onErr</span>
+      <span class='type'>
+        (<tt>-&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A callback to handle errors (optional).</span>
+    </li>
+    <li>
+      <span class='name'>onEnd</span>
+      <span class='type'>
+        (<tt>-&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A callback to be called when all rows have been received (optional).</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (page):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>start</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The index of the first row to return (optional; default = 0)</span>
+    </li>
+    <li>
+      <span class='name'>size</span>
+      <span class='type'>
+        (<tt>Number</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The maximum number of results to return (optional; default = null, ie. all)</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Promise&lt;BufferedReader&lt;Object&gt;&gt;</tt>)
+      &mdash;
+      <span class='desc'>a promise to yield an iterator over the results.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
     <p class='signature' id='Service.flushCaches-file'>
       ? (void) <strong>Service.flushCaches</strong>()
     </p>
@@ -462,10 +650,10 @@ around when needed.</p>
     </div>
     <div id='footer'>
   Generated on
-  Tue Jul 23 2013 11:25:38 GMT+0100 (BST)
+  Tue Nov 12 2013 12:45:57 GMT+0000 (GMT)
   by
   <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
-  v1.6.0
+  v1.6.2
   (Node.js v0.8.20).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts
