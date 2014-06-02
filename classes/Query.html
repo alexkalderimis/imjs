@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset='UTF-8'>
-  <title>CoffeeScript API Documentation</title>
+  <title>InterMine Client Library Documentation</title>
   <link rel='stylesheet' href='../assets/codo.css' type='text/css'>
   <script src='../assets/codo.js'></script>
   <script src='../assets/search_data.js'></script>
@@ -247,7 +247,7 @@
       </a>
     </span>
     <span class='desc'>
-      Load a query from XML.
+      Load the first query found in the XML.
     </span>
   </li>
 </ul>
@@ -337,7 +337,7 @@
   <li>
     <span class='signature'>
       <a href='#removeFromSelect-instance'>
-        - (Query) <strong>removeFromSelect</strong>(unwanted)
+        - (Query) <strong>removeFromSelect</strong>(unwanted = [])
       </a>
     </span>
     <span class='desc'>
@@ -357,7 +357,7 @@
   <li>
     <span class='signature'>
       <a href='#addToSelect-instance'>
-        - (void) <strong>addToSelect</strong>(views)
+        - (void) <strong>addToSelect</strong>(views = [])
       </a>
     </span>
     <span class='desc'>
@@ -630,7 +630,7 @@
   <li>
     <span class='signature'>
       <a href='#getSortDirection-instance'>
-        - (void) <strong>getSortDirection</strong>(path)
+        - (void) <strong>getSortDirection</strong>(sorted)
       </a>
     </span>
     <span class='desc'>
@@ -810,12 +810,42 @@
   </li>
   <li>
     <span class='signature'>
+      <a href='#setName-instance'>
+        - (void) <strong>setName</strong>(name)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
       <a href='#save-instance'>
         - (void) <strong>save</strong>(name, cb)
       </a>
     </span>
     <span class='desc'>
-      Save a query to the server, with the name given.
+      Save a query to the server, overwriting any query of the same name.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#store-instance'>
+        - (void) <strong>store</strong>(name, cb)
+      </a>
+    </span>
+    <span class='desc'>
+      Store this query for the first time, avoiding name collisions.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#saveAsTemplate-instance'>
+        - (void) <strong>saveAsTemplate</strong>(name, cb)
+      </a>
+    </span>
+    <span class='desc'>
+      
     </span>
   </li>
   <li>
@@ -836,6 +866,16 @@
     </span>
     <span class='desc'>
       
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#needsAuthentication-instance'>
+        - (Boolean) <strong>needsAuthentication</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Return true if this query will require user authentication to run correctly.
     </span>
   </li>
   <li>
@@ -886,7 +926,7 @@
       + (Object) <strong>fromXML</strong>(xml)
     </p>
     <div class='docstring'>
-  <p>Load a query from XML.</p><pre><code>             to `new Query(json)`.</code></pre>
+  <p>Load the first query found in the XML.</p><pre><code>             to `new Query(json)`.</code></pre>
 
 </div>
 <div class='tags'>
@@ -1377,7 +1417,7 @@ the given context.</p>
   </div>
   <div class='method_details'>
     <p class='signature' id='removeFromSelect-instance'>
-      - (Query) <strong>removeFromSelect</strong>(unwanted)
+      - (Query) <strong>removeFromSelect</strong>(unwanted = [])
     </p>
     <div class='docstring'>
   <p>Remove the given paths from the select list.</p><pre><code>   list of selected columns.</code></pre>
@@ -1415,7 +1455,7 @@ the given context.</p>
   </div>
   <div class='method_details'>
     <p class='signature' id='addToSelect-instance'>
-      - (void) <strong>addToSelect</strong>(views)
+      - (void) <strong>addToSelect</strong>(views = [])
     </p>
     <div class='docstring'>
   <p>Add an element to the select list.</p>
@@ -1882,7 +1922,7 @@ the given filter.</p>
   </div>
   <div class='method_details'>
     <p class='signature' id='getSortDirection-instance'>
-      - (void) <strong>getSortDirection</strong>(path)
+      - (void) <strong>getSortDirection</strong>(sorted)
     </p>
     <div class='tags'>
 </div>
@@ -2008,13 +2048,37 @@ the given filter.</p>
 </div>
   </div>
   <div class='method_details'>
+    <p class='signature' id='setName-instance'>
+      - (void) <strong>setName</strong>(name)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
     <p class='signature' id='save-instance'>
       - (void) <strong>save</strong>(name, cb)
     </p>
     <div class='docstring'>
-  <p>Save a query to the server, with the name given.</p>
+  <p>Save a query to the server, overwriting any query of the same name.</p>
 </div>
 <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='store-instance'>
+      - (void) <strong>store</strong>(name, cb)
+    </p>
+    <div class='docstring'>
+  <p>Store this query for the first time, avoiding name collisions.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='saveAsTemplate-instance'>
+      - (void) <strong>saveAsTemplate</strong>(name, cb)
+    </p>
+    <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
@@ -2029,6 +2093,29 @@ the given filter.</p>
       - (void) <strong>getExportURI</strong>(format = 'tab')
     </p>
     <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='needsAuthentication-instance'>
+      - (Boolean) <strong>needsAuthentication</strong>()
+    </p>
+    <div class='docstring'>
+  <p>Return true if this query will require user authentication to run
+correctly.</p><p>This currently means that this method returns true if the query:</p><ul>
+<li>Contains any LIST constraints.</li>
+</ul>
+
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Boolean</tt>)
+      &mdash;
+      <span class='desc'>Whether this query needs authentication.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
@@ -2088,11 +2175,11 @@ wild*</p><p>[* do not really go wild]</p>
     </div>
     <div id='footer'>
   Generated on
-  Tue Nov 12 2013 12:45:57 GMT+0000 (GMT)
+  Mon Jun 02 2014 15:52:13 GMT+0100 (BST)
   by
   <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
   v1.6.2
-  (Node.js v0.8.20).
+  (Node.js v0.10.22).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts
   &#10034;

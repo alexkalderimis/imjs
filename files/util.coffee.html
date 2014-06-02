@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset='UTF-8'>
-  <title>CoffeeScript API Documentation</title>
+  <title>InterMine Client Library Documentation</title>
   <link rel='stylesheet' href='../assets/codo.css' type='text/css'>
   <script src='../assets/codo.js'></script>
   <script src='../assets/search_data.js'></script>
@@ -118,12 +118,52 @@
       <ul class='summary'>
   <li>
     <span class='signature'>
-      <a href='#root.error-file'>
-        ? (Promise&lt;Error&gt;) <strong>root.error</strong>(e)
+      <a href='#root.defer-file'>
+        ? (void) <strong>root.defer</strong>()
       </a>
     </span>
     <span class='desc'>
-      Helper for transforming an error into a rejection.
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#encode-file'>
+        ? (void) <strong>encode</strong>(x)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#qsFromList-file'>
+        ? (void) <strong>qsFromList</strong>(pairs)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.querystring-file'>
+        ? (void) <strong>root.querystring</strong>(obj)
+      </a>
+    </span>
+    <span class='desc'>
+      Serialize an object or array as a query string.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.withCB-file'>
+        ? (Promise) <strong>root.withCB</strong>(fs..., p)
+      </a>
+    </span>
+    <span class='desc'>
+      Attach a node-style callback (err, result), yielding the original promise.
     </span>
   </li>
   <li>
@@ -144,6 +184,36 @@
     </span>
     <span class='desc'>
       Curried version of filtering
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.uniqBy-file'>
+        ? (void) <strong>root.uniqBy</strong>(f, xs)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.find-file'>
+        ? (void) <strong>root.find</strong>(xs, f)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.escape-file'>
+        ? (void) <strong>root.escape</strong>(str)
+      </a>
+    </span>
+    <span class='desc'>
+      XML escaping
     </span>
   </li>
   <li>
@@ -178,8 +248,8 @@
   </li>
   <li>
     <span class='signature'>
-      <a href='#root.AND-file'>
-        ? (void) <strong>root.AND</strong>(a, b)
+      <a href='#root.map-file'>
+        ? (void) <strong>root.map</strong>(f)
       </a>
     </span>
     <span class='desc'>
@@ -188,8 +258,8 @@
   </li>
   <li>
     <span class='signature'>
-      <a href='#root.OR-file'>
-        ? (void) <strong>root.OR</strong>(a, b)
+      <a href='#root.compose-file'>
+        ? (void) <strong>root.compose</strong>(fs...)
       </a>
     </span>
     <span class='desc'>
@@ -198,8 +268,18 @@
   </li>
   <li>
     <span class='signature'>
-      <a href='#root.NOT-file'>
-        ? (void) <strong>root.NOT</strong>(x)
+      <a href='#root.difference-file'>
+        ? (void) <strong>root.difference</strong>(xs, remove)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#root.stringList-file'>
+        ? (void) <strong>root.stringList</strong>(x)
       </a>
     </span>
     <span class='desc'>
@@ -214,26 +294,6 @@
     </span>
     <span class='desc'>
       
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#root.invoke-file'>
-        ? ((obj) -&gt; ?) <strong>root.invoke</strong>(name, args...)
-      </a>
-    </span>
-    <span class='desc'>
-      Get a function that invokes a named method on an object of type A.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#root.invokeWith-file'>
-        ? ((obj) -&gt; ?) <strong>root.invokeWith</strong>(name, args = [], ctx = null)
-      </a>
-    </span>
-    <span class='desc'>
-      Get a function that invokes a method on an object that is passed to it with the arguments given here, with an optional binding for this.
     </span>
   </li>
   <li>
@@ -254,16 +314,6 @@
     </span>
     <span class='desc'>
       Get a function that sets a named property, or set of properties on an object, returning the new state of the object.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#root.flip-file'>
-        ? (void) <strong>root.flip</strong>(f)
-      </a>
-    </span>
-    <span class='desc'>
-      
     </span>
   </li>
   <li>
@@ -320,21 +370,53 @@
       <h2>Method Details</h2>
       <div class='methods'>
   <div class='method_details'>
-    <p class='signature' id='root.error-file'>
-      ? (Promise&lt;Error&gt;) <strong>root.error</strong>(e)
+    <p class='signature' id='root.defer-file'>
+      ? (void) <strong>root.defer</strong>()
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='encode-file'>
+      ? (void) <strong>encode</strong>(x)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='qsFromList-file'>
+      ? (void) <strong>qsFromList</strong>(pairs)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.querystring-file'>
+      ? (void) <strong>root.querystring</strong>(obj)
     </p>
     <div class='docstring'>
-  <p>Helper for transforming an error into a rejection.
-@param e The error.</p>
+  <p>Serialize an object or array as a query string.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.withCB-file'>
+      ? (Promise) <strong>root.withCB</strong>(fs..., p)
+    </p>
+    <div class='docstring'>
+  <p>Attach a node-style callback (err, result), yielding the original promise.
+@param f The callback
+@param p The promise</p>
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
       <span class='type'></span>
-      (<tt>Promise&lt;Error&gt;</tt>)
+      (<tt>Promise</tt>)
       &mdash;
-      <span class='desc'>A promise to reject with an error.</span>
+      <span class='desc'>The promise</span>
     </li>
   </ul>
 </div>
@@ -357,13 +439,39 @@
 </div>
   </div>
   <div class='method_details'>
+    <p class='signature' id='root.uniqBy-file'>
+      ? (void) <strong>root.uniqBy</strong>(f, xs)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.find-file'>
+      ? (void) <strong>root.find</strong>(xs, f)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.escape-file'>
+      ? (void) <strong>root.escape</strong>(str)
+    </p>
+    <div class='docstring'>
+  <p>XML escaping</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
     <p class='signature' id='root.omap-file'>
       ? (void) <strong>root.omap</strong>(f)
     </p>
     <div class='docstring'>
   <p>Until I can find a nicer name for this...
 Basically a mapping over an object, taking a
-function of the form (oldk, oldv) -&gt; [newk, newv]</p>
+function of the form (oldk, oldv) -&gt; [newk, newv]
+with the addition of shallowly copying any values
+that are arrays.</p>
 </div>
 <div class='tags'>
 </div>
@@ -390,22 +498,29 @@ are, well, concatenated. Objects are merged.</p><p>@param f The function to appl
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='root.AND-file'>
-      ? (void) <strong>root.AND</strong>(a, b)
+    <p class='signature' id='root.map-file'>
+      ? (void) <strong>root.map</strong>(f)
     </p>
     <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='root.OR-file'>
-      ? (void) <strong>root.OR</strong>(a, b)
+    <p class='signature' id='root.compose-file'>
+      ? (void) <strong>root.compose</strong>(fs...)
     </p>
     <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='root.NOT-file'>
-      ? (void) <strong>root.NOT</strong>(x)
+    <p class='signature' id='root.difference-file'>
+      ? (void) <strong>root.difference</strong>(xs, remove)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='root.stringList-file'>
+      ? (void) <strong>root.stringList</strong>(x)
     </p>
     <div class='tags'>
 </div>
@@ -415,95 +530,6 @@ are, well, concatenated. Objects are merged.</p><p>@param f The function to appl
       ? (void) <strong>root.any</strong>(xs, f = id)
     </p>
     <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='root.invoke-file'>
-      ? ((obj) -&gt; ?) <strong>root.invoke</strong>(name, args...)
-    </p>
-    <div class='docstring'>
-  <p>Get a function that invokes a named method
-on an object of type A.</p>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>name</span>
-      <span class='type'>
-        (<tt>String</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The name of a method</span>
-    </li>
-    <li>
-      <span class='name'>args</span>
-      <span class='type'>
-        (<tt>Array</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>An optional argument list, passed as varargs</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>(obj) -&gt; ?</tt>)
-      &mdash;
-      <span class='desc'>A function that invokes a named method.</span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='root.invokeWith-file'>
-      ? ((obj) -&gt; ?) <strong>root.invokeWith</strong>(name, args = [], ctx = null)
-    </p>
-    <div class='docstring'>
-  <p>Get a function that invokes a method on an object
-that is passed to it with the arguments given here, with
-an optional binding for this.</p><p>This function differs from invoke in that it expects the optional
-argument list to be passed in an Array, rather than as separate
-elements in the argument list.</p>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>name</span>
-      <span class='type'>
-        (<tt>String</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The name of the method</span>
-    </li>
-    <li>
-      <span class='name'>args</span>
-      <span class='type'>
-        (<tt>Array</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The arguments to the method</span>
-    </li>
-    <li>
-      <span class='name'>ctx</span>
-      <span class='type'>
-        (<tt>Object</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The value for this in the invocation (optional)</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>(obj) -&gt; ?</tt>)
-      &mdash;
-      <span class='desc'>A function that invokes a named method.</span>
-    </li>
-  </ul>
 </div>
   </div>
   <div class='method_details'>
@@ -584,13 +610,6 @@ promise.then(set({name: &#39;Bill&#39;, age: 43}))</code></pre>
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='root.flip-file'>
-      ? (void) <strong>root.flip</strong>(f)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
     <p class='signature' id='REQUIRES-file'>
       ? (void) <strong>REQUIRES</strong>(required, got)
     </p>
@@ -643,11 +662,11 @@ All chains of references will be converted to outer-joins.</p>
     </div>
     <div id='footer'>
   Generated on
-  Tue Nov 12 2013 12:45:57 GMT+0000 (GMT)
+  Mon Jun 02 2014 15:52:13 GMT+0100 (BST)
   by
   <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
   v1.6.2
-  (Node.js v0.8.20).
+  (Node.js v0.10.22).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts
   &#10034;

@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset='UTF-8'>
-  <title>CoffeeScript API Documentation</title>
+  <title>InterMine Client Library Documentation</title>
   <link rel='stylesheet' href='../assets/codo.css' type='text/css'>
   <script src='../assets/codo.js'></script>
   <script src='../assets/search_data.js'></script>
@@ -145,16 +145,6 @@
       <ul class='summary'>
   <li>
     <span class='signature'>
-      <a href='#getMethod-class'>
-        + (void) <strong>getMethod</strong>(x)
-      </a>
-    </span>
-    <span class='desc'>
-      Get the method we should actually use to make a request of method &#39;x&#39;.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
       <a href='#supports-class'>
         + (void) <strong>supports</strong>()
       </a>
@@ -166,7 +156,7 @@
   <li>
     <span class='signature'>
       <a href='#streaming-file'>
-        ? (void) <strong>streaming</strong>(ret, opts)
+        ? (void) <strong>streaming</strong>(opts, resolve, reject)
       </a>
     </span>
     <span class='desc'>
@@ -186,7 +176,7 @@
   <li>
     <span class='signature'>
       <a href='#blocking-file'>
-        ? (void) <strong>blocking</strong>(ret, opts)
+        ? (void) <strong>blocking</strong>(opts, resolve, reject)
       </a>
     </span>
     <span class='desc'>
@@ -197,6 +187,16 @@
     <span class='signature'>
       <a href='#iterReq-class'>
         + (void) <strong>iterReq</strong>(method, path, format)
+      </a>
+    </span>
+    <span class='desc'>
+      Return a function to be called in as a method of a service instance.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#rejectAfter-file'>
+        ? (void) <strong>rejectAfter</strong>(timeout, reject, promise)
       </a>
     </span>
     <span class='desc'>
@@ -217,28 +217,6 @@
       <h2>Method Details</h2>
       <div class='methods'>
   <div class='method_details'>
-    <p class='signature' id='getMethod-class'>
-      + (void) <strong>getMethod</strong>(x)
-    </p>
-    <div class='docstring'>
-  <p>Get the method we should actually use to make a request of
-method &#39;x&#39;.</p>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>x</span>
-      <span class='type'>
-        (<tt>String</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The method I&#39;m thinking of using.</span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
     <p class='signature' id='supports-class'>
       + (void) <strong>supports</strong>()
     </p>
@@ -251,7 +229,7 @@ The default implementation returns true for all inputs.</p>
   </div>
   <div class='method_details'>
     <p class='signature' id='streaming-file'>
-      ? (void) <strong>streaming</strong>(ret, opts)
+      ? (void) <strong>streaming</strong>(opts, resolve, reject)
     </p>
     <div class='docstring'>
   <p>The function to use when streaming results one by
@@ -273,7 +251,7 @@ in memory.</p>
   </div>
   <div class='method_details'>
     <p class='signature' id='blocking-file'>
-      ? (void) <strong>blocking</strong>(ret, opts)
+      ? (void) <strong>blocking</strong>(opts, resolve, reject)
     </p>
     <div class='tags'>
 </div>
@@ -281,6 +259,16 @@ in memory.</p>
   <div class='method_details'>
     <p class='signature' id='iterReq-class'>
       + (void) <strong>iterReq</strong>(method, path, format)
+    </p>
+    <div class='docstring'>
+  <p>Return a function to be called in as a method of a service instance.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='rejectAfter-file'>
+      ? (void) <strong>rejectAfter</strong>(timeout, reject, promise)
     </p>
     <div class='tags'>
 </div>
@@ -296,11 +284,11 @@ in memory.</p>
     </div>
     <div id='footer'>
   Generated on
-  Tue Nov 12 2013 12:45:57 GMT+0000 (GMT)
+  Mon Jun 02 2014 15:52:13 GMT+0100 (BST)
   by
   <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
   v1.6.2
-  (Node.js v0.8.20).
+  (Node.js v0.10.22).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts
   &#10034;

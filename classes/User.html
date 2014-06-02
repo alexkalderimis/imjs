@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset='UTF-8'>
-  <title>CoffeeScript API Documentation</title>
+  <title>InterMine Client Library Documentation</title>
   <link rel='stylesheet' href='../assets/codo.css' type='text/css'>
   <script src='../assets/codo.js'></script>
   <script src='../assets/search_data.js'></script>
@@ -136,7 +136,7 @@
   <li>
     <span class='signature'>
       <a href='#setPreference-instance'>
-        - (Deferred) <strong>setPreference</strong>(key, value)
+        - (Deferred) <strong>setPreference</strong>(key, value, cb)
       </a>
     </span>
     <span class='bound note title'>Bound</span>
@@ -147,7 +147,7 @@
   <li>
     <span class='signature'>
       <a href='#setPreferences-instance'>
-        - (void) <strong>setPreferences</strong>(prefs)
+        - (void) <strong>setPreferences</strong>(prefs, cb)
       </a>
     </span>
     <span class='bound note title'>Bound</span>
@@ -158,7 +158,7 @@
   <li>
     <span class='signature'>
       <a href='#clearPreference-instance'>
-        - (void) <strong>clearPreference</strong>(key)
+        - (void) <strong>clearPreference</strong>(key, cb)
       </a>
     </span>
     <span class='bound note title'>Bound</span>
@@ -169,7 +169,7 @@
   <li>
     <span class='signature'>
       <a href='#clearPreferences-instance'>
-        - (void) <strong>clearPreferences</strong>()
+        - (void) <strong>clearPreferences</strong>(cb)
       </a>
     </span>
     <span class='bound note title'>Bound</span>
@@ -180,10 +180,50 @@
   <li>
     <span class='signature'>
       <a href='#refresh-instance'>
-        - (void) <strong>refresh</strong>()
+        - (void) <strong>refresh</strong>(cb)
       </a>
     </span>
     <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#createToken-instance'>
+        - (void) <strong>createToken</strong>(type = 'day', message, cb)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#fetchCurrentTokens-instance'>
+        - (void) <strong>fetchCurrentTokens</strong>(cb)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#revokeAllTokens-instance'>
+        - (void) <strong>revokeAllTokens</strong>(cb)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#revokeToken-instance'>
+        - (void) <strong>revokeToken</strong>(token, cb)
+      </a>
+    </span>
     <span class='desc'>
       
     </span>
@@ -248,7 +288,7 @@ extracting the user&#39;s preferences from the options.</p>
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='setPreference-instance'>
-      - (Deferred) <strong>setPreference</strong>(key, value)
+      - (Deferred) <strong>setPreference</strong>(key, value, cb)
       (bound)
     </p>
     <div class='docstring'>
@@ -287,7 +327,7 @@ extracting the user&#39;s preferences from the options.</p>
   </div>
   <div class='method_details'>
     <p class='signature' id='setPreferences-instance'>
-      - (void) <strong>setPreferences</strong>(prefs)
+      - (void) <strong>setPreferences</strong>(prefs, cb)
       (bound)
     </p>
     <div class='docstring'>
@@ -298,7 +338,7 @@ extracting the user&#39;s preferences from the options.</p>
   </div>
   <div class='method_details'>
     <p class='signature' id='clearPreference-instance'>
-      - (void) <strong>clearPreference</strong>(key)
+      - (void) <strong>clearPreference</strong>(key, cb)
       (bound)
     </p>
     <div class='docstring'>
@@ -309,7 +349,7 @@ extracting the user&#39;s preferences from the options.</p>
   </div>
   <div class='method_details'>
     <p class='signature' id='clearPreferences-instance'>
-      - (void) <strong>clearPreferences</strong>()
+      - (void) <strong>clearPreferences</strong>(cb)
       (bound)
     </p>
     <div class='docstring'>
@@ -320,8 +360,36 @@ extracting the user&#39;s preferences from the options.</p>
   </div>
   <div class='method_details'>
     <p class='signature' id='refresh-instance'>
-      - (void) <strong>refresh</strong>()
+      - (void) <strong>refresh</strong>(cb)
       (bound)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='createToken-instance'>
+      - (void) <strong>createToken</strong>(type = 'day', message, cb)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='fetchCurrentTokens-instance'>
+      - (void) <strong>fetchCurrentTokens</strong>(cb)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='revokeAllTokens-instance'>
+      - (void) <strong>revokeAllTokens</strong>(cb)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='revokeToken-instance'>
+      - (void) <strong>revokeToken</strong>(token, cb)
     </p>
     <div class='tags'>
 </div>
@@ -330,11 +398,11 @@ extracting the user&#39;s preferences from the options.</p>
     </div>
     <div id='footer'>
   Generated on
-  Tue Nov 12 2013 12:45:57 GMT+0000 (GMT)
+  Mon Jun 02 2014 15:52:13 GMT+0100 (BST)
   by
   <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
   v1.6.2
-  (Node.js v0.8.20).
+  (Node.js v0.10.22).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts
   &#10034;

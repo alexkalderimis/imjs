@@ -15,7 +15,7 @@
     &raquo;
     <a href='../class_index.html' title='Index'>Index</a>
     &raquo;
-    <span class='title'>jquery-http.coffee</span>
+    <span class='title'>http-browser.coffee</span>
     <nav>
       <ul>
         <li class='noframes'>
@@ -106,7 +106,7 @@
     <div id='content'>
       <h1>
         File:
-        jquery-http.coffee
+        http-browser.coffee
       </h1>
       <table class='box'>
         <tr>
@@ -114,32 +114,88 @@
           <td></td>
         </tr>
       </table>
+      <h2>Constant Summary</h2>
+      <dl class='constants'>
+        <dt id='PESKY_COMMA-constant'>
+          PESKY_COMMA
+          =
+          <div class='docstring'>
+  <p>Pattern to match optional trailing commas</p>
+</div>
+<div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>/,\s*$/</code></pre>
+        </dd>
+        <dt id='URLENC-constant'>
+          URLENC
+          =
+          <div class='docstring'>
+  <p>The urlencoded content-type.</p>
+</div>
+<div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>"application/x-www-form-urlencoded"</code></pre>
+        </dd>
+        <dt id='CHARSET-constant'>
+          CHARSET
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>"; charset=UTF-8"</code></pre>
+        </dd>
+      </dl>
       <h2>Method Summary</h2>
       <ul class='summary'>
   <li>
     <span class='signature'>
-      <a href='#CHECKING_PIPE-file'>
-        ? (void) <strong>CHECKING_PIPE</strong>(response)
+      <a href='#getMethod-class'>
+        + (String) <strong>getMethod</strong>(x)
       </a>
     </span>
     <span class='desc'>
-      A pipe for checking the webservice response.
+      Get the method we should actually use to make a request of method &#39;x&#39;.
     </span>
   </li>
   <li>
     <span class='signature'>
-      <a href='#ERROR_PIPE-file'>
-        ? (void) <strong>ERROR_PIPE</strong>(f = (function() {}))
+      <a href='#supports-class'>
+        + (void) <strong>supports</strong>(x)
       </a>
     </span>
     <span class='desc'>
-      Process the errors returned from the webservice.
+      Whether or not this service supports the given method The default implementation returns true for all inputs.
     </span>
   </li>
   <li>
     <span class='signature'>
-      <a href='#wrapCbs-file'>
-        ? (void) <strong>wrapCbs</strong>(cbs)
+      <a href='#streaming-file'>
+        ? (void) <strong>streaming</strong>(data)
+      </a>
+    </span>
+    <span class='desc'>
+      The function to use when streaming results one by one from the connection, rather than buffering them all in memory.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#iterReq-class'>
+        + (void) <strong>iterReq</strong>(method, path, format)
+      </a>
+    </span>
+    <span class='desc'>
+      Return a function to be called in as a method of a service instance.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#check-file'>
+        ? (void) <strong>check</strong>(response)
       </a>
     </span>
     <span class='desc'>
@@ -148,8 +204,8 @@
   </li>
   <li>
     <span class='signature'>
-      <a href='#http.iterReq-file'>
-        ? (void) <strong>http.iterReq</strong>(method, path, fmt)
+      <a href='#annotateError-file'>
+        ? (void) <strong>annotateError</strong>(url)
       </a>
     </span>
     <span class='desc'>
@@ -158,60 +214,100 @@
   </li>
   <li>
     <span class='signature'>
-      <a href='#http.doReq-file'>
-        ? (void) <strong>http.doReq</strong>(opts)
+      <a href='#doReq-class'>
+        + (void) <strong>doReq</strong>(opts, iter)
       </a>
     </span>
     <span class='desc'>
-      Very thin wrapper around ajax, just to ensure errors are handled correctly.
+      
     </span>
   </li>
 </ul>
       <h2>Method Details</h2>
       <div class='methods'>
   <div class='method_details'>
-    <p class='signature' id='CHECKING_PIPE-file'>
-      ? (void) <strong>CHECKING_PIPE</strong>(response)
+    <p class='signature' id='getMethod-class'>
+      + (String) <strong>getMethod</strong>(x)
     </p>
     <div class='docstring'>
-  <p>A pipe for checking the webservice response.</p>
+  <p>Get the method we should actually use to make a request of
+method &#39;x&#39;.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>x</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The method I&#39;m thinking of using.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>String</tt>)
+      &mdash;
+      <span class='desc'>y The method you should actually use.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='supports-class'>
+      + (void) <strong>supports</strong>(x)
+    </p>
+    <div class='docstring'>
+  <p>Whether or not this service supports the given method
+The default implementation returns true for all inputs.</p>
 </div>
 <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='ERROR_PIPE-file'>
-      ? (void) <strong>ERROR_PIPE</strong>(f = (function() {}))
+    <p class='signature' id='streaming-file'>
+      ? (void) <strong>streaming</strong>(data)
     </p>
     <div class='docstring'>
-  <p>Process the errors returned from the webservice.</p>
+  <p>The function to use when streaming results one by
+one from the connection, rather than buffering them all
+in memory.</p>
 </div>
 <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='wrapCbs-file'>
-      ? (void) <strong>wrapCbs</strong>(cbs)
+    <p class='signature' id='iterReq-class'>
+      + (void) <strong>iterReq</strong>(method, path, format)
+    </p>
+    <div class='docstring'>
+  <p>Return a function to be called in as a method of a service instance.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='check-file'>
+      ? (void) <strong>check</strong>(response)
     </p>
     <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='http.iterReq-file'>
-      ? (void) <strong>http.iterReq</strong>(method, path, fmt)
+    <p class='signature' id='annotateError-file'>
+      ? (void) <strong>annotateError</strong>(url)
     </p>
     <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='http.doReq-file'>
-      ? (void) <strong>http.doReq</strong>(opts)
+    <p class='signature' id='doReq-class'>
+      + (void) <strong>doReq</strong>(opts, iter)
     </p>
-    <div class='docstring'>
-  <p>Very thin wrapper around ajax, just to ensure errors are handled
-correctly.</p>
-</div>
-<div class='tags'>
+    <div class='tags'>
 </div>
   </div>
 </div>

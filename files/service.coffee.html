@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset='UTF-8'>
-  <title>CoffeeScript API Documentation</title>
+  <title>InterMine Client Library Documentation</title>
   <link rel='stylesheet' href='../assets/codo.css' type='text/css'>
   <script src='../assets/codo.js'></script>
   <script src='../assets/search_data.js'></script>
@@ -150,6 +150,24 @@ url, assume HTTP.</p>
         <dd>
           <pre><code class='coffee'>"templates"</code></pre>
         </dd>
+        <dt id='RELEASE_PATH-constant'>
+          RELEASE_PATH
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>"version/release"</code></pre>
+        </dd>
+        <dt id='CLASSKEY_PATH-constant'>
+          CLASSKEY_PATH
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>"classkeys"</code></pre>
+        </dd>
         <dt id='LISTS_PATH-constant'>
           LISTS_PATH
           =
@@ -258,6 +276,24 @@ url, assume HTTP.</p>
         <dd>
           <pre><code class='coffee'>'path/values'</code></pre>
         </dd>
+        <dt id='USER_TOKENS-constant'>
+          USER_TOKENS
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>'user/tokens'</code></pre>
+        </dd>
+        <dt id='ID_RESOLUTION_PATH-constant'>
+          ID_RESOLUTION_PATH
+          =
+          <div class='tags'>
+</div>
+        </dt>
+        <dd>
+          <pre><code class='coffee'>'ids'</code></pre>
+        </dd>
         <dt id='HAS_PROTOCOL-constant'>
           HAS_PROTOCOL
           =
@@ -299,12 +335,12 @@ url, assume HTTP.</p>
       <ul class='summary'>
   <li>
     <span class='signature'>
-      <a href='#IDENTITY-file'>
-        ? (void) <strong>IDENTITY</strong>(x)
+      <a href='#NEEDS_AUTH-file'>
+        ? (void) <strong>NEEDS_AUTH</strong>(path, q)
       </a>
     </span>
     <span class='desc'>
-      The identity function f x = x
+      
     </span>
   </li>
   <li>
@@ -315,6 +351,17 @@ url, assume HTTP.</p>
     </span>
     <span class='desc'>
       BY DEFAULT, LOG ERRORS TO THE CONSOLE.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#_get_or_fetch-file'>
+        ? (void) <strong>_get_or_fetch</strong>(propName, store, path, key, cb)
+      </a>
+    </span>
+    <span class='note private title'>Private</span>
+    <span class='desc'>
+      A private helper for a repeated pattern where we only fetch a piece of information if it is not already available in a instance or static cache.
     </span>
   </li>
   <li>
@@ -380,7 +427,7 @@ url, assume HTTP.</p>
   <li>
     <span class='signature'>
       <a href='#Service.connect-file'>
-        ? (void) <strong>Service.connect</strong>(opts = {})
+        ? (void) <strong>Service.connect</strong>(opts)
       </a>
     </span>
     <span class='desc'>
@@ -391,13 +438,10 @@ url, assume HTTP.</p>
       <h2>Method Details</h2>
       <div class='methods'>
   <div class='method_details'>
-    <p class='signature' id='IDENTITY-file'>
-      ? (void) <strong>IDENTITY</strong>(x)
+    <p class='signature' id='NEEDS_AUTH-file'>
+      ? (void) <strong>NEEDS_AUTH</strong>(path, q)
     </p>
-    <div class='docstring'>
-  <p>The identity function f x = x</p>
-</div>
-<div class='tags'>
+    <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
@@ -408,6 +452,62 @@ url, assume HTTP.</p>
   <p>BY DEFAULT, LOG ERRORS TO THE CONSOLE.</p>
 </div>
 <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='_get_or_fetch-file'>
+      ? (void) <strong>_get_or_fetch</strong>(propName, store, path, key, cb)
+      (private)
+    </p>
+    <div class='docstring'>
+  <p>A private helper for a repeated pattern where
+we only fetch a piece of information if it is not
+already available in a instance or static cache.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>propName</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The name of this property. A promise will be set at this property.</span>
+    </li>
+    <li>
+      <span class='name'>store</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The cache of things to check if we can use a cache.</span>
+    </li>
+    <li>
+      <span class='name'>path</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The path to GET from if we have to make a request.</span>
+    </li>
+    <li>
+      <span class='name'>key</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The property of the JSON response which has the value that should be yielded to the user.</span>
+    </li>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>-&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A callback that accepts this kind of thing. (optional)</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
@@ -636,7 +736,7 @@ at risk of getting stale.</p>
   </div>
   <div class='method_details'>
     <p class='signature' id='Service.connect-file'>
-      ? (void) <strong>Service.connect</strong>(opts = {})
+      ? (void) <strong>Service.connect</strong>(opts)
     </p>
     <div class='docstring'>
   <p>Static method for instantiation. Allows us to provide
@@ -650,11 +750,11 @@ around when needed.</p>
     </div>
     <div id='footer'>
   Generated on
-  Tue Nov 12 2013 12:45:57 GMT+0000 (GMT)
+  Mon Jun 02 2014 15:52:13 GMT+0100 (BST)
   by
   <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
   v1.6.2
-  (Node.js v0.8.20).
+  (Node.js v0.10.22).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts
   &#10034;
