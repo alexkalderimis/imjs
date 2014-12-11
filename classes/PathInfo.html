@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset='UTF-8'>
-  <title>InterMine Client Library Documentation</title>
+  <title>CoffeeScript API Documentation</title>
   <link rel='stylesheet' href='../assets/codo.css' type='text/css'>
   <script src='../assets/codo.js'></script>
   <script src='../assets/search_data.js'></script>
@@ -132,145 +132,145 @@ path, and is aware of class constraints placed upon it.</p>
     </span>
     <span class='constructor note title'>Constructor</span>
     <span class='desc'>
-      
+      Constructor of PathInfo objects.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#isRoot-instance'>
-        - (void) <strong>isRoot</strong>()
+        - (boolean) <strong>isRoot</strong>()
       </a>
     </span>
     <span class='bound note title'>Bound</span>
     <span class='desc'>
-      
+      Whether or not this is a root path.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#isAttribute-instance'>
-        - (void) <strong>isAttribute</strong>()
+        - (boolean) <strong>isAttribute</strong>()
       </a>
     </span>
     <span class='bound note title'>Bound</span>
     <span class='desc'>
-      
+      Whether or not this is a leaf path.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#isClass-instance'>
-        - (void) <strong>isClass</strong>()
+        - (boolean) <strong>isClass</strong>()
       </a>
     </span>
     <span class='bound note title'>Bound</span>
     <span class='desc'>
-      
+      Whether or not this path represents one or more objects (i.e.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#isReference-instance'>
-        - (void) <strong>isReference</strong>()
+        - (boolean) <strong>isReference</strong>()
       </a>
     </span>
     <span class='bound note title'>Bound</span>
     <span class='desc'>
-      
+      Whether or not this path is a reference field (could be collection).
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#isCollection-instance'>
-        - (void) <strong>isCollection</strong>()
+        - (boolean) <strong>isCollection</strong>()
       </a>
     </span>
     <span class='bound note title'>Bound</span>
     <span class='desc'>
-      
+      Whether or not this path refers to a collection.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#containsCollection-instance'>
-        - (void) <strong>containsCollection</strong>()
+        - (boolean) <strong>containsCollection</strong>()
       </a>
     </span>
     <span class='bound note title'>Bound</span>
     <span class='desc'>
-      
+      Whether or not any segment of this path refers to a collection.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#getEndClass-instance'>
-        - (void) <strong>getEndClass</strong>()
+        - (Table) <strong>getEndClass</strong>()
       </a>
     </span>
     <span class='bound note title'>Bound</span>
     <span class='desc'>
-      
+      Get the Table object for this path (if root or reference, null if leaf).
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#getParent-instance'>
-        - (void) <strong>getParent</strong>()
+        - (PathInfo) <strong>getParent</strong>()
       </a>
     </span>
     <span class='bound note title'>Bound</span>
     <span class='desc'>
-      
+      Get the parent of this path.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#append-instance'>
-        - (void) <strong>append</strong>(attr)
+        - (PathInfo) <strong>append</strong>(attr)
       </a>
     </span>
     <span class='bound note title'>Bound</span>
     <span class='desc'>
-      
+      Adds a segment to this path.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#isa-instance'>
-        - (void) <strong>isa</strong>(clazz)
+        - (boolean) <strong>isa</strong>(clazz)
       </a>
     </span>
     <span class='bound note title'>Bound</span>
     <span class='desc'>
-      
+      Analyses the inheritance hierarchy to determine if this path represents an instance of the provided class.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#getDisplayName-instance'>
-        - (void) <strong>getDisplayName</strong>(cb)
+        - (Promise&lt;String&gt;) <strong>getDisplayName</strong>(cb)
       </a>
     </span>
     <span class='bound note title'>Bound</span>
     <span class='desc'>
-      
+      Fetches the configured display name for this path from the server.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#getChildNodes-instance'>
-        - (void) <strong>getChildNodes</strong>()
+        - (Array&lt;PathInfo&gt;) <strong>getChildNodes</strong>()
       </a>
     </span>
     <span class='bound note title'>Bound</span>
     <span class='desc'>
-      
+      Gets all the sub-paths of this class.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#allDescriptors-instance'>
-        - (void) <strong>allDescriptors</strong>()
+        - (Array&lt;Descriptor&gt;) <strong>allDescriptors</strong>()
       </a>
     </span>
     <span class='bound note title'>Bound</span>
@@ -281,21 +281,21 @@ path, and is aware of class constraints placed upon it.</p>
   <li>
     <span class='signature'>
       <a href='#toString-instance'>
-        - (void) <strong>toString</strong>()
+        - (String) <strong>toString</strong>()
       </a>
     </span>
     <span class='desc'>
-      
+      to {Model::makePath}
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#equals-instance'>
-        - (void) <strong>equals</strong>(other)
+        - (boolean) <strong>equals</strong>(other)
       </a>
     </span>
     <span class='desc'>
-      
+      Overriden equals.
     </span>
   </li>
   <li>
@@ -315,7 +315,74 @@ path, and is aware of class constraints placed upon it.</p>
     <p class='signature' id='constructor-instance'>
       - (void) <strong>constructor</strong>()
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Constructor of PathInfo objects.
+PathInfo objects are constructed by the model. You should not need to
+call this constructor yourself.</p><p>@param options The data used to construct this PathInfo object</p>
+</div>
+<div class='tags'>
+  <h3>
+    Options Hash:
+    (options):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>root</span>
+      <span class='type'>
+        (<tt><a href='../classes/Table.html'>Table</a></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The root of this path</span>
+    </li>
+    <li>
+      <span class='name'>model</span>
+      <span class='type'>
+        (<tt><a href='../classes/Model.html'>Model</a></tt>)
+      </span>
+      &mdash;
+      <span class='desc'>the model this path belongs to</span>
+    </li>
+    <li>
+      <span class='name'>model</span>
+      <span class='type'>
+        (<tt>Array&lt;Field&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The descriptor for each non-root path segment</span>
+    </li>
+    <li>
+      <span class='name'>descriptors</span>
+      <span class='type'>
+        (<tt>Array&lt;Field&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The descriptor for each non-root path segment</span>
+    </li>
+    <li>
+      <span class='name'>subclasses</span>
+      <span class='type'>
+        (<tt>Object&lt;String, TableInfo&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The subclass mapping</span>
+    </li>
+    <li>
+      <span class='name'>displayName</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The display name to use in preference to fetching.</span>
+    </li>
+    <li>
+      <span class='name'>ident</span>
+      <span class='type'>
+        (<tt>String</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>A key used to index this path.</span>
+    </li>
+  </ul>
 </div>
   </div>
 </div>
@@ -323,120 +390,335 @@ path, and is aware of class constraints placed upon it.</p>
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='isRoot-instance'>
-      - (void) <strong>isRoot</strong>()
+      - (boolean) <strong>isRoot</strong>()
       (bound)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Whether or not this is a root path.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>boolean</tt>)
+      &mdash;
+      <span class='desc'>Whether this is a root path (i.e. has no parent).</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='isAttribute-instance'>
-      - (void) <strong>isAttribute</strong>()
+      - (boolean) <strong>isAttribute</strong>()
       (bound)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Whether or not this is a leaf path.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>boolean</tt>)
+      &mdash;
+      <span class='desc'>Whether this path represents a data value.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='isClass-instance'>
-      - (void) <strong>isClass</strong>()
+      - (boolean) <strong>isClass</strong>()
       (bound)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Whether or not this path represents one or more objects (i.e. is not a leaf).</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>boolean</tt>)
+      &mdash;
+      <span class='desc'>Whether or not this path represents a class of objects.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='isReference-instance'>
-      - (void) <strong>isReference</strong>()
+      - (boolean) <strong>isReference</strong>()
       (bound)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Whether or not this path is a reference field (could be collection).</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>boolean</tt>)
+      &mdash;
+      <span class='desc'>True if not root, and not a leaf.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='isCollection-instance'>
-      - (void) <strong>isCollection</strong>()
+      - (boolean) <strong>isCollection</strong>()
       (bound)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Whether or not this path refers to a collection.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>boolean</tt>)
+      &mdash;
+      <span class='desc'>True if a reference which is a collection.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='containsCollection-instance'>
-      - (void) <strong>containsCollection</strong>()
+      - (boolean) <strong>containsCollection</strong>()
       (bound)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Whether or not any segment of this path refers to a collection.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>boolean</tt>)
+      &mdash;
+      <span class='desc'>True if this path contains at least one collection.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getEndClass-instance'>
-      - (void) <strong>getEndClass</strong>()
+      - (Table) <strong>getEndClass</strong>()
       (bound)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Get the Table object for this path (if root or reference, null if leaf).</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='../classes/Table.html'>Table</a></tt>)
+      &mdash;
+      <span class='desc'>description of the class this path represents.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getParent-instance'>
-      - (void) <strong>getParent</strong>()
+      - (PathInfo) <strong>getParent</strong>()
       (bound)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Get the parent of this path. i.e., for <code>Gene.proteins.name</code> returns <code>Gene.proteins</code>
+ exonSymbols = model.makePath(&#39;Gene.exons.symbol&#39;) exons = model.makePath(&#39;Gene.exons&#39;) exons.equals(exonSymbols.getParent()) //=&gt; true</p><p>@throws [Error] if this path has not parent.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='../classes/PathInfo.html'>PathInfo</a></tt>)
+      &mdash;
+      <span class='desc'>The parent of this path.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='append-instance'>
-      - (void) <strong>append</strong>(attr)
+      - (PathInfo) <strong>append</strong>(attr)
       (bound)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Adds a segment to this path. The segment must conform with the data model.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>attr</span>
+      <span class='type'>
+        (<tt>String|Field</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The field to add.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='../classes/PathInfo.html'>PathInfo</a></tt>)
+      &mdash;
+      <span class='desc'>a new PathInfo object with the appended segment.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='isa-instance'>
-      - (void) <strong>isa</strong>(clazz)
+      - (boolean) <strong>isa</strong>(clazz)
       (bound)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Analyses the inheritance hierarchy to determine if this path represents
+an instance of the provided class. eg:
+ path = model.makePath(&#39;Gene.proteins&#39;) path.isa(&#39;Protein&#39;) //=&gt; true path.isa(&#39;BioEntity&#39;) //=&gt; true path.isa(&#39;Organism&#39;) //=&gt; false path.append(&#39;name&#39;).isa(&#39;String&#39;) //=&gt; true</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>The</span>
+      <span class='type'>
+        (<tt>String|Table</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>purported parent class.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>boolean</tt>)
+      &mdash;
+      <span class='desc'>If the path represents the provided class or one of its subclasses</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getDisplayName-instance'>
-      - (void) <strong>getDisplayName</strong>(cb)
+      - (Promise&lt;String&gt;) <strong>getDisplayName</strong>(cb)
       (bound)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Fetches the configured display name for this path from the server.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>cb</span>
+      <span class='type'>
+        (<tt>Function&lt;Error, String, void&gt;</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>An optional callback.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Promise&lt;String&gt;</tt>)
+      &mdash;
+      <span class='desc'>A promise for the display name.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getChildNodes-instance'>
-      - (void) <strong>getChildNodes</strong>()
+      - (Array&lt;PathInfo&gt;) <strong>getChildNodes</strong>()
       (bound)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Gets all the sub-paths of this class. eg:</p><p> path = model.makePath(&#39;Gene&#39;)
+ path.getChildNodes() //=&gt; [PathInfo(&#39;Gene.name&#39;), PathInfo(&#39;Gene.proteins&#39;)...]</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Array&lt;<a href='../classes/PathInfo.html'>PathInfo</a>&gt;</tt>)
+      &mdash;
+      <span class='desc'>The children of this path.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='allDescriptors-instance'>
-      - (void) <strong>allDescriptors</strong>()
+      - (Array&lt;Descriptor&gt;) <strong>allDescriptors</strong>()
       (bound)
     </p>
     <div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Array&lt;Descriptor&gt;</tt>)
+      &mdash;
+      <span class='desc'>the root and the segment descriptors in a single array.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='toString-instance'>
-      - (void) <strong>toString</strong>()
+      - (String) <strong>toString</strong>()
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <pre><code>             to {Model::makePath}</code></pre>
+
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>String</tt>)
+      &mdash;
+      <span class='desc'>The string representation of this path, the same as that passed</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='equals-instance'>
-      - (void) <strong>equals</strong>(other)
+      - (boolean) <strong>equals</strong>(other)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Overriden equals.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>boolean</tt>)
+      &mdash;
+      <span class='desc'>true if the other path and this path are the same.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
@@ -464,11 +746,11 @@ minus any &quot;java.lang.&quot; prefix.</p>
     </div>
     <div id='footer'>
   Generated on
-  Mon Jun 02 2014 15:52:13 GMT+0100 (BST)
+  Thu Dec 11 2014 14:11:28 GMT+0000 (GMT)
   by
   <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
   v1.6.2
-  (Node.js v0.10.22).
+  (Node.js v0.10.25).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts
   &#10034;

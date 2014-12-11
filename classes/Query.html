@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset='UTF-8'>
-  <title>InterMine Client Library Documentation</title>
+  <title>CoffeeScript API Documentation</title>
   <link rel='stylesheet' href='../assets/codo.css' type='text/css'>
   <script src='../assets/codo.js'></script>
   <script src='../assets/search_data.js'></script>
@@ -212,6 +212,8 @@
   'le': '<=',
   'contains': 'CONTAINS',
   'CONTAINS': 'CONTAINS',
+  'does not contain': 'DOES NOT CONTAIN',
+  'DOES NOT CONTAIN': 'DOES NOT CONTAIN',
   'like': 'LIKE',
   'LIKE': 'LIKE',
   'not like': 'NOT LIKE',
@@ -233,6 +235,10 @@
   'within': 'WITHIN',
   'OVERLAPS': 'OVERLAPS',
   'overlaps': 'OVERLAPS',
+  'DOES NOT OVERLAP': 'DOES NOT OVERLAP',
+  'does not overlap': 'DOES NOT OVERLAP',
+  'OUTSIDE': 'OUTSIDE',
+  'outside': 'OUTSIDE',
   'ISA': 'ISA',
   'isa': 'ISA'
 }</code></pre>
@@ -326,7 +332,7 @@
   <li>
     <span class='signature'>
       <a href='#constructor-instance'>
-        - (void) <strong>constructor</strong>(properties, service)
+        - (void) <strong>constructor</strong>(properties, service, undefined = {})
       </a>
     </span>
     <span class='constructor note title'>Constructor</span>
@@ -544,17 +550,27 @@
       </a>
     </span>
     <span class='desc'>
-      
+      Add the results of this query to a list on the server.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectPreservingImpliedConstraints-instance'>
+        - (Query) <strong>selectPreservingImpliedConstraints</strong>(paths = [])
+      </a>
+    </span>
+    <span class='desc'>
+      Get a clone of this query with the given paths selected.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#makeListQuery-instance'>
-        - (void) <strong>makeListQuery</strong>()
+        - (Query) <strong>makeListQuery</strong>()
       </a>
     </span>
     <span class='desc'>
-      
+      Get a clone of this query that can be used for list operations.
     </span>
   </li>
   <li>
@@ -861,7 +877,7 @@
   <li>
     <span class='signature'>
       <a href='#getExportURI-instance'>
-        - (void) <strong>getExportURI</strong>(format = 'tab')
+        - (void) <strong>getExportURI</strong>(format = 'tab', options = {})
       </a>
     </span>
     <span class='desc'>
@@ -966,7 +982,7 @@
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='constructor-instance'>
-      - (void) <strong>constructor</strong>(properties, service)
+      - (void) <strong>constructor</strong>(properties, service, undefined = {})
     </p>
     <div class='docstring'>
   <p>Construct a new Query object from a set of properties.</p><h1 id="all-options-are-optional-alternative-names-permitted-are-separated-by-bars-">All options are optional. Alternative names permitted are separated by bars.</h1>
@@ -1681,14 +1697,76 @@ set of default paths it represent.</p>
     <p class='signature' id='appendToList-instance'>
       - (void) <strong>appendToList</strong>(target, cb)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Add the results of this query to a list on the server.</p><p>@returns [Promise<List>] A promise to yield the updated list information.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>target</span>
+      <span class='type'>
+        (<tt>String|List</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The list to add results to.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectPreservingImpliedConstraints-instance'>
+      - (Query) <strong>selectPreservingImpliedConstraints</strong>(paths = [])
+    </p>
+    <div class='docstring'>
+  <p>Get a clone of this query with the given paths selected.</p><p>The clone may have constraints added to it to preserve the implied constraints
+that result from the default inner-join status of paths.</p><p>We ensure we aren&#39;t changing the query by removing implicit
+join constraints; these implicit constraints are replaced with
+explicit constraints. This only works with joins on objects that
+have ids; you will have to handle simple objects yourself.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>paths</span>
+      <span class='type'>
+        (<tt>Array</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>The paths to select.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='../classes/Query.html'>Query</a></tt>)
+      &mdash;
+      <span class='desc'>The query with the altered select list.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='makeListQuery-instance'>
-      - (void) <strong>makeListQuery</strong>()
+      - (Query) <strong>makeListQuery</strong>()
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Get a clone of this query that can be used for list operations.</p><p>A suitable query will have a single item in its select list, and that will refer to
+an object id. The cloned query is guaranteed to not include elements that would otherwise
+be excluded by implied inner joins on deleted view paths.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='../classes/Query.html'>Query</a></tt>)
+      &mdash;
+      <span class='desc'>The valid list query.</span>
+    </li>
+  </ul>
 </div>
   </div>
   <div class='method_details'>
@@ -2090,7 +2168,7 @@ the given filter.</p>
   </div>
   <div class='method_details'>
     <p class='signature' id='getExportURI-instance'>
-      - (void) <strong>getExportURI</strong>(format = 'tab')
+      - (void) <strong>getExportURI</strong>(format = 'tab', options = {})
     </p>
     <div class='tags'>
 </div>
@@ -2175,11 +2253,11 @@ wild*</p><p>[* do not really go wild]</p>
     </div>
     <div id='footer'>
   Generated on
-  Mon Jun 02 2014 15:52:13 GMT+0100 (BST)
+  Thu Dec 11 2014 14:11:28 GMT+0000 (GMT)
   by
   <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
   v1.6.2
-  (Node.js v0.10.22).
+  (Node.js v0.10.25).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts
   &#10034;

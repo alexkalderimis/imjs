@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset='UTF-8'>
-  <title>InterMine Client Library Documentation</title>
+  <title>CoffeeScript API Documentation</title>
   <link rel='stylesheet' href='../assets/codo.css' type='text/css'>
   <script src='../assets/codo.js'></script>
   <script src='../assets/search_data.js'></script>
@@ -138,155 +138,12 @@
   </li>
   <li>
     <span class='signature'>
-      <a href='#decapitate-file'>
-        ? (String) <strong>decapitate</strong>(x = '')
-      </a>
-    </span>
-    <span class='note private title'>Private</span>
-    <span class='desc'>
-      Return a string with the head cut off.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#conValStr-file'>
-        ? (String) <strong>conValStr</strong>(v)
-      </a>
-    </span>
-    <span class='note private title'>Private</span>
-    <span class='desc'>
-      Stringify a constraint value from a multi-value constraint.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#conAttrs-file'>
-        ? (String) <strong>conAttrs</strong>(c, names)
-      </a>
-    </span>
-    <span class='note private title'>Private</span>
-    <span class='desc'>
-      Stringify the attributes for a constraint.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#noValueConStr-file'>
-        ? (String) <strong>noValueConStr</strong>(c)
-      </a>
-    </span>
-    <span class='note private title'>Private</span>
-    <span class='desc'>
-      Stringify a constraint that has no value attribute.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#typeConStr-file'>
-        ? (String) <strong>typeConStr</strong>(c)
-      </a>
-    </span>
-    <span class='note private title'>Private</span>
-    <span class='desc'>
-      Stringify a constraint that restricts an object to a type.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#simpleConStr-file'>
-        ? (String) <strong>simpleConStr</strong>(c)
-      </a>
-    </span>
-    <span class='note private title'>Private</span>
-    <span class='desc'>
-      Stringify a constraint that has a value.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#multiConStr-file'>
-        ? (String) <strong>multiConStr</strong>(c)
-      </a>
-    </span>
-    <span class='note private title'>Private</span>
-    <span class='desc'>
-      Stringify a constraint that has multiple values.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#idConStr-file'>
-        ? (String) <strong>idConStr</strong>(c)
-      </a>
-    </span>
-    <span class='note private title'>Private</span>
-    <span class='desc'>
-      Stringify a constraint that has multiple values.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#conStr-file'>
-        ? (String) <strong>conStr</strong>(c)
-      </a>
-    </span>
-    <span class='note private title'>Private</span>
-    <span class='desc'>
-      Stringify a constraint that has multiple values.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
       <a href='#headLess-file'>
         ? (void) <strong>headLess</strong>(path)
       </a>
     </span>
     <span class='desc'>
       
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#copyCon-file'>
-        ? (Constraint) <strong>copyCon</strong>(con)
-      </a>
-    </span>
-    <span class='note private title'>Private</span>
-    <span class='desc'>
-      Copy a constraint.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#conToJSON-file'>
-        ? (Object) <strong>conToJSON</strong>(con)
-      </a>
-    </span>
-    <span class='note private title'>Private</span>
-    <span class='desc'>
-      Produce the JSON representation of a constraint.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#noUndefVals-file'>
-        ? (Object) <strong>noUndefVals</strong>(x)
-      </a>
-    </span>
-    <span class='note private title'>Private</span>
-    <span class='desc'>
-      Remove all properties of the input object that are undefined.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#didntRemove-file'>
-        ? (String) <strong>didntRemove</strong>(orig, reduced)
-      </a>
-    </span>
-    <span class='note private title'>Private</span>
-    <span class='desc'>
-      Get an error message for when we don&#39;t manage to remove constraints correctly,
     </span>
   </li>
   <li>
@@ -331,6 +188,16 @@
   </li>
   <li>
     <span class='signature'>
+      <a href='#bioUriArgs-file'>
+        ? (void) <strong>bioUriArgs</strong>(reqMeth, f)
+      </a>
+    </span>
+    <span class='desc'>
+      Ensures the arguments are correctly handled, makes sure views are fully qualified and applies the export view if given.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
       <a href='#_get_data_fetcher-file'>
         ? (void) <strong>_get_data_fetcher</strong>(server_fn)
       </a>
@@ -357,436 +224,10 @@
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='decapitate-file'>
-      ? (String) <strong>decapitate</strong>(x = '')
-      (private)
-    </p>
-    <div class='docstring'>
-  <p>Return a string with the head cut off.</p>
-  <div class='examples'>
-    <h3>Examples:</h3>
-    <h4>
-      
-    </h4>
-    <pre><code class='coffee'>decapitate(&#39;Foo.bar.baz&#39;) #=&gt; &#39;bar.baz&#39;</code></pre>
-  </div>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>x</span>
-      <span class='type'>
-        (<tt>String</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>A path string</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>String</tt>)
-      &mdash;
-      <span class='desc'>The path without its head.</span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='conValStr-file'>
-      ? (String) <strong>conValStr</strong>(v)
-      (private)
-    </p>
-    <div class='docstring'>
-  <p>Stringify a constraint value from a multi-value constraint.</p>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>v</span>
-      <span class='type'>
-        (<tt>String</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The constraint value.</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>String</tt>)
-      &mdash;
-      <span class='desc'>An XML serialisation of the value.</span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='conAttrs-file'>
-      ? (String) <strong>conAttrs</strong>(c, names)
-      (private)
-    </p>
-    <div class='docstring'>
-  <p>Stringify the attributes for a constraint.</p>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>c</span>
-      <span class='type'>
-        (<tt>Constraint</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The constraint to serialise.</span>
-    </li>
-    <li>
-      <span class='name'>names</span>
-      <span class='type'>
-        (<tt>Array&lt;String&gt;</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The names of properties on the constraint to serialise.</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>String</tt>)
-      &mdash;
-      <span class='desc'>An serialisation of the constraint&#39;s attributes.</span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='noValueConStr-file'>
-      ? (String) <strong>noValueConStr</strong>(c)
-      (private)
-    </p>
-    <div class='docstring'>
-  <p>Stringify a constraint that has no value attribute.</p>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>c</span>
-      <span class='type'>
-        (<tt><a href='../classes/OperatorConstraint.html'>OperatorConstraint</a></tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The constraint to serialise.</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>String</tt>)
-      &mdash;
-      <span class='desc'>The XML serialisation of the constraint.</span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='typeConStr-file'>
-      ? (String) <strong>typeConStr</strong>(c)
-      (private)
-    </p>
-    <div class='docstring'>
-  <p>Stringify a constraint that restricts an object to a type.</p>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>c</span>
-      <span class='type'>
-        (<tt><a href='../classes/SubTypeConstraint.html'>SubTypeConstraint</a></tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The constraint to serialise.</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>String</tt>)
-      &mdash;
-      <span class='desc'>The XML serialization of the constraint.</span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='simpleConStr-file'>
-      ? (String) <strong>simpleConStr</strong>(c)
-      (private)
-    </p>
-    <div class='docstring'>
-  <p>Stringify a constraint that has a value.</p>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>c</span>
-      <span class='type'>
-        (<tt><a href='../classes/ValueConstraint.html'>ValueConstraint</a></tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The constraint to serialise.</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>String</tt>)
-      &mdash;
-      <span class='desc'>The XML serialization of the constraint.</span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='multiConStr-file'>
-      ? (String) <strong>multiConStr</strong>(c)
-      (private)
-    </p>
-    <div class='docstring'>
-  <p>Stringify a constraint that has multiple values.</p>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>c</span>
-      <span class='type'>
-        (<tt><a href='../classes/MultiValueConstraint.html'>MultiValueConstraint</a></tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The constraint to serialise.</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>String</tt>)
-      &mdash;
-      <span class='desc'>The XML serialization of the constraint.</span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='idConStr-file'>
-      ? (String) <strong>idConStr</strong>(c)
-      (private)
-    </p>
-    <div class='docstring'>
-  <p>Stringify a constraint that has multiple values.</p>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>c</span>
-      <span class='type'>
-        (<tt><a href='../classes/IdsContraint.html'>IdsContraint</a></tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The constraint to serialise.</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>String</tt>)
-      &mdash;
-      <span class='desc'>The XML serialization of the constraint.</span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='conStr-file'>
-      ? (String) <strong>conStr</strong>(c)
-      (private)
-    </p>
-    <div class='docstring'>
-  <p>Stringify a constraint that has multiple values.</p>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>c</span>
-      <span class='type'>
-        (<tt>Constraint</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The constraint to serialise.</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>String</tt>)
-      &mdash;
-      <span class='desc'>The XML serialization of the constraint.</span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
     <p class='signature' id='headLess-file'>
       ? (void) <strong>headLess</strong>(path)
     </p>
     <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='copyCon-file'>
-      ? (Constraint) <strong>copyCon</strong>(con)
-      (private)
-    </p>
-    <div class='docstring'>
-  <p>Copy a constraint.</p><p>Produce an identical but unconnected copy of a constraint.</p>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>con</span>
-      <span class='type'>
-        (<tt>Constraint</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The constraint to copy.</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>Constraint</tt>)
-      &mdash;
-      <span class='desc'>An identical copy of the constraint.</span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='conToJSON-file'>
-      ? (Object) <strong>conToJSON</strong>(con)
-      (private)
-    </p>
-    <div class='docstring'>
-  <p>Produce the JSON representation of a constraint.</p>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>The</span>
-      <span class='type'>
-        (<tt>Constraint</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>constraint to JSONify.</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>Object</tt>)
-      &mdash;
-      <span class='desc'>The JSON representation.</span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='noUndefVals-file'>
-      ? (Object) <strong>noUndefVals</strong>(x)
-      (private)
-    </p>
-    <div class='docstring'>
-  <p>Remove all properties of the input object that are undefined.</p>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>The</span>
-      <span class='type'>
-        (<tt>Object</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>object to strip.</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>Object</tt>)
-      &mdash;
-      <span class='desc'>The same object as was provided as input.</span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='didntRemove-file'>
-      ? (String) <strong>didntRemove</strong>(orig, reduced)
-      (private)
-    </p>
-    <div class='docstring'>
-  <p>Get an error message for when we don&#39;t manage to remove constraints correctly,</p>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>orig</span>
-      <span class='type'>
-        (<tt>Array&lt;Constraint&gt;</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The original set of constraints.</span>
-    </li>
-    <li>
-      <span class='name'>reduced</span>
-      <span class='type'>
-        (<tt>Array&lt;Constraint&gt;</tt>)
-      </span>
-      &mdash;
-      <span class='desc'>The current set of constraints.</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>String</tt>)
-      &mdash;
-      <span class='desc'>A message explaining this.</span>
-    </li>
-  </ul>
 </div>
   </div>
   <div class='method_details'>
@@ -818,6 +259,17 @@
 </div>
   </div>
   <div class='method_details'>
+    <p class='signature' id='bioUriArgs-file'>
+      ? (void) <strong>bioUriArgs</strong>(reqMeth, f)
+    </p>
+    <div class='docstring'>
+  <p>Ensures the arguments are correctly handled, makes sure views are fully qualified
+and applies the export view if given.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
     <p class='signature' id='_get_data_fetcher-file'>
       ? (void) <strong>_get_data_fetcher</strong>(server_fn)
     </p>
@@ -828,11 +280,11 @@
     </div>
     <div id='footer'>
   Generated on
-  Mon Jun 02 2014 15:52:13 GMT+0100 (BST)
+  Thu Dec 11 2014 14:11:28 GMT+0000 (GMT)
   by
   <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
   v1.6.2
-  (Node.js v0.10.22).
+  (Node.js v0.10.25).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts
   &#10034;
