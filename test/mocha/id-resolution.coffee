@@ -5,7 +5,7 @@ if process.env.IMJS_COV
 else
   idresolution = require '../../build/id-resolution-job'
 
-OLD_ID_RES_FORMAT = require './data/old-id-resolution-format.json'
+OLD_ID_RES_FORMAT = require '../data/old-id-resolution-format.json'
 {cleanSlate, prepare, always, clear, eventually, shouldFail} = require './lib/utils'
 {fold, get, invoke} = Fixture.funcutils
 should = require 'should'
@@ -182,5 +182,6 @@ describe 'Service', ->
   describe 'legacy', ->
     {legacy} = new Fixture()
 
-    testIDResolutionAgainst legacy
+    # TODO - find a better way to do this - or just remove it.
+    # testIDResolutionAgainst legacy
 

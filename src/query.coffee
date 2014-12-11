@@ -161,7 +161,7 @@ interpretConstraint = (path, con) ->
   else if utils.isArray con
     constraint.op = 'ONE OF'
     constraint.values = con
-  else if typeof con in ['string', 'number']
+  else if typeof con in ['string', 'number', 'boolean']
     if con.toUpperCase?() in Query.NULL_OPS
       constraint.op = con
     else
@@ -245,6 +245,8 @@ class Query
     'le': '<='
     'contains': 'CONTAINS'
     'CONTAINS': 'CONTAINS'
+    'does not contain': 'DOES NOT CONTAIN'
+    'DOES NOT CONTAIN': 'DOES NOT CONTAIN'
     'like': 'LIKE'
     'LIKE': 'LIKE'
     'not like': 'NOT LIKE'
@@ -266,6 +268,10 @@ class Query
     'within': 'WITHIN'
     'OVERLAPS': 'OVERLAPS'
     'overlaps': 'OVERLAPS'
+    'DOES NOT OVERLAP': 'DOES NOT OVERLAP'
+    'does not overlap': 'DOES NOT OVERLAP'
+    'OUTSIDE': 'OUTSIDE'
+    'outside': 'OUTSIDE'
     'ISA': 'ISA'
     'isa': 'ISA'
 
@@ -447,7 +453,7 @@ class Query
   #         paths to use to determine the sort-order.
   # @option properties [String] constraintLogic The constraint logic.
   #
-  constructor: (properties, service) ->
+  constructor: (properties, service, {model, summaryFields} = {}) ->
     properties ?= {}
     # Fresh containers collection properties.
     @constraints = []
@@ -459,9 +465,9 @@ class Query
     for prop in ['name', 'title', 'comment', 'description', 'type'] when properties[prop]?
       @[prop] = properties[prop]
 
-    @service = service ? {}
-    @model = properties.model ? {}
-    @summaryFields = properties.summaryFields ? {}
+    @service       = service ? {}
+    @model         = model ? properties.model ? {}
+    @summaryFields = summaryFields ? properties.summaryFields ? {}
     @root = properties.root ? properties.from
     @maxRows = properties.size ? properties.limit ? properties.maxRows
     @start = properties.start ? properties.offset ? 0
@@ -659,7 +665,7 @@ class Query
         if cd and @summaryFields[cd.name]
           fn = utils.compose expand, decapitate
           return (fn n for n in @summaryFields[cd.name] when (not @hasView(n)))
-      else if /\.\*\*$/.test(path)
+      else if /\.\*\*$/.test(path) # same as summary fields, plus all attributes.
         starViews = @expandStar(pathStem + '.*')
         attrViews = (expand ".#{ name }" for name of cd.attributes)
         return utils.uniqBy id, starViews.concat(attrViews)
@@ -680,6 +686,10 @@ class Query
     else
       throw new Error("This query has no service with count functionality attached.")
 
+  # Add the results of this query to a list on the server.
+  #
+  # @param [String|List] target The list to add results to.
+  # @returns [Promise<List>] A promise to yield the updated list information.
   appendToList: (target, cb) ->
     if target?.name # Target is list.
       name = target.name
@@ -696,20 +706,40 @@ class Query
 
     withCB updateTarget, cb, @service.post('query/append/tolist', req).then processor
 
-  makeListQuery: ->
+  # Get a clone of this query with the given paths selected.
+  #
+  # The clone may have constraints added to it to preserve the implied constraints
+  # that result from the default inner-join status of paths.
+  #
+  # We ensure we aren't changing the query by removing implicit
+  # join constraints; these implicit constraints are replaced with
+  # explicit constraints. This only works with joins on objects that
+  # have ids; you will have to handle simple objects yourself.
+  #
+  # @param  [Array] paths The paths to select.
+  # @return [Query] The query with the altered select list.
+  selectPreservingImpliedConstraints: (paths = []) ->
     toRun = @clone()
-    if toRun.views.length != 1 or toRun.views[0] is null or !toRun.views[0].match(/\.id$/)
-      toRun.select(['id'])
+    toRun.select paths
 
-    # Ensure we aren't changing the query by removing implicit
-    # join constraints; replace these implicit constraints with
-    # explicit constraints. This only works with joins on objects that
-    # have ids; you will have to handle simple objects yourself.
     for n in @getViewNodes() when not @isOuterJoined n
       if not (toRun.isInView n or toRun.isConstrained n) and n.getEndClass().fields.id?
         toRun.addConstraint [n.append('id'), 'IS NOT NULL']
 
     return toRun
+
+  # Get a clone of this query that can be used for list operations.
+  #
+  # A suitable query will have a single item in its select list, and that will refer to
+  # an object id. The cloned query is guaranteed to not include elements that would otherwise
+  # be excluded by implied inner joins on deleted view paths.
+  #
+  # @return [Query] The valid list query.
+  makeListQuery: ->
+    paths = @views.slice()
+    if paths.length != 1 or !paths[0]?.match(/\.id$/)
+      paths = ['id']
+    @selectPreservingImpliedConstraints paths
 
   saveAsList: (options, cb) ->
     toRun = @makeListQuery()
@@ -1032,12 +1062,10 @@ class Query
       req.token = @service.token
     "#{@service.root}query/code?#{ toQueryString req }"
 
-  getExportURI: (format = 'tab') ->
+  getExportURI: (format = 'tab', options = {}) ->
     if format in Query.BIO_FORMATS
-      return @["get#{format.toUpperCase()}URI"]()
-    req =
-      query: @toXML()
-      format: format
+      return @["get#{format.toUpperCase()}URI"](options)
+    req = merge options, query: @toXML(), format: format
     if @service?.token? # hard to tell if necessary. Include it.
       req.token = @service.token
     "#{ @service.root }query/results?#{ toQueryString req }"
@@ -1089,21 +1117,26 @@ Query::toString = Query::toXML
 Query.ATTRIBUTE_OPS = union [Query.ATTRIBUTE_VALUE_OPS, Query.MULTIVALUE_OPS, Query.NULL_OPS]
 Query.REFERENCE_OPS = union [Query.TERNARY_OPS, Query.LOOP_OPS, Query.LIST_OPS]
 
+# Ensures the arguments are correctly handled, makes sure views are fully qualified
+# and applies the export view if given.
+bioUriArgs = (reqMeth, f) -> (opts = {}, cb = ->) ->
+  if utils.isFunction opts
+    [opts, cb] = [{}, opts]
+  ensureAttr = (p) =>
+    path = @getPathInfo(p)
+    if path.isAttribute() then path else path.append('id')
+  opts.view = (@getPathInfo(v).toString() for v in opts.view) if opts?.view?
+  obj = if opts.export? then @selectPreservingImpliedConstraints(opts.export.map ensureAttr) else @
+  req = merge obj[reqMeth](), opts
+  f.call obj, req, cb
+
 for f in Query.BIO_FORMATS then do (f) ->
   reqMeth = "_#{ f }_req"
   getMeth = "get#{ f.toUpperCase() }"
   uriMeth = getMeth + "URI"
-  Query::[getMeth] = (opts = {}, cb = ->) ->
-    if utils.isFunction opts
-      [opts, cb] = [{}, opts]
-    opts.view = (@getPathInfo(v).toString() for v in opts.view) if opts?.view?
-    req = merge @[reqMeth](), opts
+  Query::[getMeth] = bioUriArgs reqMeth, (req, cb) ->
     withCB cb, @service.post 'query/results/' + f, req
-  Query::[uriMeth] = (opts = {}, cb) ->
-    if utils.isFunction opts
-      [opts, cb] = [{}, opts]
-    opts.view = (@getPathInfo(v).toString() for v in opts.view) if opts?.view?
-    req = merge @[reqMeth](), opts
+  Query::[uriMeth] = bioUriArgs reqMeth, (req, cb) ->
     if @service.token? # hard to tell if necessary. Include it.
       req.token = @service.token
     "#{ @service.root }query/results/#{ f }?#{ toQueryString req }"

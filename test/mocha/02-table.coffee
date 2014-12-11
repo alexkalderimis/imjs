@@ -1,7 +1,7 @@
 should     = require 'should'
 {Model}    = require './lib/fixture'
 
-{TESTMODEL} = require './data/model'
+{TESTMODEL} = require '../data/model'
 
 describe 'Table', ->
 
@@ -18,5 +18,5 @@ describe 'Table', ->
     Employee.toString().should.equal expected
 
   it 'should know about its parents', ->
-    Employee.parents().should.include 'Employable'
+    Employee.parents().should.containEql 'Employable'
 

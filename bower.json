@@ -1,13 +1,14 @@
 {
   "name": "imjs",
-  "version": "3.3.0",
+  "version": "3.7.2",
   "description": "Client library for communication with InterMine web-services",
   "main": "js/im.js",
   "dependencies": {},
   "devDependencies": {
     "mocha": ">=1.8.1",
     "expect": "~0.2.0",
-    "q": "~0.9.7"
+    "q": "~0.9.7",
+    "underscore": "~1.7.0"
   },
   "ignore": [
     "test/",

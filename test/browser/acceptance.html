@@ -31,12 +31,13 @@
             window.intermine = {DO_NOT_OVERWRITE: "OK"};
             mocha.setup({
                 globals: ['navigator', 'getInterface', 'expect', 'JSON', 'intermine'],
+                timeout: 30000,
                 ui: 'bdd'
             });
-            var host = ('demo.intermine.org' || window.location.hostname);
-            var port = ('80' || window.location.port);
+            var host = ('localhost' || window.location.hostname);
+            var port = ('8080' || window.location.port);
             var service_args = {
-                root: 'http://' + host + ':' + port + '/testmine',
+                root: 'http://' + host + ':' + port + '/intermine-demo',
                 token: 'test-user-token',
                 errorHandler: function(err) {
                     if (!window.mochaPhantomJS) {

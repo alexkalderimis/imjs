@@ -2,6 +2,7 @@ module.exports = function (grunt) {
   'use strict';
 
   var path = require('path');
+  var derequire = require('derequire');
   var fs = require('fs');
   var banner = '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
                   '<%= grunt.template.today("yyyy-mm-dd") %> */\n' +
@@ -14,6 +15,8 @@ module.exports = function (grunt) {
       return src;
     }
   }
+
+  var shouldjs = require.resolve('should');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -44,6 +47,14 @@ module.exports = function (grunt) {
       source: {
         src: 'src/*',
         dest: 'build'
+      },
+      tests: {
+        src: 'test/mocha/*.coffee',
+        dest: 'test/compiled'
+      },
+      testlib: { // This is ugly - should be one task.
+        src: 'test/mocha/lib/*.coffee',
+        dest: 'test/compiled/lib'
       }
     },
     jshint: {
@@ -99,6 +110,7 @@ module.exports = function (grunt) {
     clean: {
       qunit: ['test/qunit/build'],
       build: ['build'],
+      tests: ['test/compiled'],
       cdnlinks: {
         src: ['<%= CDN %>/js/intermine/imjs/latest', '<%= CDN %>/js/intermine/imjs/<%= pkg.version.replace(/\\d+$/, "x") %>'],
         options: {force: true}
@@ -161,32 +173,33 @@ module.exports = function (grunt) {
           'dist/im.js': ['build/service.js']
         },
         options: {
-          alias: ['build/http-browser.js:./http'],
+          alias: ['./build/http-browser.js:./http'],
           ignore: ['xmldom'],
-          noParse: ['node_modules/httpinvoke/httpinvoke-commonjs.js'],
-          standalone: 'imjs',
+          browserifyOptions: {
+            noParse: ['node_modules/httpinvoke/httpinvoke-commonjs.js'],
+            standalone: 'imjs'
+          },
           postBundleCB: bundled,
         }
       },
       tests: {
         files: {
-          'test/browser/mocha-test.js': ['test/mocha/*.coffee'],
+          'test/browser/mocha-test.js': ['test/compiled/**/*.js'],
         },
         options: {
-          transform: ['coffeeify', 'envify'],
+          transform: ['envify'],
           alias: [
-            'build/http-browser.js:./http',
-            'test/mocha/lib/utils.coffee:./lib/utils',
-            'test/mocha/lib/fixture.coffee:./lib/fixture',
-            'test/mocha/lib/fixture.coffee:./fixture',
-            'node_modules/should/should.js:should'
+            './build/http-browser.js:./http',
+            shouldjs + ':should'
           ],
           ignore: ['xmldom'],
-          noParse: [
-            'node_modules/httpinvoke/httpinvoke-commonjs.js',
-            'node_modules/should/should.js',
-            'js/im.js'
-          ]
+          // postBundleCB: bundled,
+          browserifyOptions: {
+            noParse: [
+              'node_modules/httpinvoke/httpinvoke-commonjs.js',
+              'js/im.js'
+            ]
+          }
         }
       }
     },
@@ -213,25 +226,28 @@ module.exports = function (grunt) {
   })
 
   function bundled (error, src, next) {
+    if (error) {
+      return next(error);
+    }
     try {
       var bundleBanner = grunt.template.process(banner)
       var shiv = grunt.file.read("build/shiv.js")
       var openIFE = "(function (intermine) {";
       var closeIFE ='})(window.intermine);';
       var expose = grunt.file.read('build/export.js');
-      next(null, [bundleBanner, shiv, openIFE, src, expose, closeIFE].join("\n"))
+      next(null, derequire([bundleBanner, shiv, openIFE, src, expose, closeIFE].join("\n")));
     } catch (e) {
       next(e)
     }
   }
 
   function injectVersion(file) {
-    var src, dest, temp, output;
-    src = dest = 'build/version.js';
-    temp = grunt.file.read(src);
-    output = grunt.template.process(temp);
-    grunt.file.write(dest, output, {encoding: 'utf8'});
-    grunt.log.writeln("Injected version");
+    var src, dest, temp, output
+    src = dest = 'build/version.js'
+    temp = grunt.file.read(src)
+    output = grunt.template.process(temp)
+    grunt.file.write(dest, output, {encoding: 'utf8'})
+    grunt.log.writeln("Injected version")
   }
 
   grunt.loadNpmTasks("grunt-jscoverage")
@@ -394,6 +410,7 @@ module.exports = function (grunt) {
   grunt.registerTask('bmp', ['bump-only', 'default', 'bump-commit'])
   grunt.registerTask('build', [
     'clean:build',
+    'clean:tests',
     'compile',
     '-inject-version',
     'browserify',
@@ -403,8 +420,8 @@ module.exports = function (grunt) {
     'browser-indices'
   ])
   grunt.registerTask('demo', ['build', 'browser-indices'])
-  grunt.registerTask('justtest',['build', '-load-test-globals', '-testglob'])
-  grunt.registerTask('test', ['build', 'test-node', 'phantomjs'])
-  grunt.registerTask('default', ['jshint', 'coffeelint', 'test'])
+  grunt.registerTask('justtest',['jshint', 'coffeelint', 'build', '-load-test-globals', '-testglob'])
+  grunt.registerTask('test', ['jshint', 'coffeelint', 'build', 'test-node', 'phantomjs'])
+  grunt.registerTask('default', ['test'])
 
 }
